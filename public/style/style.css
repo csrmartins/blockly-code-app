@@ -1,0 +1,9 @@
+body{
+  /* background-color: #ddd; */
+}
+
+#blocklyArea {
+  width: 50%;
+  height: 500px;
+  border: 1px solid black;
+}
