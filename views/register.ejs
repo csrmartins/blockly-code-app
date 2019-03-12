@@ -1,0 +1,37 @@
+<% include partials/_head %>
+
+    <div class="mainContainer">
+      <form action="/auth/register" method="POST">
+        <h2>Register</h2>
+        <div class="form-group">
+          <label for="fisrtName">Nome</label>
+          <input type="text" class="form-control" name="firstName" required /><br>
+        </div>
+        <div class="form-group">
+          <label for="lastName">Sobrenome</label>
+          <input type="text" class="form-control" name="lastName" required /><br>
+        </div>
+        <div class="form-group">
+          <label for="email">E-mail</label>
+          <input type="text" class="form-control" name="email" required /><br>
+        </div>
+        <div class="form-group">
+          <label for="age">Idade</label>
+          <input type="number" class="form-control" name="age" required /><br>
+        </div>
+        <label for="gender">Sexo:</label>
+        <label class="radio-inline"><input type="radio" name="gender" value="male">Masculino</label>
+        <label class="radio-inline"><input type="radio" name="gender" value="female">Feminino</label>
+        <div class="form-gorup">
+          <label for="password">Senha</label>
+          <input type="password" class="form-control" name="password" required/><br>
+        </div>
+        <div class="form-group">
+          <label for="verifyPassword">Confirme sua Senha</label>
+          <input type="password" class="form-control" name="verifyPassword" required /><br>
+        </div>
+        <button  class= "btn btn-primary btn-lg" aria-pressed="false" type="submit" name="button">Cadastrar-se</button><br>
+      </form>
+    </div>
+
+<% include partials/_footer %>

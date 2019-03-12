@@ -14,6 +14,8 @@
     <h1>App Code</h1>
     <p></p>
       <button id="btnRun" onclick="runCode()">Run</button>
+      <button type="button" onclick="saveProject()">Save</button>
+      <button type="button" onclick="loadProject()">Load</button>
     <p></p>
     <div id="blocklyArea">
       <div id="blocklyDiv" style="position: absolute"></div>
@@ -96,6 +98,26 @@
         } catch (e) {
           alert(e);
         }
+      }
+
+      var project = {xml: '', txt: ''}
+      console.log(project);
+
+      function saveProject() {
+        console.log('Save Project clicked');
+        project.xml = Blockly.Xml.workspaceToDom(workspace);
+        project.txt = Blockly.Xml.domToPrettyText(project.xml);
+
+        console.log(project, 'project');
+
+      }
+
+
+      function loadProject() {
+        console.log('Load Project Clicked');
+        var xml = Blockly.Xml.textToDom(project.txt);
+        console.log(xml, 'this is xml');
+        Blockly.Xml.domToWorkspace(xml, workspace);
       }
     </script>
   </body>

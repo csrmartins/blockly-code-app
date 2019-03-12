@@ -1,17 +1,21 @@
 <% include partials/_head %>
 
     <div class="mainContainer">
-      <form action="/auth/login" method="POST">
+      <form action="auth/login" method="POST">
         <h2>Login</h2>
         <div class="form-group">
-          <label for="email:">E-mail:</label>
+          <label for="email">E-mail:</label>
           <input type="text" class="form-control" name="email" required /><br>
         </div>
         <div class="form-gorup">
           <label for="password">Senha:</label>
           <input type="password" class="form-control" name="password" required/><br>
         </div>
-        <button  class= "btn btn-primary btn-lg" aria-pressed="false"type="submit" name="button">Entrar</button><br>
+        <button  class= "btn btn-primary btn-lg" aria-pressed="false" type="submit" name="button">Entrar</button><br>
+      </form>
+      ou
+      <form class="" action="register" method="GET">
+        <button  class= "btn btn-primary btn-lg" aria-pressed="false" type="submit" name="button">Cadastre-se</button><br>
       </form>
     </div>
 
