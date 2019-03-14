@@ -2,6 +2,9 @@ const express = require('express');
 const app = express();
 
 const authController = require('./controllers/authController');
+const projectController = require('./controllers/projectController');
+const builderController = require('./controllers/builderController');
+
 
 
 const bodyParser = require('body-parser');
@@ -34,13 +37,16 @@ app.get('/register', (req,res) => {
   res.render('register.ejs')
 })
 
-app.get('/builder', (req,res) => {
-  console.log('builder route');
-  res.render('builder.ejs')
-})
+// app.get('/builder', (req,res) => {
+//   console.log('builder route');
+//   res.render('builder.ejs')
+// })
 
 
-app.use('/auth', authController);
+
+app.use('/auth', authController)
+app.use('/projects', projectController);
+app.use('/builder', builderController);
 
 
 

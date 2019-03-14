@@ -1,0 +1,26 @@
+<% include partials/_head %>
+
+<h1>This is Gallery</h1>
+
+<p>
+  <a href="/builder">Builder</a>
+</p>
+
+<% if (allProjects) { %>
+  <% console.log(allProjects, 'THIS ARE ALLL PROJECTS FOLKS') %>
+  <% for (let i = 0; i < allProjects.length ; i++) { %>
+    <div class="projectCard">
+      <h2><%= allProjects[i].name%>, <%= allProjects[i]._id%> </h2>
+      <form action='/projects/<%=allProjects[i]._id%>?_method=DELETE' method='POST'>
+        <button class="btn btn-secondary btn-lg" type='submit' name='deleProject' value='<%= i %>'> Delete </button>
+      </form>
+      <form action='/builder/edit/<%=projects[i]._id%>?' method='GET'>
+        <button class="btn btn-secondary btn-lg" type='submit'> Edit </button>
+      </form>
+    </div>
+  <%}%>
+
+<% } %>
+
+
+<% include partials/_footer %>

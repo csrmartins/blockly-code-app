@@ -1,0 +1,23 @@
+<% include partials/_head %>
+
+    <div class="mainContainer">
+      <h2>Projects</h2>
+      <form action="/builder/<%= userId %>" method="GET">
+        <button type="submit">Construtor</button>
+      </form>
+      <p>User: <%= firstName %>  <%= lastName %></p>
+      <% for (let a = 0; a < projects.length; a++ ) { %>
+ 	      <div class="card">
+			     <h2><%= projects[a].name%>, <%= projects[a]._id%> </h2>
+			<form action='/projects/<%=projects[a]._id%>?_method=DELETE' method='POST'>
+				<button class="btn btn-secondary btn-lg" type='submit' name='removeMatch' value='<%= a %>'> Delete </button>
+			</form>
+      <form action='/projects/<%=projects[a]._id%>?_method=PUT' method='POST'>
+        <button class="btn btn-secondary btn-lg" type='submit' name='removeMatch' value='<%= a %>'> Edit </button>
+      </form>
+		</div>
+
+	<% }%>
+    </div>
+
+<% include partials/_footer %>
