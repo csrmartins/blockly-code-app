@@ -74,8 +74,28 @@ router.delete('/:id', (req, res) =>{
   res.send(err)
   }
 
-
 });
+
+
+router.put('/new/:id', async (req, res) => {
+  console.log(req.body, 'This is projects PUT route');
+  try {
+    fetch(`http://localhost:9000/api/v1/projects/${req.params.id}`, {
+      method: 'PUT',
+      body:    JSON.stringify(req.body),
+      headers: { 'Content-Type': 'application/json' },
+      credentials: 'include'
+    })
+    .then(res => res.json())
+    .then(json => {(
+      editedProject = json.data,
+      console.log(json.data, 'this is editedProject JSON'),
+      res.redirect(`/projects/all`)
+      )});
+  }catch (err) {
+   res.send(err)
+  }
+})
 
 
 
