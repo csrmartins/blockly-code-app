@@ -1,9 +1,62 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans');
+
+
 body{
-  /* background-color: #ddd; */
+  font-family: 'Open Sans', sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+pre {
+  margin: 0;
+}
+
+h1 {
+  color: #93D195;
+}
+
+.jumboHeader{
+  background-color: #ECEFFB;
+  height: 250px;
+}
+
+.jumboHeader h1, p{
+  margin-left: 20px;
+}
+
+.btn-primary {
+  background-color: #7887F1;
+  border-color: #7887F1;
 }
 
 #blocklyArea {
-  width: 50%;
+  width: 100%;
   height: 500px;
-  border: 1px solid black;
+  border: 1px solid lightgrey;
+}
+
+#canvas {
+  background-color: lightgrey;
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.row {
+  width: 100%;
+}
+
+.leftContainer {
+  width: 50%;
+}
+
+.rightContainer {
+  width: 50%;
+}
+
+#canvasButtons {
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  text-align: center;
 }

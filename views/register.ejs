@@ -1,8 +1,18 @@
 <% include partials/_head %>
+<link rel="stylesheet" href="/style/register.css">
 
+<div class="row">
+  <div class="leftContainer">
+    <div id="imageContainer">
+      <img id=bgLogin src="images/bg login e cadastro.png" alt="bg login e cadastro.png">
+      <div class="logoContainer">
+        <img id="imgLogo"src="images/logo happy code.png" alt="logo happy code.png">
+      </div>
+  </div>
+</div>
     <div class="mainContainer">
       <form action="/auth/register" method="POST">
-        <h2>Register</h2>
+        <h3>Register</h3>
         <div class="form-group">
           <label for="fisrtName">Nome</label>
           <input type="text" class="form-control" name="firstName" required /><br>
@@ -10,10 +20,6 @@
         <div class="form-group">
           <label for="lastName">Sobrenome</label>
           <input type="text" class="form-control" name="lastName" required /><br>
-        </div>
-        <div class="form-group">
-          <label for="email">E-mail</label>
-          <input type="text" class="form-control" name="email" required /><br>
         </div>
         <div class="form-group">
           <label for="age">Idade</label>
@@ -30,8 +36,6 @@
           <label for="verifyPassword">Confirme sua Senha</label>
           <input type="password" class="form-control" name="verifyPassword" required /><br>
         </div>
-        <button  class= "btn btn-primary btn-lg" aria-pressed="false" type="submit" name="button">Cadastrar-se</button><br>
+        <button  class= "btnPrimary" aria-pressed="false" type="submit" name="button">Cadastrar-se</button><br>
       </form>
     </div>
-
-<% include partials/_footer %>

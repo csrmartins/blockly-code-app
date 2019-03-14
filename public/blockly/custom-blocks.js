@@ -1,7 +1,7 @@
 Blockly.Blocks['definir-cor'] = {
   init: function() {
     this.appendDummyInput()
-        .appendField("Set Body to:")
+        .appendField("Set Background Color to:")
         .appendField(new Blockly.FieldDropdown([["Blue","B"], ["Yellow","Y"], ["Purple","R"]]), "lightcolor");
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
@@ -16,13 +16,13 @@ Blockly.JavaScript['definir-cor'] = function(block) {
   // TODO: Assemble JavaScript into code variable.
   var code = "console.log('bloco SET_Color funcionando!');"
   if (dropdown_lightcolor === "B"){
-    var code = "document.body.style.backgroundColor='steelblue';"
+    var code = "document.getElementById('canvas').style.backgroundColor='steelblue';"
   }
   if (dropdown_lightcolor === "Y"){
-    var code = "document.body.style.backgroundColor='goldenrod';"
+    var code = "document.getElementById('canvas').style.backgroundColor='goldenrod';"
   }
   if (dropdown_lightcolor === "R"){
-    var code = "document.body.style.backgroundColor='blueviolet';"
+    var code = "document.getElementById('canvas').style.backgroundColor='blueviolet';"
   }
 
   // TODO: Assemble JavaScript into code variable.
@@ -53,25 +53,6 @@ Blockly.JavaScript['element_color'] = function(block) {
   var code = `mudarCor(${dropdown_element}, ${dropdown_color})`;
 
   console.log(code, 'this is code');
-
-
-  // console.log(dropdown_element, "ELEM");
-
-  // if(dropdown_element === "ball"){
-  //   console.log(dropdown_element, "dropdown_element");
-  //   if(dropdown_color === "R"){
-  //     console.log("color = RED");
-  //     var code = "document.getElementById('ball').style.backgroundColor='red"
-  //   }
-  //   if(dropdown_color === "B"){
-  //     console.log("color = BLUE");
-  //     var code = "document.getElementById('ball').style.backgroundColor='blue"
-  //   }
-  //   if(dropdown_color === "G"){
-  //     console.log("Color = GREEN");
-  //     var code = "document.getElementById('ball').style.backgroundColor='green"
-  //   }
-  // }
 
   return code;
 };
