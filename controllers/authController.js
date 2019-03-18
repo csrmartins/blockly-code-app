@@ -11,6 +11,7 @@ router.get('/login', (req, res) => {
 
 router.post('/login', async (req, res) => {
   console.log(req.body, 'this is req.body');
+  
 
   try{
     fetch('http://localhost:9000/api/v1/auth/login', {
