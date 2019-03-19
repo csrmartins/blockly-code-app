@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="25" height="22.5" viewBox="0 0 25 22.5">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #353f49;
+      }
+    </style>
+  </defs>
+  <g id="nav_branca_-_4_projetos" data-name="nav branca - 4 projetos" transform="translate(-4 -6)">
+    <path id="Path_101" data-name="Path 101" class="cls-1" d="M25.875,6H7.125A3.128,3.128,0,0,0,4,9.125v16.25A3.128,3.128,0,0,0,7.125,28.5h18.75A3.128,3.128,0,0,0,29,25.375V9.125A3.128,3.128,0,0,0,25.875,6ZM7.125,7.25h18.75A1.877,1.877,0,0,1,27.75,9.125V11H5.25V9.125A1.877,1.877,0,0,1,7.125,7.25Zm18.75,20H7.125A1.877,1.877,0,0,1,5.25,25.375V12.25h22.5V25.375A1.877,1.877,0,0,1,25.875,27.25Z" transform="translate(0 0)"/>
+    <path id="Path_102" data-name="Path 102" class="cls-1" d="M8.625,11.25h1.25a.625.625,0,0,0,0-1.25H8.625a.625.625,0,0,0,0,1.25Z" transform="translate(-1.5 -1.5)"/>
+    <path id="Path_103" data-name="Path 103" class="cls-1" d="M14.625,11.25h1.25a.625.625,0,0,0,0-1.25h-1.25a.625.625,0,1,0,0,1.25Z" transform="translate(-3.75 -1.5)"/>
+    <path id="Path_104" data-name="Path 104" class="cls-1" d="M14.375,20h-3.75a.624.624,0,0,0-.625.625v3.75a.624.624,0,0,0,.625.625h3.75A.624.624,0,0,0,15,24.375v-3.75A.624.624,0,0,0,14.375,20Zm-.625,3.75h-2.5v-2.5h2.5Z" transform="translate(-2.25 -5.25)"/>
+    <path id="Path_105" data-name="Path 105" class="cls-1" d="M14.375,30h-3.75a.625.625,0,0,0,0,1.25h3.75a.625.625,0,1,0,0-1.25Z" transform="translate(-2.25 -9)"/>
+    <path id="Path_106" data-name="Path 106" class="cls-1" d="M14.375,34h-3.75a.625.625,0,0,0,0,1.25h3.75a.625.625,0,1,0,0-1.25Z" transform="translate(-2.25 -10.5)"/>
+    <path id="Path_107" data-name="Path 107" class="cls-1" d="M24.375,28h-3.75a.624.624,0,0,0-.625.625v3.75a.624.624,0,0,0,.625.625h3.75A.624.624,0,0,0,25,32.375v-3.75A.624.624,0,0,0,24.375,28Zm-.625,3.75h-2.5v-2.5h2.5Z" transform="translate(-6 -8.25)"/>
+    <path id="Path_108" data-name="Path 108" class="cls-1" d="M24.375,24h-3.75a.625.625,0,0,0,0,1.25h3.75a.625.625,0,0,0,0-1.25Z" transform="translate(-6 -6.75)"/>
+    <path id="Path_109" data-name="Path 109" class="cls-1" d="M24.375,20h-3.75a.625.625,0,0,0,0,1.25h3.75a.625.625,0,0,0,0-1.25Z" transform="translate(-6 -5.25)"/>
+    <path id="Path_110" data-name="Path 110" class="cls-1" d="M34.375,20h-3.75a.624.624,0,0,0-.625.625v3.75a.624.624,0,0,0,.625.625h3.75A.624.624,0,0,0,35,24.375v-3.75A.624.624,0,0,0,34.375,20Zm-.625,3.75h-2.5v-2.5h2.5Z" transform="translate(-9.75 -5.25)"/>
+    <path id="Path_111" data-name="Path 111" class="cls-1" d="M34.375,30h-3.75a.625.625,0,0,0,0,1.25h3.75a.625.625,0,0,0,0-1.25Z" transform="translate(-9.75 -9)"/>
+    <path id="Path_112" data-name="Path 112" class="cls-1" d="M34.375,34h-3.75a.625.625,0,0,0,0,1.25h3.75a.625.625,0,0,0,0-1.25Z" transform="translate(-9.75 -10.5)"/>
+  </g>
+</svg>

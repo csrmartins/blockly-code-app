@@ -2,38 +2,54 @@
 <link rel="stylesheet" href="/style/gallery.css">
 
 
-
-
-<div class="jumbotron">
-  <h1 class="display-4">Galeria de Projetos</h1>
-  <p class="lead">Aqui você pode encontrar projetos incriveis criados no nosso Construtor!</p>
-  <hr class="my-4">
-  <p>Acesse agora mesmo o Construtor e comece a criar os seus próprios projetos para publicá-los aqui e compartilhar com as pessoas que você gosta! 😜 </p>
-  <p class="lead">
-    <a class="btn btn-primary btn-lg" href="/builder" role="button">Construtor</a>
-  </p>
+<div class="mainNav">
+  <ul class="mainMenu">
+    <li><a href="/"><img src="/images/icons/nav roxa - 1 inicio inativo.svg" alt="nav branca - 1 inicio.svg">Início</a></li>
+    <li><a href="/lessons"><img src="/images/icons/nav roxa - 2 trilha inativo.svg" alt="nav branca - 2 trilha.svg">Trilha</a></li>
+    <li><a href="/builder"><img src="/images/icons/nav roxa - 3 construtor inativo.svg" alt="nav branca - nav branca - 3 construtor.svg">Construtor</a></li>
+    <li><a class="mainActive" href="/projects/all"><img src="/images/icons/nav roxa - 4 projetos ativo.svg" alt="nav branca - 4 projetos.svg">Projetos</a></li>
+    <div class="mainRight">
+      <li>Nome do Aluno | 000</li>
+      <li><img id="imgProfile" src="/images/profile_default.png" alt="profile_default.png"></li>
+    </div>
+  </ul>
 </div>
 
-<div class="projectContainer">
-  <% if (allProjects) { %>
-    <% console.log(allProjects, 'THIS ARE ALLL PROJECTS FOLKS') %>
-    <% for (let i = 0; i < allProjects.length ; i++) { %>
-      <div class="card" style="width: 18rem;">
-        <img class="card-img-top" src="/images/placeholder.png" alt="Card image cap">
-        <div class="card-body">
-        <h5 class="card-title"><%= allProjects[i].name%></h5>
-        <p class="card-text">Project Id: <%= allProjects[i]._id%></p>
-        <div class="cardForm">
-        <form action='/builder/edit/<%=projects[i]._id%>?' method='GET'>
-          <button class="btn btn-secondary" type='submit'> Edit </button>
-        </form>
-        <form action='/projects/<%=allProjects[i]._id%>?_method=DELETE' method='POST'>
-          <button class="btn btn-danger" type='submit' name='deleProject' value='<%= i %>'> Delete </button>
-        </form>
-        </div>
-        </div>
-      </div>
-    <%}%>
 
-  <% } %>
+
+
+<div class="galleryNav">
+  <ul class="galleryNavMenu">
+    <li><a class="btnGalleryNav" id="galleryBtn" href="#">Galeria</a></li>
+    <li><a class="btnGalleryNav" id="myProjectsBtn" href="#">Meus Projetos</a></li>
+  </ul>
+</div>
+
+
+<div class="sessionTitle">
+  <h3>Todos</h3>
+  <div class="sessionTitleSubline"></div>
+</div>
+
+
+
+
+
+
+<div id="allProjectsContainer">
+  <% if (allProjects) { %>
+        <% console.log(allProjects, 'THIS ARE ALLL PROJECTS FOLKS') %>
+        <% for (let i = 0; i < allProjects.length ; i++) { %>
+          <div class="projectCard">
+            <div class="prjCardHeader">
+              <div class="cardHeaderText">
+                <p class="cardHeaderTitle"><%= allProjects[i].name%></p>
+                <div class="cardHeaderSubLine"></div>
+                <p class="cardHeaderCathegory">Games</p>
+              </div>
+            </div>
+            <img src="/images/project-print-2.png" alt="project-print.png">
+          </div>
+        <% } %>
+      <% } %>  
 </div>

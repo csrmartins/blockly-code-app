@@ -7,12 +7,77 @@ body{
   padding: 0;
 }
 
-h1 {
-  color: #93D195;
+.mainNav{
+  background-color: rgba(117,135,249,1);
+  color: rgba(255,255,255,1);
+  font-size: 12px;
+  height: 45px;
 }
 
-.jumbotron{
+ul {
+  padding: 10px 0;
+  list-style-type: none;
+}
+
+li {
+  display: inline;
+  margin: 0 10px;
+}
+
+a {
+  color: rgba(255,255,255,1);
+}
+
+a:hover {
+  color: rgba(255,255,255,1);
+  text-decoration: none;
+  font-weight: bold;
+}
+
+img {
+  margin-right: 5px;
+}
+
+.mainActive {
+  border-bottom: 3px solid rgba(255,151,91,1);
+  padding-bottom: 12px;
+}
+
+.mainRight {
+  float: right;
+}
+
+#imgProfile {
+  width: 33px;
+  height: 33px;
+  border-radius: 50%;
+}
+
+.galleryNavMenu{
+  padding: 0;
   background-color: #ECEFFB;
+  height: 45px;
+  font-size: 12px;
+}
+
+
+
+.btnGalleryNav{
+  float: left;
+  color: rgba(53,63,73,1);
+  font-size: 12px;
+  background-color: #ECEFFB;
+  display:inline-block;
+  padding: 12px;
+}
+
+.btnGalleryNav:hover, .btnGalleryNav:active{
+  float: left;
+  color: rgba(53,63,73,1);
+  font-size: 12px;
+  background-color: #FFFFFF;
+  display:inline-block;
+  padding: 15px;
 }
 
 .btn-primary {
@@ -20,10 +85,90 @@ h1 {
   border-color: #7887F1;
 }
 
-.projectContainer {
+.sessionTitle{
+  padding: 12px;
+  text-align: left;
+}
+
+.sessionTitleSubline{
+  width: 123px;
+  height: 1px;
+  background-color: rgba(53,63,73,0.3);
+}
+
+
+
+.sessionTitle h3{
+  color: rgba(53,63,73,1);
+  font-size: 14px;
+}
+
+#allProjectsContainer {
+  position: absolute;
   display: flex;
   flex-wrap: wrap;
 }
+
+.projectCard{
+  border-radius: 10px;
+  margin-top: 20px;
+  margin-left: 10px;
+  margin-right: 20px;
+  background-color: #FFFFFF;
+  position: relative;
+  width: 205;
+  height: 250px;
+  z-index: -3;
+  overflow: visible;
+  filter: drop-shadow(8px 8px 20px rgba(0, 0, 0, 0.102));
+}
+
+
+.projectCard img{
+  border-top-right-radius: 10px;
+  border-top-left-radius: 10px;
+  z-index: -2;
+  opacity: 1;
+    position: absolute;
+    width: 205px;
+    height: 200px;
+    left: 0.0px;
+    top: 0.0px;
+
+}
+
+.prjCardHeader {
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  position: relative;
+  width: 205px;
+  height: 63px;
+  z-index: -1;
+  opacity: 0.7;
+  background-color: rgba(110,194,201,1);
+}
+
+.cardHeaderText{
+  margin-left: 5px;
+}
+
+.cardHeaderSubLine{
+  width: 50px;
+  height: 1px;
+  background-color: rgba(255,255,255,1);
+}
+
+.cardHeaderTitle{
+  font-weight: bold;
+  font-size: 16px;
+  color: rgba(255,255,255,1);
+}
+
+.cardHeaderCathegory{
+  font-size: 14px;
+  color: rgba(255,255,255,1);
+}
+
 
 .card {
   margin: 20px;
