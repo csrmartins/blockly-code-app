@@ -7,6 +7,130 @@ body{
   padding: 0;
 }
 
+.mainNav{
+  background-color: rgba(117,135,249,1);
+  color: rgba(255,255,255,1);
+  font-size: 12px;
+  height: 45px;
+}
+
+ul {
+  padding: 10px 0;
+  list-style-type: none;
+}
+
+li {
+  display: inline;
+  margin: 0 10px;
+}
+
+a {
+  color: rgba(255,255,255,1);
+}
+
+a:hover {
+  color: rgba(255,255,255,1);
+  text-decoration: none;
+  font-weight: bold;
+}
+
+img {
+  margin-right: 5px;
+}
+
+.mainActive {
+  border-bottom: 3px solid #E8C65C;
+  padding-bottom: 12px;
+}
+
+
+
+.mainRight {
+  float: right;
+  max-width: 260px;
+  overflow: visible;
+  max-height:
+}
+
+#imgProfile {
+  width: 33px;
+  height: 33px;
+  border-radius: 50%;
+}
+
+#dropBtn{
+  background-color: transparent;
+  border: none;
+}
+
+.dropdownContent{
+  display: none;
+  background-color: #FFFFFF;
+  border-radius: 10px;
+  width: 235px;
+  height: auto;
+  overflow: visible;
+  filter: drop-shadow(8px 8px 20px rgba(0, 0, 0, 0.102));
+
+}
+
+.dropdownContent a {
+  padding: 10px;
+  text-align: center;
+  display: block;
+  width: inherit;
+  height: 40px;
+  font-size: 12px;
+  color: rgba(53,63,73,1);
+}
+
+.dropdownContent hr {
+  margin: 0 10px;
+}
+
+.show {
+  display: block;
+}
+
+.leftContainer{
+  /* padding-left: 0; */
+}
+
+.builderNavMenu{
+  padding: 0;
+  background-color: #ECEFFB;
+  height: 45px;
+  font-size: 12px;
+  margin-bottom: 0;
+}
+
+
+
+.btnBuilderNav{
+  float: left;
+  color: rgba(53,63,73,1);
+  font-size: 12px;
+  background-color: #ECEFFB;
+  display:inline-block;
+  padding: 12px;
+}
+
+.btnBuilderNav:hover, .btnBuilderNav:active{
+  max-height: 45px;
+  float: left;
+  color: rgba(53,63,73,1);
+  font-size: 12px;
+  background-color: #FFFFFF;
+  display:inline-block;
+  padding: 15px;
+}
+
+.btn-primary {
+  background-color: #7887F1;
+  border-color: #7887F1;
+}
+
+
 pre {
   margin: 0;
 }
@@ -24,26 +148,70 @@ h1 {
   margin-left: 20px;
 }
 
-.btn-primary {
-  background-color: #7887F1;
-  border-color: #7887F1;
-}
 
 #blocklyArea {
   width: 100%;
-  height: 500px;
-  border: 1px solid lightgrey;
+  height: 710px;
 }
 
-#canvas {
-  background-color: lightgrey;
+#jsArea{
   width: 100%;
-  height: 100%;
+  height: 710px;
+}
+
+#jsCode {
+  margin-left: 10px;
+}
+
+#designArea{
+  width: 100%;
+  height: 710px;
+}
+
+.sessionTitle{
+  padding: 12px;
+  text-align: left;
+}
+
+.sessionTitleSubline{
+  width: 123px;
+  height: 1px;
+  background-color: rgba(53,63,73,0.3);
+}
+
+.sessionTitle h3{
+  color: rgba(53,63,73,1);
+  font-size: 14px;
+}
+
+.designBackground{
+  margin-left: 10px;
+}
+
+.designBackground img{
+  height: 98px;
+  width: 98px;
+  margin: 5px;
+}
+
+
+
+
+#canvas {
+  z-index: -1;
+  background-color: #F5F5F5;
+  width: 100%;
+  height: 755px;
   position: relative;
 }
 
 .row {
+  position: absolute;
+  top: inherit;
+  padding: 0;
+  margin: 0;
   width: 100%;
+  height: 100%;
 }
 
 .leftContainer {
@@ -51,8 +219,67 @@ h1 {
 }
 
 .rightContainer {
+  position: absolute;
+  right: 0;
+  top: inherit;
+  height: 100%;
   width: 50%;
 }
+
+.bottomButtons {
+  text-align: center;
+  margin-left: 0;
+  padding-left: 0;
+  position: absolute;
+  bottom: 0px;
+  width: 100%;
+  /* z-index: 1; */
+}
+
+#btnRun{
+  opacity: 0.5;
+  margin-bottom: 30px;
+  margin-right: 50px;
+  padding: 0;
+  border-radius: 50%;
+  border:none;
+}
+
+#btnSave{
+  border-radius: 10px;
+  border: none;
+  width: 80px;
+  height: 25px;
+  font-size: 12px;
+  font-weight: bold;
+  opacity: 0.5;
+}
+
+#btnPublish{
+  border-radius: 10px;
+  border: none;
+  width: 80px;
+  height: 25px;
+  font-size: 12px;
+  font-weight: bold;
+  opacity: 0.5;
+}
+
+
+
+#playIcon{
+  background-color: transparent;
+  /* z-index: 1; */
+}
+
+.rightBtnContainer{
+  float: right;
+}
+
+.centerBtnContainer{
+  align-content: center;
+}
+
 
 #canvasButtons {
   width: 100%;

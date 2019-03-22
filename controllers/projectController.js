@@ -55,6 +55,37 @@ router.get('/all', async (req, res) => {
   }
 });
 
+
+router.get('/:id', async (req, res) => {
+
+  try{
+    fetch(`http://localhost:9000/api/v1/users/${req.params.id}`)
+    .then(res => res.json())
+    .then(json => {(
+      foundUser = json.data,
+      console.log(foundUser, 'this is found User')
+    )})
+  }catch(err){
+    res.send(err)
+  }
+
+  try{
+    fetch(`http://localhost:9000/api/v1/projects`)
+      .then(res => res.json())
+      .then(json => {(
+        allProjects = json.data,
+        console.log(allProjects, 'this is allProjects'),
+        res.render('gallery.ejs', {
+          user: foundUser,
+          projects: allProjects
+        })
+      )});
+
+  }catch(err){
+    res.send(err)
+  }
+});
+
 router.delete('/:id', (req, res) =>{
   console.log('im in PROJECT DELETE ROUTE');
   try{

@@ -19,30 +19,154 @@
   <body>
 
 
-<div class="jumboHeader">
-  <h1 class="display-4">Construtor</h1>
-  <p class="lead">Aqui você pode dar asas para a sua imaginação, criando seus próprios projetos! 💭 💡 🚀 </p>
-  <hr class="my-4">
-  <p>
-    <% if(foundProject) { %>
-      <% console.log(foundProject, 'this is FOUND PROJECT') %>
-      <p>
-        Project Name: <%= foundProject.name %>
-      </p>
-    <% } %>
-  </p>
-  <p class="lead">
-    <button type="button" class="btn btn-primary btn-lg" onclick="saveProject()">Salvar Progresso</button>
-    <button type="button" class="btn btn-primary btn-lg" onclick="loadProject()">Carregar</button>
-  </p>
+<!-- Main NavBar -->
+
+<div class="mainNav">
+  <ul class="mainMenu">
+    <li><a href="/"><img src="/images/icons/nav roxa - 1 inicio inativo.svg" alt="nav branca - 1 inicio.svg">Início</a></li>
+    <li><a href="/lessons"><img src="/images/icons/nav roxa - 2 trilha inativo.svg" alt="nav branca - 2 trilha.svg">Trilha</a></li>
+    <li><a class="mainActive" href="/builder"><img src="/images/icons/nav roxa - 3 construtor ativo.svg" alt="nav branca - nav branca - 3 construtor.svg">Construtor</a></li>
+    <li><a href="/projects/<%= foundUser._id %>"><img src="/images/icons/nav roxa - 4 projetos inativo.svg" alt="nav branca - 4 projetos.svg">Projetos</a></li>
+    <div class="mainRight">
+      <li><%= foundUser.firstName%> <%= foundUser.lastName %> | 000 Pontos</li>
+      <li>
+        <img id="imgProfile" src="/images/profile_default.png" alt="profile_default.png">
+        <button id="dropBtn" type="button" name="button">
+          <img id="dropBtnIcon" src="/images/icons/expande perfil.svg" alt="expande perfil.svg">
+        </button>
+        <div class="dropdownContent">
+          <a href="/profile">Profile</a>
+          <hr>
+          <a href="/auth/logout">Logout</a>
+        </div>
+      </li>
+    </div>
+  </ul>
+</div>
+
+<div class="row">
+  <div class="leftContainer">
+    <div class="builderNav">
+      <ul class="builderNavMenu">
+        <li><a class="btnBuilderNav" id="blocklyBtn" href="#">Blockly</a></li>
+        <li><a class="btnBuilderNav" id="jsBtn" href="#">JavaScript</a></li>
+        <li><a class="btnBuilderNav" id="designBtn" href="#">Design</a></li>
+      </ul>
+    </div>
+    <div id="blocklyArea">
+      <div id="blocklyDiv"></div>
+    </div>
+
+    <div id="jsArea">
+        <pre><code class="javascript">
+          <div id="jsCode"></div>
+        </code></pre>
+    </div>
+
+    <div id="designArea">
+      <div class="sessionTitle">
+        <h3>Background</h3>
+        <div class="sessionTitleSubline"></div>
+      </div>
+      <div class="designBackground">
+        <img src="/images/builder-assets/Background_01_A25_Rectangle_26_pattern.png" alt="Background_01_A25_Rectangle_26_pattern.png">
+      </div>
+      <div class="sessionTitle">
+        <h3>Objetos</h3>
+        <div class="sessionTitleSubline"></div>
+      </div>
+      <div class="designBackground">
+        <img src="/images/builder-assets/arvore_1_peq_A25_Rectangle_6_pattern.png" alt="arvore_1_peq_A25_Rectangle_6_pattern.png">
+        <img src="/images/builder-assets/arvore_1_peq_A25_Rectangle_8_pattern.png" alt="arvore_1_peq_A25_Rectangle_8_pattern.png">
+        <img src="/images/builder-assets/arvore_1_peq_A25_Rectangle_10_pattern.png" alt="arvore_1_peq_A25_Rectangle_10_pattern.png">
+        <img src="/images/builder-assets/arvore_1_peq_A25_Rectangle_12_pattern.png" alt="arvore_1_peq_A25_Rectangle_12_pattern.png">
+        <img src="/images/builder-assets/arvore_1_peq_A25_Rectangle_14_pattern.png" alt="arvore_1_peq_A25_Rectangle_14_pattern.png">
+        <img src="/images/builder-assets/arvore_1_peq_A25_Rectangle_16_pattern.png" alt="arvore_1_peq_A25_Rectangle_16_pattern.png">
+        <img src="/images/builder-assets/arvore_1_peq_A25_Rectangle_18_pattern.png" alt="arvore_1_peq_A25_Rectangle_18_pattern.png">
+        <img src="/images/builder-assets/arvore_1_peq_A25_Rectangle_20_pattern.png" alt="arvore_1_peq_A25_Rectangle_20_pattern.png">
+        <img src="/images/builder-assets/arvore_1_peq_A25_Rectangle_36_pattern.png" alt="arvore_1_peq_A25_Rectangle_36_pattern.png">
+        <img src="/images/builder-assets/arvore_1_peq_A25_Rectangle_38_pattern.png" alt="arvore_1_peq_A25_Rectangle_38_pattern.png">
+        <img src="/images/builder-assets/arvore_1_peq_A25_Rectangle_22_pattern.png" alt="arvore_1_peq_A25_Rectangle_22_pattern.png">
+        <img src="/images/builder-assets/arvore_1_peq_A25_Rectangle_24_pattern.png" alt="arvore_1_peq_A25_Rectangle_24_pattern.png">
+      </div>
+      <div class="sessionTitle">
+        <h3>Personagens</h3>
+        <div class="sessionTitleSubline"></div>
+      </div>
+      <div class="designBackground">
+        <img src="/images/builder-assets/pato_azul_A25_Rectangle_28_pattern.png" alt="pato_azul_A25_Rectangle_28_pattern.png">
+        <img src="/images/builder-assets/pato_azul_A25_Rectangle_30_pattern.png" alt="pato_azul_A25_Rectangle_30_pattern.png">
+        <img src="/images/builder-assets/pato_azul_A25_Rectangle_32_pattern.png" alt="pato_azul_A25_Rectangle_32_pattern.png">
+        <img src="/images/builder-assets/pato_azul_A25_Rectangle_40_pattern.png" alt="pato_azul_A25_Rectangle_40_pattern.png">
+      </div>
+
+    </div> <!-- closing designArea -->
+
+  </div> <!--Left Container -->
+  <div class="rightContainer">
+
+    <div id="canvas">
+      <div class="bottomButtons">
+        <div class="rightBtnContainer">
+          <button id= "btnRun"type="button" onclick="runCode()" name="button"> <img id="playIcon"src="/images/icons/const - botao play.svg" alt="const - botao play.svg"> </button>
+        </div>
+        <div class="centerBtnContainer">
+          <button id= "btnSave"type="button" onclick="saveProject()" name="button">Salvar</button>
+          <button id= "btnPublish"type="button" onclick="publishProject()" name="button">Publicar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- NavBar do Menu Blockly -->
+<!-- Blockly toolbox and workspace -->
+
+
+    <xml id="toolbox" style="display: none">
+        <category name="Loops" colour="%{BKY_LOOPS_HUE}">
+          <block type="controls_repeat_ext">
+            <value name="TIMES">
+              <block type="math_number">
+                <field name="NUM">10</field>
+              </block>
+            </value>
+          </block>
+          <block type="controls_whileUntil"></block>
+        </category>
+        <category name="Logic" colour="%{BKY_LOGIC_HUE}">
+          <block type="controls_if"></block>
+          <block type="logic_compare"></block>
+          <block type="logic_operation"></block>
+          <block type="logic_negate"></block>
+          <block type="logic_boolean"></block>
+        </category>
+        <category name="Math" colour="%{BKY_MATH_HUE}">
+          <block type="math_number">
+            <field name="NUM">123</field>
+          </block>
+          <block type="math_arithmetic"></block>
+          <block type="math_single"></block>
+        </category>
+        <category name="Custom Blocks" colour="90">
+          <block type="definir-cor"></block>
+          <block type='element_color'></block>
+        </category>
+        <category name="Assets" colour="120">
+          <div id="ball"></div>
+          <div id="ball"></div>
+        </category>
+    </xml>
 </div>
 
 
 
-<div class="row">
-  <div class="leftContainer">
-    <!-- NavBar do Menu Blockly -->
-      <nav>
+
+<!-- <div class="row">
+  <div class="leftContainer"> -->
+
+      <!-- <nav>
         <div class="nav nav-tabs" id="nav-tab" role="tablist">
           <a class="nav-item nav-link active" id="nav-blockly-tab" data-toggle="tab" href="#nav-blockly" role="tab" aria-controls="nav-blockly" aria-selected="true">Blockly</a>
           <a class="nav-item nav-link" id="nav-javascript-tab" data-toggle="tab" href="#nav-javascript" role="tab" aria-controls="nav-javascript" aria-selected="false">JavaScript</a>
@@ -52,7 +176,7 @@
       <div class="tab-content" id="nav-tabContent">
         <div class="tab-pane fade show active" id="nav-blockly" role="tabpanel" aria-labelledby="nav-blockly-tab">
           <!-- Blockly toolbox and workspace -->
-              <div id="blocklyArea">
+              <!-- <div id="blocklyArea">
                 <div id="blocklyDiv" style="position: absolute"></div>
               </div>
 
@@ -91,9 +215,9 @@
                   </category>
               </xml>
         </div>
-        <div class="tab-pane fade" id="nav-javascript" role="tabpanel" aria-labelledby="nav-javascript-tab">
+        <div class="tab-pane fade" id="nav-javascript" role="tabpanel" aria-labelledby="nav-javascript-tab">-->
           <!-- JavaScript Div usando a classe Code da biblioteca Hightlight -->
-          <pre><code class="javascript"  style="height: 480px; width: 600px;">
+          <!-- <pre><code class="javascript"  style="height: 480px; width: 600px;">
             <div id="jsArea"></div>
           </code></pre>
 
@@ -107,9 +231,9 @@
 
     <div id="canvas"><!-- this is the Project Canvas -->
 
-      <div id="canvasButtons">
+      <!-- <div id="canvasButtons">
         <!-- Button trigger SAVE modal -->
-        <button type="button" class="btn btn-primary" id="btnSalvar" data-toggle="modal" data-target="#saveModal">
+        <!-- <button type="button" class="btn btn-primary" id="btnSalvar" data-toggle="modal" data-target="#saveModal">
           Salvar
         </button>
 
@@ -118,50 +242,17 @@
         </button>
       </div>
 
-    </div>
+    </div> -->
 
 
 
-    <!-- Modal -->
-      <% if(foundProject) { %>
-        <form action="/projects/new/<%= foundProject._id%>?_method=PUT" method="POST">
-      <% } else { %>
-        <form action="/projects/new" method="POST">
-      <% } %>
-        <div class="modal fade" id="saveModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-          <div class="modal-dialog" role="document">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title" id="saveModalLabel">Salvar Projeto</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-                </button>
-              </div>
-              <div class="modal-body">
-                  <div class="form-group">
-                    <label for="email">Nome do Projeto:</label>
-                    <% if(foundProject) { %>
-                      <input type="text" class="form-control" name="name" value="<%= foundProject.name %>"required /><br>
-                    <% } else {%>
-                      <input type="text" class="form-control" name="name" value=""required /><br>
-                    <% } %>
-                  </div>
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                <button type="submit" class="btn btn-primary" >Salvar</button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </form>
 
 
   <!-- test buttons -->
 
-
+<!--
   </div>
-</div>
+</div> -->
 
 
 
@@ -200,7 +291,7 @@
 
 <!-- JavaScript Workpace Code -->
   <script>
-  $('#nav-javascript-tab').on('click', function (e) {
+  $('#jsBtn').on('click', function (e) {
     e.preventDefault()
     console.log('JavaScript Tab was clicked');
     // Generate JavaScript code and display it.
@@ -208,8 +299,60 @@
     Blockly.JavaScript.addReservedWords('code');
     var code = Blockly.JavaScript.workspaceToCode(workspace);
     // alert(code);
-    $('#jsArea').html(`${code}`)
+    $('#jsCode').html(`${code}`)
   })
+
+// Builder NavBar
+  $('#myProjectsTab').hide()
+
+  $('#galleryBtn').click(function(){
+    $('#allProjectsTab').show();
+    $('#myProjectsTab').hide()
+  })
+
+  $('#myProjectsBtn').click(function(){
+    $('#allProjectsTab').hide();
+    $('#myProjectsTab').show()
+  })
+
+
+// Dropdown Menu on Main NavBar
+  $('#dropBtn').click(function(){
+    $('.dropdownContent').addClass('show')
+  })
+
+  $(window).click(function(e) {
+    if(e.target.id != ('dropBtn' || 'dropBtnIcon')) {
+      $('.dropdownContent').removeClass('show')
+    }else{
+    }
+  })
+
+//Builder NavBar Hide/Show Logic
+  $('#jsArea').hide();
+  $('#designArea').hide();
+
+  $('#blocklyBtn').click(function(){
+    $('#blocklyArea').show();
+    $('#jsArea').hide();
+    $('#designArea').hide();
+  })
+
+  $('#jsBtn').click(function(){
+    $('#blocklyArea').hide();
+    $('#jsArea').show();
+    $('#designArea').hide();
+  })
+
+  $('#designBtn').click(function(){
+    $('#blocklyArea').hide();
+    $('#jsArea').hide();
+    $('#designArea').show();
+  })
+
+
+
+
   </script>
 
 

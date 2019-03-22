@@ -2,15 +2,27 @@
 <link rel="stylesheet" href="/style/gallery.css">
 
 
+
+
 <div class="mainNav">
   <ul class="mainMenu">
     <li><a href="/"><img src="/images/icons/nav roxa - 1 inicio inativo.svg" alt="nav branca - 1 inicio.svg">Início</a></li>
     <li><a href="/lessons"><img src="/images/icons/nav roxa - 2 trilha inativo.svg" alt="nav branca - 2 trilha.svg">Trilha</a></li>
-    <li><a href="/builder"><img src="/images/icons/nav roxa - 3 construtor inativo.svg" alt="nav branca - nav branca - 3 construtor.svg">Construtor</a></li>
+    <li><a href="/builder/<%= foundUser._id %>"><img src="/images/icons/nav roxa - 3 construtor inativo.svg" alt="nav branca - nav branca - 3 construtor.svg">Construtor</a></li>
     <li><a class="mainActive" href="/projects/all"><img src="/images/icons/nav roxa - 4 projetos ativo.svg" alt="nav branca - 4 projetos.svg">Projetos</a></li>
     <div class="mainRight">
-      <li>Nome do Aluno | 000</li>
-      <li><img id="imgProfile" src="/images/profile_default.png" alt="profile_default.png"></li>
+      <li><%= foundUser.firstName%> <%= foundUser.lastName %> | 000 Pontos</li>
+      <li>
+        <img id="imgProfile" src="/images/profile_default.png" alt="profile_default.png">
+        <button id="dropBtn" type="button" name="button">
+          <img id="dropBtnIcon" src="/images/icons/expande perfil.svg" alt="expande perfil.svg">
+        </button>
+        <div class="dropdownContent">
+          <a href="/profile">Profile</a>
+          <hr>
+          <a href="/auth/logout">Logout</a>
+        </div>
+      </li>
     </div>
   </ul>
 </div>
@@ -26,30 +38,151 @@
 </div>
 
 
-<div class="sessionTitle">
-  <h3>Todos</h3>
-  <div class="sessionTitleSubline"></div>
-</div>
 
 
 
+<!-- Hight Light Projects Container -->
 
 
+<!-- All Projects Container -->
 
-<div id="allProjectsContainer">
-  <% if (allProjects) { %>
-        <% console.log(allProjects, 'THIS ARE ALLL PROJECTS FOLKS') %>
-        <% for (let i = 0; i < allProjects.length ; i++) { %>
-          <div class="projectCard">
-            <div class="prjCardHeader">
-              <div class="cardHeaderText">
-                <p class="cardHeaderTitle"><%= allProjects[i].name%></p>
-                <div class="cardHeaderSubLine"></div>
-                <p class="cardHeaderCathegory">Games</p>
+
+<div id="allProjectsTab">
+  <!-- HightLight Project Container -->
+  <div class="sessionTitle">
+    <h3>Destaques</h3>
+    <div class="sessionTitleSubline"></div>
+  </div>
+  <div id="hightLightProjectsContainer">
+    <% if (allProjects) { %>
+          <% for (let i = 0; i < allProjects.length ; i++) { %>
+            <div class="hightLightProjectCard">
+              <div class="hightLightPrjCardHeader">
+                <!-- <div class="cardHeaderText"> -->
+                  <p class="cardHeaderTitle"><%= allProjects[i].name%></p>
+                  <div class="cardHeaderSubLine"></div>
+                  <p class="cardHeaderCathegory">Games</p>
+                <!-- </div> -->
               </div>
+              <img src="/images/project-print-2.png" alt="project-print.png">
             </div>
-            <img src="/images/project-print-2.png" alt="project-print.png">
-          </div>
+          <% } %>
         <% } %>
-      <% } %>  
+  </div>
+
+  <!-- All Projects Container -->
+  <div class="sessionTitle">
+    <h3>Todos</h3>
+    <div class="sessionTitleSubline"></div>
+  </div>
+  <div id="allProjectsContainer">
+    <% if (allProjects) { %>
+          <% for (let i = 0; i < allProjects.length ; i++) { %>
+            <div class="projectCard">
+              <div class="prjCardHeader">
+                <!-- <div class="cardHeaderText"> -->
+                  <p class="cardHeaderTitle"><%= allProjects[i].name%></p>
+                  <div class="cardHeaderSubLine"></div>
+                  <p class="cardHeaderCathegory">Games</p>
+                <!-- </div> -->
+              </div>
+              <img src="/images/project-print-2.png" alt="project-print.png">
+            </div>
+          <% } %>
+        <% } %>
+  </div>
 </div>
+
+<!-- My Projects Container -->
+
+
+<div id="myProjectsTab">
+  <div class="sessionTitle">
+    <h3>Meus Projetos</h3>
+    <div class="sessionTitleSubline"></div>
+  </div>
+  <div id="allProjectsContainer">
+    <% if (allProjects) { %>
+          <% for (let i = 0; i < allProjects.length ; i++) { %>
+            <div class="projectCard">
+              <div class="prjCardHeader">
+                <div class="cardHeaderText">
+                  <p class="cardHeaderTitle"><%= allProjects[i].name%></p>
+                  <div class="cardHeaderSubLine"></div>
+                  <p class="cardHeaderCathegory">Games</p>
+                </div>
+              </div>
+              <img src="/images/project-print-2.png" alt="project-print.png">
+            </div>
+          <% } %>
+        <% } %>
+  </div>
+</div>
+
+
+<script type="text/javascript">
+  $('#myProjectsTab').hide()
+
+  $('#galleryBtn').click(function(){
+    $('#allProjectsTab').show();
+    $('#myProjectsTab').hide()
+  })
+
+  $('#myProjectsBtn').click(function(){
+    $('#allProjectsTab').hide();
+    $('#myProjectsTab').show()
+  })
+
+
+  $('#dropBtn').click(function(){
+    console.log('dropBtn clicked');
+    $('.dropdownContent').addClass('show')
+  })
+
+  $(window).click(function(e) {
+    console.log(e.target, 'e.target.class');
+    if(e.target.id != ('dropBtn' || 'dropBtnIcon')) {
+      console.log('this is not dropBtn');
+      $('.dropdownContent').removeClass('show')
+    }else{
+      console.log('this is dropBtn');
+    }
+  })
+
+  // $(window).click(function(event){
+  //   console.log('window clicked');
+  //   console.log(event.target, 'this is target');
+  //   if(event.target.class != 'dropBtn'){
+  //     console.log('this is not dropBtn');
+  //     var $dropdownContent = $('.dropdownContent')
+  //     console.log($dropdownContent[0].classList);
+  //       if($dropdownContent[0].classList.contains('show')){
+  //         console.log('It contains Show');
+  //         $('dropdownContent').removeClass('show')
+  //         console.log();
+  //       }else {
+  //         console.log('it does not contains show');
+  //       }
+  //   }else {
+  //     console.log('this is dropBtn');
+  //   }
+  // })
+
+
+
+//   /* When the user clicks on the button,
+// toggle between hiding and showing the dropdown content */
+// function myFunction() {
+//   document.getElementById("myDropdown").classList.toggle("show");
+// }
+//
+// // Close the dropdown if the user clicks outside of it
+// window.onclick = function(e) {
+//   if (!e.target.matches('.dropbtn')) {
+//   var myDropdown = document.getElementById("myDropdown");
+//     if (myDropdown.classList.contains('show')) {
+//       myDropdown.classList.remove('show');
+//     }
+//   }
+// }
+</script>

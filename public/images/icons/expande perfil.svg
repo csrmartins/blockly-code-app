@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="8.982" height="5.154" viewBox="0 0 8.982 5.154">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #FFFFFF;
+        opacity: 0.6;
+      }
+    </style>
+  </defs>
+  <path id="expande_perfil" data-name="expande perfil" class="cls-1" d="M61.965,39.02a.664.664,0,0,1,1.133-.469l3.358,3.358,3.358-3.358a.664.664,0,0,1,.939.939l-3.827,3.827a.664.664,0,0,1-.94,0L62.16,39.49A.662.662,0,0,1,61.965,39.02Z" transform="translate(-61.964 -38.357)"/>
+</svg>

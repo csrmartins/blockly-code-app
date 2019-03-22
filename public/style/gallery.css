@@ -45,6 +45,8 @@ img {
 
 .mainRight {
   float: right;
+  max-width: 260px;
+  overflow: visible;
 }
 
 #imgProfile {
@@ -52,6 +54,41 @@ img {
   height: 33px;
   border-radius: 50%;
 }
+
+#dropBtn{
+  background-color: transparent;
+  border: none;
+}
+
+.dropdownContent{
+  display: none;
+  background-color: #FFFFFF;
+  border-radius: 10px;
+  width: 235px;
+  height: auto;
+  overflow: visible;
+  filter: drop-shadow(8px 8px 20px rgba(0, 0, 0, 0.102));
+
+}
+
+.dropdownContent a {
+  padding: 10px;
+  text-align: center;
+  display: block;
+  width: inherit;
+  height: 40px;
+  font-size: 12px;
+  color: rgba(53,63,73,1);
+}
+
+.dropdownContent hr {
+  margin: 0 10px;
+}
+
+.show {
+  display: block;
+}
+
 
 .galleryNavMenu{
   padding: 0;
@@ -85,6 +122,7 @@ img {
   border-color: #7887F1;
 }
 
+
 .sessionTitle{
   padding: 12px;
   text-align: left;
@@ -109,6 +147,12 @@ img {
   flex-wrap: wrap;
 }
 
+#hightLightProjectsContainer {
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+
 .projectCard{
   border-radius: 10px;
   margin-top: 20px;
@@ -116,7 +160,21 @@ img {
   margin-right: 20px;
   background-color: #FFFFFF;
   position: relative;
-  width: 205;
+  width: 205px;
+  height: 230px;
+  z-index: -3;
+  overflow: visible;
+  filter: drop-shadow(8px 8px 20px rgba(0, 0, 0, 0.102));
+}
+
+.hightLightProjectCard{
+  border-radius: 10px;
+  margin-top: 20px;
+  margin-left: 10px;
+  margin-right: 20px;
+  background-color: #FFFFFF;
+  position: relative;
+  width: 230px;
   height: 250px;
   z-index: -3;
   overflow: visible;
@@ -134,7 +192,18 @@ img {
     height: 200px;
     left: 0.0px;
     top: 0.0px;
+}
 
+.hightLightProjectCard img{
+  border-top-right-radius: 10px;
+  border-top-left-radius: 10px;
+  z-index: -2;
+  opacity: 1;
+    position: absolute;
+    width: 230px;
+    height: 220px;
+    left: 0.0px;
+    top: 0.0px;
 }
 
 .prjCardHeader {
@@ -142,43 +211,44 @@ img {
   border-top-right-radius: 10px;
   position: relative;
   width: 205px;
-  height: 63px;
+  height: 75px;
   z-index: -1;
   opacity: 0.7;
   background-color: rgba(110,194,201,1);
 }
 
-.cardHeaderText{
-  margin-left: 5px;
+.hightLightPrjCardHeader {
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  position: relative;
+  width: 230px;
+  height: 75px;
+  z-index: -1;
+  opacity: 0.7;
+  background-color: rgba(110,194,201,1);
 }
 
+
 .cardHeaderSubLine{
+  margin-top: 2px;
+  margin-left: 5px;
   width: 50px;
   height: 1px;
   background-color: rgba(255,255,255,1);
 }
 
 .cardHeaderTitle{
-  font-weight: bold;
+  margin-bottom: 3px;
+  padding-top: 5px;
+  padding-left: 5px;
   font-size: 16px;
+  font-weight: bold;
   color: rgba(255,255,255,1);
 }
 
 .cardHeaderCathegory{
+  padding-bottom: 5px;
+  padding-left: 5px;
   font-size: 14px;
   color: rgba(255,255,255,1);
-}
-
-
-.card {
-  margin: 20px;
-}
-
-.cardForm {
-  display: flex;
-  justify-content: center;
-}
-
-.btn {
-  margin: 20px;
 }

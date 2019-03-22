@@ -26,6 +26,24 @@ router.get('/', async (req, res) => {
 
 router.get('/:id', (req, res) => {
   console.log(`/builderController/${req.params.id} GET`);
+  try{
+    fetch(`http://localhost:9000/api/v1/users/${req.params.id}`)
+    .then(res => res.json())
+    .then(json => {(
+      foundUser = json.data,
+      console.log(foundUser, 'this is found User'),
+      res.render('builder/builder.ejs', {
+        user: foundUser
+      })
+    )})
+
+  }catch(err){
+    res.send(err)
+  }
+})
+
+router.get('/project/:id', (req, res) => {
+  console.log(`/builderController/${req.params.id} GET`);
 
   try{
     fetch(`http://localhost:9000/api/v1/users/${author}`)
