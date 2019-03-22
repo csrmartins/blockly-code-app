@@ -94,7 +94,7 @@
         <div class="sessionTitleSubline"></div>
       </div>
       <div class="designBackground">
-        <img src="/images/builder-assets/pato_azul_A25_Rectangle_28_pattern.png" alt="pato_azul_A25_Rectangle_28_pattern.png">
+        <img id="patoAzul" draggable="true" ondragstart="drag(event)" src="/images/builder-assets/pato_azul_A25_Rectangle_28_pattern.png" alt="pato_azul_A25_Rectangle_28_pattern.png">
         <img src="/images/builder-assets/pato_azul_A25_Rectangle_30_pattern.png" alt="pato_azul_A25_Rectangle_30_pattern.png">
         <img src="/images/builder-assets/pato_azul_A25_Rectangle_32_pattern.png" alt="pato_azul_A25_Rectangle_32_pattern.png">
         <img src="/images/builder-assets/pato_azul_A25_Rectangle_40_pattern.png" alt="pato_azul_A25_Rectangle_40_pattern.png">
@@ -103,7 +103,7 @@
     </div> <!-- closing designArea -->
 
   </div> <!--Left Container -->
-  <div class="rightContainer">
+  <div class="rightContainer" ondrop="drop(event)" ondragover="allowDrop(event)">
 
     <div id="canvas">
       <div class="bottomButtons">
@@ -349,6 +349,24 @@
     $('#jsArea').hide();
     $('#designArea').show();
   })
+
+  function drag(e) {
+    console.log(e.dataTransfer, 'drag Data Transfer');
+    e.dataTransfer.setData('asset', e.target.id)
+  }
+
+  function drop(e) {
+    console.log(e, 'Drop Event');
+    e.preventDefault();
+    var data = e.dataTransfer.getData('asset')
+    $('#canvas').append(`<img id="patoAzul" draggable="true" ondragstart="drag(event)" src="/images/builder-assets/pato_azul_A25_Rectangle_28_pattern.png" alt="pato_azul_A25_Rectangle_28_pattern.png">`)
+  }
+
+  function allowDrop(e) {
+    e.preventDefault();
+  }
+
+
 
 
 
