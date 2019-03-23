@@ -13,6 +13,7 @@
     <script>hljs.initHighlightingOnLoad();</script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/interactjs@1.3/dist/interact.min.js"></script>
     <link rel="stylesheet" href="/style/builder.css">
     <title></title>
   </head>
@@ -97,7 +98,6 @@
         <img id="patoAzul" draggable="true" ondragstart="drag(event)" src="/images/builder-assets/pato_azul_A25_Rectangle_28_pattern.png" alt="pato_azul_A25_Rectangle_28_pattern.png">
         <img src="/images/builder-assets/pato_azul_A25_Rectangle_30_pattern.png" alt="pato_azul_A25_Rectangle_30_pattern.png">
         <img src="/images/builder-assets/pato_azul_A25_Rectangle_32_pattern.png" alt="pato_azul_A25_Rectangle_32_pattern.png">
-        <img src="/images/builder-assets/pato_azul_A25_Rectangle_40_pattern.png" alt="pato_azul_A25_Rectangle_40_pattern.png">
       </div>
 
     </div> <!-- closing designArea -->
@@ -105,7 +105,7 @@
   </div> <!--Left Container -->
   <div class="rightContainer" ondrop="drop(event)" ondragover="allowDrop(event)">
 
-    <div id="canvas">
+    <!-- <div id="canvas"> -->
       <div class="bottomButtons">
         <div class="rightBtnContainer">
           <button id= "btnRun"type="button" onclick="runCode()" name="button"> <img id="playIcon"src="/images/icons/const - botao play.svg" alt="const - botao play.svg"> </button>
@@ -115,7 +115,7 @@
           <button id= "btnPublish"type="button" onclick="publishProject()" name="button">Publicar</button>
         </div>
       </div>
-    </div>
+    <!-- </div> -->
   </div>
 </div>
 
@@ -289,8 +289,12 @@
     </script>
 
 
-<!-- JavaScript Workpace Code -->
+
   <script>
+
+//======================= JAVASCRIPT TAB CODE  ======================================
+
+
   $('#jsBtn').on('click', function (e) {
     e.preventDefault()
     console.log('JavaScript Tab was clicked');
@@ -302,21 +306,10 @@
     $('#jsCode').html(`${code}`)
   })
 
-// Builder NavBar
-  $('#myProjectsTab').hide()
 
-  $('#galleryBtn').click(function(){
-    $('#allProjectsTab').show();
-    $('#myProjectsTab').hide()
-  })
-
-  $('#myProjectsBtn').click(function(){
-    $('#allProjectsTab').hide();
-    $('#myProjectsTab').show()
-  })
+//======================= DROPDOWN MENU HIDE/SHOW LPOGIC =============================
 
 
-// Dropdown Menu on Main NavBar
   $('#dropBtn').click(function(){
     $('.dropdownContent').addClass('show')
   })
@@ -328,7 +321,8 @@
     }
   })
 
-//Builder NavBar Hide/Show Logic
+//=========== BUILDER NAVBAR (BLOCKLY/ JS / DESIGN ) HIDE AND SHOW LOGIC ============
+
   $('#jsArea').hide();
   $('#designArea').hide();
 
@@ -350,6 +344,8 @@
     $('#designArea').show();
   })
 
+//=======================DRAG AND DROP FUNCTIONS ==================================
+
   function drag(e) {
     console.log(e.dataTransfer, 'drag Data Transfer');
     e.dataTransfer.setData('asset', e.target.id)
@@ -359,17 +355,61 @@
     console.log(e, 'Drop Event');
     e.preventDefault();
     var data = e.dataTransfer.getData('asset')
-    $('#canvas').append(`<img id="patoAzul" draggable="true" ondragstart="drag(event)" src="/images/builder-assets/pato_azul_A25_Rectangle_28_pattern.png" alt="pato_azul_A25_Rectangle_28_pattern.png">`)
+    $('.rightContainer').append(`<img id="blueDuck" src="/images/builder-assets/pato_azul_A25_Rectangle_28_pattern.png" alt="pato_azul_A25_Rectangle_28_pattern.png">`)
   }
 
   function allowDrop(e) {
     e.preventDefault();
   }
 
+  //=======================DRAGABLE INTERACT ==================================
 
+  //JSInteraction Functions
+  interact('#blueDuck')
+    .draggable({
+      // enable inertial throwing
+      inertia: true,
+      // keep the element within the area of it's parent
+      restrict: {
+        restriction: "parent",
+        endOnly: true,
+        elementRect: { top: 0, left: 0, bottom: 1, right: 1 }
+      },
+      // enable autoScroll
+      autoScroll: true,
 
+      // call this function on every dragmove event
+      onmove: dragMoveListener,
+      // call this function on every dragend event
+      onend: function (event) {
+        var textEl = event.target.querySelector('p');
 
+        textEl && (textEl.textContent =
+          'moved a distance of '
+          + (Math.sqrt(Math.pow(event.pageX - event.x0, 2) +
+                       Math.pow(event.pageY - event.y0, 2) | 0))
+              .toFixed(2) + 'px');
+      }
+    });
 
+    function dragMoveListener (event) {
+      var target = event.target,
+          // keep the dragged position in the data-x/data-y attributes
+          x = (parseFloat(target.getAttribute('data-x')) || 0) + event.dx,
+          y = (parseFloat(target.getAttribute('data-y')) || 0) + event.dy;
+
+      // translate the element
+      target.style.webkitTransform =
+      target.style.transform =
+        'translate(' + x + 'px, ' + y + 'px)';
+
+      // update the posiion attributes
+      target.setAttribute('data-x', x);
+      target.setAttribute('data-y', y);
+    }
+
+    // this is used later in the resizing and gesture demos
+    window.dragMoveListener = dragMoveListener;
 
   </script>
 

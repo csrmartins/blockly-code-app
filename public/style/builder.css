@@ -219,6 +219,7 @@ h1 {
 }
 
 .rightContainer {
+  background-color: lightgrey;
   position: absolute;
   right: 0;
   top: inherit;
