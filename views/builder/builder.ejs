@@ -69,14 +69,14 @@
         <h3>Background</h3>
         <div class="sessionTitleSubline"></div>
       </div>
-      <div class="designBackground">
-        <img src="/images/builder-assets/Background_01_A25_Rectangle_26_pattern.png" alt="Background_01_A25_Rectangle_26_pattern.png">
+      <div class="designCathegory">
+        <img id="background" draggable="true" ondragstart="drag(event)" src="/images/builder-assets/Background_01_A25_Rectangle_26_pattern.png" alt="Background_01_A25_Rectangle_26_pattern.png">
       </div>
       <div class="sessionTitle">
         <h3>Objetos</h3>
         <div class="sessionTitleSubline"></div>
       </div>
-      <div class="designBackground">
+      <div class="designCathegory">
         <img src="/images/builder-assets/arvore_1_peq_A25_Rectangle_6_pattern.png" alt="arvore_1_peq_A25_Rectangle_6_pattern.png">
         <img src="/images/builder-assets/arvore_1_peq_A25_Rectangle_8_pattern.png" alt="arvore_1_peq_A25_Rectangle_8_pattern.png">
         <img src="/images/builder-assets/arvore_1_peq_A25_Rectangle_10_pattern.png" alt="arvore_1_peq_A25_Rectangle_10_pattern.png">
@@ -85,8 +85,6 @@
         <img src="/images/builder-assets/arvore_1_peq_A25_Rectangle_16_pattern.png" alt="arvore_1_peq_A25_Rectangle_16_pattern.png">
         <img src="/images/builder-assets/arvore_1_peq_A25_Rectangle_18_pattern.png" alt="arvore_1_peq_A25_Rectangle_18_pattern.png">
         <img src="/images/builder-assets/arvore_1_peq_A25_Rectangle_20_pattern.png" alt="arvore_1_peq_A25_Rectangle_20_pattern.png">
-        <img src="/images/builder-assets/arvore_1_peq_A25_Rectangle_36_pattern.png" alt="arvore_1_peq_A25_Rectangle_36_pattern.png">
-        <img src="/images/builder-assets/arvore_1_peq_A25_Rectangle_38_pattern.png" alt="arvore_1_peq_A25_Rectangle_38_pattern.png">
         <img src="/images/builder-assets/arvore_1_peq_A25_Rectangle_22_pattern.png" alt="arvore_1_peq_A25_Rectangle_22_pattern.png">
         <img src="/images/builder-assets/arvore_1_peq_A25_Rectangle_24_pattern.png" alt="arvore_1_peq_A25_Rectangle_24_pattern.png">
       </div>
@@ -94,8 +92,8 @@
         <h3>Personagens</h3>
         <div class="sessionTitleSubline"></div>
       </div>
-      <div class="designBackground">
-        <img id="patoAzul" draggable="true" ondragstart="drag(event)" src="/images/builder-assets/pato_azul_A25_Rectangle_28_pattern.png" alt="pato_azul_A25_Rectangle_28_pattern.png">
+      <div class="designCathegory">
+        <img id="blueDuck" draggable="true" ondragstart="drag(event)" src="/images/builder-assets/pato_azul_A25_Rectangle_28_pattern.png" alt="pato_azul_A25_Rectangle_28_pattern.png">
         <img src="/images/builder-assets/pato_azul_A25_Rectangle_30_pattern.png" alt="pato_azul_A25_Rectangle_30_pattern.png">
         <img src="/images/builder-assets/pato_azul_A25_Rectangle_32_pattern.png" alt="pato_azul_A25_Rectangle_32_pattern.png">
       </div>
@@ -151,7 +149,6 @@
         </category>
         <category name="Custom Blocks" colour="90">
           <block type="definir-cor"></block>
-          <block type='element_color'></block>
         </category>
         <category name="Assets" colour="120">
           <div id="ball"></div>
@@ -290,6 +287,8 @@
 
 
 
+
+
   <script>
 
 //======================= JAVASCRIPT TAB CODE  ======================================
@@ -346,16 +345,51 @@
 
 //=======================DRAG AND DROP FUNCTIONS ==================================
 
+
+//-------- Array of Assets Objects
+
+const assetsArray = [
+  {id: 'background', class:'background', html: '<img src="/images/builder-assets/Background_01_A25_Rectangle_34_pattern.png" width="100%" height="100%">'},
+  {id: 'blueDuck', class: 'character', html: '<img class="draggableAsset" id="blueDuck" src="/images/builder-assets/pato_azul_A25_Rectangle_28_pattern.png" alt="pato_azul_A25_Rectangle_28_pattern.png"'}
+]
+
+console.log(assetsArray);
+
+
   function drag(e) {
-    console.log(e.dataTransfer, 'drag Data Transfer');
     e.dataTransfer.setData('asset', e.target.id)
   }
 
   function drop(e) {
-    console.log(e, 'Drop Event');
+    console.log(e, 'this is the Event Object');
     e.preventDefault();
+    var posX = e.layerX;
+    var posY = e.layerY;
+    console.log('posX == ', posX);
+    console.log('posY == ', posY);
     var data = e.dataTransfer.getData('asset')
-    $('.rightContainer').append(`<img id="blueDuck" src="/images/builder-assets/pato_azul_A25_Rectangle_28_pattern.png" alt="pato_azul_A25_Rectangle_28_pattern.png">`)
+    var assetHtml = getHtml(data, posX, posY);
+    console.log(assetHtml, 'this is asset Html');
+    $('.rightContainer').append(assetHtml);
+  }
+
+  //-------- Identifies the droped Object and finds and returns the respective Html Code.
+
+  function getHtml(data, posX, posY){
+    console.log(data, 'This is passed data');
+    console.log('getHtml called');
+    for (var i = 0; i < assetsArray.length; i++) {
+      console.log(assetsArray[i].id, 'assetsArray[i] id');
+      if(assetsArray[i].id === data){
+        if(assetsArray[i].class === 'background'){
+          var newHtml = assetsArray[i].html
+        }else{
+          var foundAssetHtml = assetsArray[i].html
+          var newHtml = `${foundAssetHtml}style="position:absolute; top:${posX}px; right:${posY}px">`
+        }
+      }
+    }
+    return newHtml;
   }
 
   function allowDrop(e) {
@@ -365,7 +399,7 @@
   //=======================DRAGABLE INTERACT ==================================
 
   //JSInteraction Functions
-  interact('#blueDuck')
+  interact('.draggableAsset')
     .draggable({
       // enable inertial throwing
       inertia: true,

@@ -184,11 +184,11 @@ h1 {
   font-size: 14px;
 }
 
-.designBackground{
+.designCathegory{
   margin-left: 10px;
 }
 
-.designBackground img{
+.designCathegory img{
   height: 98px;
   width: 98px;
   margin: 5px;
@@ -219,7 +219,7 @@ h1 {
 }
 
 .rightContainer {
-  background-color: lightgrey;
+  background-color: goldenrod;
   position: absolute;
   right: 0;
   top: inherit;
