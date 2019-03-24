@@ -53,7 +53,7 @@ router.post('/register', async (req, res) => {
         req.session.email = json.data.email,
         req.session.logged = true,
         console.log(req.session.user, 'this is User Session'),
-        res.redirect(`/projects/${req.session.user}`)
+        res.redirect(`/projects/${json.data._id}`)
       )});
 
   }catch(err){
