@@ -8,6 +8,7 @@
     <script src="/blockly/msg/js/en.js"></script>
     <script src="/blockly/custom-blocks.js"></script>
     <script src="/scripts/builder.js"></script>
+    <script src="/scripts/gameController.js"></script>
     <link rel="stylesheet" href="/highlight/styles/atom-one-dark.css">
     <script src="highlight/highlight.pack.js"></script>
     <script>hljs.initHighlightingOnLoad();</script>
@@ -77,16 +78,16 @@
         <div class="sessionTitleSubline"></div>
       </div>
       <div class="designCathegory">
-        <img src="/images/builder-assets/arvore_1_peq_A25_Rectangle_6_pattern.png" alt="arvore_1_peq_A25_Rectangle_6_pattern.png">
-        <img src="/images/builder-assets/arvore_1_peq_A25_Rectangle_8_pattern.png" alt="arvore_1_peq_A25_Rectangle_8_pattern.png">
-        <img src="/images/builder-assets/arvore_1_peq_A25_Rectangle_10_pattern.png" alt="arvore_1_peq_A25_Rectangle_10_pattern.png">
-        <img src="/images/builder-assets/arvore_1_peq_A25_Rectangle_12_pattern.png" alt="arvore_1_peq_A25_Rectangle_12_pattern.png">
-        <img src="/images/builder-assets/arvore_1_peq_A25_Rectangle_14_pattern.png" alt="arvore_1_peq_A25_Rectangle_14_pattern.png">
-        <img src="/images/builder-assets/arvore_1_peq_A25_Rectangle_16_pattern.png" alt="arvore_1_peq_A25_Rectangle_16_pattern.png">
-        <img src="/images/builder-assets/arvore_1_peq_A25_Rectangle_18_pattern.png" alt="arvore_1_peq_A25_Rectangle_18_pattern.png">
-        <img src="/images/builder-assets/arvore_1_peq_A25_Rectangle_20_pattern.png" alt="arvore_1_peq_A25_Rectangle_20_pattern.png">
-        <img src="/images/builder-assets/arvore_1_peq_A25_Rectangle_22_pattern.png" alt="arvore_1_peq_A25_Rectangle_22_pattern.png">
-        <img src="/images/builder-assets/arvore_1_peq_A25_Rectangle_24_pattern.png" alt="arvore_1_peq_A25_Rectangle_24_pattern.png">
+        <img id="smallTree" draggable="true" ondragstart="drag(event)" src="/images/builder-assets/arvore_1_peq_A25_Rectangle_6_pattern.png" alt="arvore_1_peq_A25_Rectangle_6_pattern.png">
+        <img id="bigTree" draggable="true" ondragstart="drag(event)" src="/images/builder-assets/arvore_1_peq_A25_Rectangle_8_pattern.png" alt="arvore_1_peq_A25_Rectangle_8_pattern.png">
+        <img id="smallPipeDown" draggable="true" ondragstart="drag(event)" src="/images/builder-assets/arvore_1_peq_A25_Rectangle_10_pattern.png" alt="arvore_1_peq_A25_Rectangle_10_pattern.png">
+        <img id="mediumPipeDown" draggable="true" ondragstart="drag(event)" src="/images/builder-assets/arvore_1_peq_A25_Rectangle_12_pattern.png" alt="arvore_1_peq_A25_Rectangle_12_pattern.png">
+        <img id="bigPipeDown" draggable="true" ondragstart="drag(event)" src="/images/builder-assets/arvore_1_peq_A25_Rectangle_14_pattern.png" alt="arvore_1_peq_A25_Rectangle_14_pattern.png">
+        <img id="smallPipeUp" draggable="true" ondragstart="drag(event)" src="/images/builder-assets/arvore_1_peq_A25_Rectangle_16_pattern.png" alt="arvore_1_peq_A25_Rectangle_16_pattern.png">
+        <img id="mediumPipeUp" draggable="true" ondragstart="drag(event)" src="/images/builder-assets/arvore_1_peq_A25_Rectangle_18_pattern.png" alt="arvore_1_peq_A25_Rectangle_18_pattern.png">
+        <img id="bigPipeUp" draggable="true" ondragstart="drag(event)" src="/images/builder-assets/arvore_1_peq_A25_Rectangle_20_pattern.png" alt="arvore_1_peq_A25_Rectangle_20_pattern.png">
+        <img id="heart" draggable="true" ondragstart="drag(event)" src="/images/builder-assets/arvore_1_peq_A25_Rectangle_22_pattern.png" alt="arvore_1_peq_A25_Rectangle_22_pattern.png">
+        <img id="star" draggable="true" ondragstart="drag(event)" src="/images/builder-assets/arvore_1_peq_A25_Rectangle_24_pattern.png" alt="arvore_1_peq_A25_Rectangle_24_pattern.png">
       </div>
       <div class="sessionTitle">
         <h3>Personagens</h3>
@@ -94,8 +95,8 @@
       </div>
       <div class="designCathegory">
         <img id="blueDuck" draggable="true" ondragstart="drag(event)" src="/images/builder-assets/pato_azul_A25_Rectangle_28_pattern.png" alt="pato_azul_A25_Rectangle_28_pattern.png">
-        <img src="/images/builder-assets/pato_azul_A25_Rectangle_30_pattern.png" alt="pato_azul_A25_Rectangle_30_pattern.png">
-        <img src="/images/builder-assets/pato_azul_A25_Rectangle_32_pattern.png" alt="pato_azul_A25_Rectangle_32_pattern.png">
+        <img id="greenDuck" draggable="true" ondragstart="drag(event)" src="/images/builder-assets/pato_azul_A25_Rectangle_30_pattern.png" alt="pato_azul_A25_Rectangle_30_pattern.png">
+        <img id="redDuck" draggable="true" ondragstart="drag(event)" src="/images/builder-assets/pato_azul_A25_Rectangle_32_pattern.png" alt="pato_azul_A25_Rectangle_32_pattern.png">
       </div>
 
     </div> <!-- closing designArea -->
@@ -350,8 +351,21 @@
 
 const assetsArray = [
   {id: 'background', class:'background', html: '<img src="/images/builder-assets/Background_01_A25_Rectangle_34_pattern.png" width="100%" height="100%">'},
+  {id: 'smallTree', class: 'object', html: '<img class="draggableAsset" id="smallTree" src="/images/builder-assets/arvore_1_peq_A25_Rectangle_6_pattern.png" alt="arvore_1_peq_A25_Rectangle_6_pattern.png"'},
+  {id: 'bigTree', class: 'object', html: '<img class="draggableAsset" id="bigTree" src="/images/builder-assets/arvore_1_peq_A25_Rectangle_8_pattern.png" alt="arvore_1_peq_A25_Rectangle_8_pattern.png"'},
+  {id: 'smallPipeDown', class: 'object', html: '<img class="draggableAsset" id="smallPipeDown" src="/images/builder-assets/arvore_1_peq_A25_Rectangle_10_pattern.png" alt="arvore_1_peq_A25_Rectangle_10_pattern.png"'},
+  {id: 'mediumPipeDown', class: 'object', html: '<img class="draggableAsset" id="mediumPipeDown" src="/images/builder-assets/arvore_1_peq_A25_Rectangle_12_pattern.png" alt="arvore_1_peq_A25_Rectangle_12_pattern.png"'},
+  {id: 'bigPipeDown', class: 'object', html: '<img class="draggableAsset" id="bigPipeDown" src="/images/builder-assets/arvore_1_peq_A25_Rectangle_14_pattern.png" alt="arvore_1_peq_A25_Rectangle_14_pattern.png"'},
+  {id: 'smallPipeUp', class: 'object', html: '<img class="draggableAsset" id="smallPipeUp" src="/images/builder-assets/arvore_1_peq_A25_Rectangle_16_pattern.png" alt="arvore_1_peq_A25_Rectangle_16_pattern.png"'},
+  {id: 'mediumPipeUp', class: 'object', html: '<img class="draggableAsset" id="mediumPipeUp" src="/images/builder-assets/arvore_1_peq_A25_Rectangle_18_pattern.png" alt="arvore_1_peq_A25_Rectangle_18_pattern.png"'},
+  {id: 'bigPipeUp', class: 'object', html: '<img class="draggableAsset" id="bigPipeUp" src="/images/builder-assets/arvore_1_peq_A25_Rectangle_20_pattern.png" alt="arvore_1_peq_A25_Rectangle_20_pattern.png"'},
+  {id: 'heart', class: 'object', html: '<img class="draggableAsset" id="heart" src="/images/builder-assets/arvore_1_peq_A25_Rectangle_22_pattern.png" alt="arvore_1_peq_A25_Rectangle_22_pattern.png"'},
+  {id: 'star', class: 'object', html: '<img class="draggableAsset" id="star" src="/images/builder-assets/arvore_1_peq_A25_Rectangle_24_pattern.png" alt="arvore_1_peq_A25_Rectangle_24_pattern.png"'},
+  {id: 'redDuck', class: 'character', html: '<img class="draggableAsset" id="redDuck" src="/images/builder-assets/pato_azul_A25_Rectangle_32_pattern.png" alt="pato_azul_A25_Rectangle_32_pattern.png"'},
+  {id: 'greenDuck', class: 'character', html: '<img class="draggableAsset" id="greenDuck" src="/images/builder-assets/pato_azul_A25_Rectangle_30_pattern.png" alt="pato_azul_A25_Rectangle_30_pattern.png"'},
   {id: 'blueDuck', class: 'character', html: '<img class="draggableAsset" id="blueDuck" src="/images/builder-assets/pato_azul_A25_Rectangle_28_pattern.png" alt="pato_azul_A25_Rectangle_28_pattern.png"'}
 ]
+
 
 console.log(assetsArray);
 
@@ -371,6 +385,8 @@ console.log(assetsArray);
     var assetHtml = getHtml(data, posX, posY);
     console.log(assetHtml, 'this is asset Html');
     $('.rightContainer').append(assetHtml);
+    var canvasHtml = $('.rightContainer').html();
+    console.log(canvasHtml);
   }
 
   //-------- Identifies the droped Object and finds and returns the respective Html Code.
@@ -402,7 +418,7 @@ console.log(assetsArray);
   interact('.draggableAsset')
     .draggable({
       // enable inertial throwing
-      inertia: true,
+      inertia: false,
       // keep the element within the area of it's parent
       restrict: {
         restriction: "parent",
@@ -444,6 +460,63 @@ console.log(assetsArray);
 
     // this is used later in the resizing and gesture demos
     window.dragMoveListener = dragMoveListener;
+
+
+
+
+//=======================BLOCOS ==================================
+
+
+//-----------------TESTE COM MOVIMENTO
+
+// var change = {
+//   37: {
+//     left: "-=1"
+//   },
+//
+//   38: {
+//     top: "-=1"
+//   },
+//
+//   39: {
+//     left: "+=1"
+//   },
+//
+//   40: {
+//     top: "+=1"
+//   },
+// }
+// $(document).one("keydown", keyDown)
+//
+// var going;
+//
+// function keyDown(e) {
+//   console.log("down")
+//   $(document).one("keyup", keyup)
+//   var animation = change[e.which];
+//   going = setInterval(keepGoing, 1);
+//
+//   function keepGoing() {
+//     $("#blueDuck").css(animation)
+//   }
+//
+// }
+//
+// function keyup(e) {
+//   console.log("up")
+//   clearInterval(going)
+//   $(document).one("keydown", keyDown)
+// }
+
+    $(document).one('keydown', keyDown)
+    //
+    function keyDown(e) {
+      console.log(e.which);
+      if(e.which === 38){
+        console.log('pressed 38')
+        $('#blueDuck').css({"width": "80px"})
+      }
+    }
 
   </script>
 
