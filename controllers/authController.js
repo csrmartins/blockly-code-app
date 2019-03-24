@@ -14,7 +14,7 @@ router.post('/login', async (req, res) => {
 
 
   try{
-    fetch('http://localhost:9000/api/v1/auth/login', {
+    fetch('https://ancient-woodland-36793.herokuapp.com/api/v1/auth/login', {
           method: 'POST',
           body:    JSON.stringify(req.body),
           headers: { 'Content-Type': 'application/json' },
@@ -40,7 +40,7 @@ router.post('/login', async (req, res) => {
 router.post('/register', async (req, res) => {
 
   try{
-    fetch('http://localhost:9000/api/v1/auth', {
+    fetch('https://ancient-woodland-36793.herokuapp.com/api/v1/auth', {
           method: 'POST',
           body:    JSON.stringify(req.body),
           headers: { 'Content-Type': 'application/json' },
@@ -65,7 +65,7 @@ router.post('/register', async (req, res) => {
 router.get('/logout', async (req, res) => {
   console.log('Auth Logout Route on Client');
   try{
-    fetch(`http://localhost:9000/api/v1/auth/logout`)
+    fetch(`https://ancient-woodland-36793.herokuapp.com/v1/auth/logout`)
     .then(res => res.json())
     .then(json => {(
       logoutMessage = json.message,

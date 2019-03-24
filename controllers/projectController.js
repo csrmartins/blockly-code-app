@@ -18,7 +18,7 @@ const session = require('express-session');
 router.post('/new', async (req, res) => {
   console.log(req.body, 'This is REQ.BODY of PROJECTS/NEW');
   try{
-    fetch('http://localhost:9000/api/v1/projects/new', {
+    fetch('https://ancient-woodland-36793.herokuapp.com/api/v1/projects/new', {
           method: 'POST',
           body:    JSON.stringify(req.body),
           headers: { 'Content-Type': 'application/json' },
@@ -40,7 +40,7 @@ router.post('/new', async (req, res) => {
 router.get('/all', async (req, res) => {
 
   try{
-    fetch(`http://localhost:9000/api/v1/projects`)
+    fetch(`https://ancient-woodland-36793.herokuapp.com/api/v1/projects`)
       .then(res => res.json())
       .then(json => {(
         allProjects = json.data,
@@ -59,7 +59,7 @@ router.get('/all', async (req, res) => {
 router.get('/:id', async (req, res) => {
 
   try{
-    fetch(`http://localhost:9000/api/v1/users/${req.params.id}`)
+    fetch(`https://ancient-woodland-36793.herokuapp.com/api/v1/users/${req.params.id}`)
     .then(res => res.json())
     .then(json => {(
       foundUser = json.data,
@@ -70,7 +70,7 @@ router.get('/:id', async (req, res) => {
   }
 
   try{
-    fetch(`http://localhost:9000/api/v1/projects`)
+    fetch(`https://ancient-woodland-36793.herokuapp.com/api/v1/projects`)
       .then(res => res.json())
       .then(json => {(
         allProjects = json.data,
@@ -89,7 +89,7 @@ router.get('/:id', async (req, res) => {
 router.delete('/:id', (req, res) =>{
   console.log('im in PROJECT DELETE ROUTE');
   try{
-    fetch(`http://localhost:9000/api/v1/projects/${req.params.id}`, {
+    fetch(`https://ancient-woodland-36793.herokuapp.com/api/v1/projects/${req.params.id}`, {
       method: 'DELETE',
       body:    JSON.stringify(req.body),
       headers: { 'Content-Type': 'application/json' },
@@ -111,7 +111,7 @@ router.delete('/:id', (req, res) =>{
 router.put('/new/:id', async (req, res) => {
   console.log(req.body, 'This is projects PUT route');
   try {
-    fetch(`http://localhost:9000/api/v1/projects/${req.params.id}`, {
+    fetch(`https://ancient-woodland-36793.herokuapp.com/api/v1/projects/${req.params.id}`, {
       method: 'PUT',
       body:    JSON.stringify(req.body),
       headers: { 'Content-Type': 'application/json' },
