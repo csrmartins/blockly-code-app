@@ -38,6 +38,11 @@ app.get('/register', (req,res) => {
   res.render('register.ejs')
 })
 
+app.get('/canvas', (req,res) => {
+  console.log('CAnvas Test Route');
+  res.render('canvastest.ejs')
+})
+
 // app.get('/builder', (req,res) => {
 //   console.log('builder route');
 //   res.render('builder.ejs')
