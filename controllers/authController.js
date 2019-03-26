@@ -27,7 +27,7 @@ router.post('/login', async (req, res) => {
         req.session.email = json.email,
         req.session.logged = true,
         console.log(req.session, 'this is User Session'),
-        res.redirect(`/projects/${req.session.user}`)
+        res.redirect(`/profile/${req.session.user}`)
       )});
 
   }catch(err){

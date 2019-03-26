@@ -25,7 +25,7 @@
 
 <div class="mainNav">
   <ul class="mainMenu">
-    <li><a href="/"><img src="/images/icons/nav roxa - 1 inicio inativo.svg" alt="nav branca - 1 inicio.svg">Início</a></li>
+    <li><a href="/profile/<%= foundUser._id%>"><img src="/images/icons/nav roxa - 1 inicio inativo.svg" alt="nav branca - 1 inicio.svg">Início</a></li>
     <li><a href="/lessons"><img src="/images/icons/nav roxa - 2 trilha inativo.svg" alt="nav branca - 2 trilha.svg">Trilha</a></li>
     <li><a class="mainActive" href="/builder"><img src="/images/icons/nav roxa - 3 construtor ativo.svg" alt="nav branca - nav branca - 3 construtor.svg">Construtor</a></li>
     <li><a href="/projects/<%= foundUser._id %>"><img src="/images/icons/nav roxa - 4 projetos inativo.svg" alt="nav branca - 4 projetos.svg">Projetos</a></li>
@@ -37,7 +37,7 @@
           <img id="dropBtnIcon" src="/images/icons/expande perfil.svg" alt="expande perfil.svg">
         </button>
         <div class="dropdownContent">
-          <a href="/profile">Profile</a>
+          <a href="/user/profile">Profile</a>
           <hr>
           <a href="/auth/logout">Logout</a>
         </div>

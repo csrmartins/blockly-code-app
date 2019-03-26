@@ -4,6 +4,7 @@ const app = express();
 const authController = require('./controllers/authController');
 const projectController = require('./controllers/projectController');
 const builderController = require('./controllers/builderController');
+const userController = require('./controllers/userController');
 
 
 
@@ -47,6 +48,7 @@ app.get('/register', (req,res) => {
 app.use('/auth', authController)
 app.use('/projects', projectController);
 app.use('/builder', builderController);
+app.use('/profile', userController);
 
 
 

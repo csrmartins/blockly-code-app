@@ -1,0 +1,307 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans');
+
+
+body{
+  font-family: 'Open Sans', sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.mainNav{
+  background-color: rgba(255,255,255,1);
+  color: #C5C5C5;
+  font-size: 12px;
+  height: 45px;
+}
+
+ul {
+  padding: 10px 0;
+  list-style-type: none;
+}
+
+li {
+  display: inline;
+  margin: 0 10px;
+}
+
+a {
+  color: #C5C5C5;
+}
+
+a:hover {
+  color: rgba(53,63,73,1);
+  text-decoration: none;
+  font-weight: bold;
+}
+
+img {
+  margin-right: 5px;
+}
+
+.mainActive {
+  border-bottom: 3px solid #7587f9;
+  padding-bottom: 12px;
+}
+
+
+
+.mainRight {
+  float: right;
+  max-width: 260px;
+  overflow: visible;
+  max-height:
+}
+
+#imgProfile {
+  width: 33px;
+  height: 33px;
+  border-radius: 50%;
+}
+
+#dropBtn{
+  background-color: transparent;
+  border: none;
+}
+
+.dropdownContent{
+  display: none;
+  background-color: #FFFFFF;
+  border-radius: 10px;
+  width: 235px;
+  height: auto;
+  overflow: visible;
+  filter: drop-shadow(8px 8px 20px rgba(0, 0, 0, 0.102));
+
+}
+
+.dropdownContent a {
+  padding: 10px;
+  text-align: center;
+  display: block;
+  width: inherit;
+  height: 40px;
+  font-size: 12px;
+  color: rgba(53,63,73,1);
+}
+
+.dropdownContent hr {
+  margin: 0 10px;
+}
+
+.show {
+  display: block;
+}
+
+.leftContainer {
+  position: relative;
+  max-width: 50%;
+  text-align: center;
+}
+
+.profileImage {
+  text-align: center;
+  background-color: #E5E5E5;
+  position: absolute;
+  width: 140px;
+  height: 140px;
+  left: 200px;
+  top: 30.00px;
+  border-radius: 50%;
+  opacity: 1;
+  filter: drop-shadow(4px 4px 30px rgba(0, 0, 0, 0.4));
+  fill: rgba(255,255,255,1);
+}
+
+.profileImage p {
+  font-weight: bold;
+  color: grey;
+  font-size: 12px;
+  position: absolute;
+  left: 43.5px;
+  top: 43.5px;
+  height: 28px;
+  width: 53px;
+}
+
+.studentInfoContainer {
+  color: #FFFFFF;
+  width: 226px;
+  height: auto;
+  position: absolute;
+  top: 180px;
+  left: 158.5px;
+}
+
+.studentInfoContainer hr {
+  background-color: rgb(109, 180, 248);
+  opacity: 0.2;
+}
+
+#studentName {
+  font-size: 14px;
+}
+
+#studentPoints {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.badgesContainer {
+  position: absolute;
+  top: 290px;
+  left: 140px;
+  text-align: center;
+  display: flex;
+}
+
+.badgesTitle{
+  color: #FFFFFF;
+  font-size: 10px;
+  margin-bottom: 0;
+}
+
+.badgesScore {
+  color: #FFFFFF;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.statusContainerVariable{
+  position: absolute;
+  top: 425px;
+  left: 96.5px;
+  margin-bottom: 5px;
+}
+
+
+
+.skillStatus{
+  width: 370px;
+  height: 20px;
+  margin-bottom: 5px;
+}
+
+.skillStatusTitle{
+  float: left;
+  font-size: 12px;
+  color: #FFFFFF;
+}
+
+.skillStatusPercentVariable{
+  float: right;
+  color: rgba(137,92,242,1);
+}
+
+.skillStatusProgressBar {
+  position: absolute;
+  background-color: #FFFFFF;
+  width: 370px;
+  height: 20px;
+  border-radius: 10px;
+}
+
+.skillStatusCurrentProgressVariable {
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  background-color: rgba(137,92,242,1);
+  width: 350px;
+  height: 10px;
+  border-radius: 7.5px;
+}
+
+.statusContainerMethod{
+  position: absolute;
+  top: 475px;
+  left: 96.5px;
+  margin-bottom: 5px;
+}
+
+.skillStatusPercentMethod{
+  float: right;
+  color: rgba(110,194,201,1);
+}
+
+.skillStatusCurrentProgressMethod {
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  background-color: rgba(110,194,201,1);
+  width: 350px;
+  height: 10px;
+  border-radius: 7.5px;
+}
+
+.statusContainerParameters{
+  position: absolute;
+  top: 525px;
+  left: 96.5px;
+  margin-bottom: 5px;
+}
+
+.skillStatusPercentParameters{
+  float: right;
+  color: rgba(232,198,92,1);
+}
+
+.skillStatusCurrentProgressParameters {
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  background-color: rgba(232,198,92,1);
+  width: 350px;
+  height: 10px;
+  border-radius: 7.5px;
+}
+
+.statusContainerEvents{
+  position: absolute;
+  top: 575px;
+  left: 96.5px;
+  margin-bottom: 5px;
+}
+
+.skillStatusPercentEvents{
+  float: right;
+  color: rgba(255,151,91,1);
+}
+
+.skillStatusCurrentProgressEvents {
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  background-color: rgba(255,151,91,1);
+  width: 350px;
+  height: 10px;
+  border-radius: 7.5px;
+}
+
+.statusContainerLoops{
+  position: absolute;
+  top: 625px;
+  left: 96.5px;
+  margin-bottom: 5px;
+}
+
+.skillStatusPercentLoops{
+  float: right;
+  color: rgba(109,180,248,1);
+}
+
+.skillStatusCurrentProgressLoops {
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  background-color: rgba(109,180,248,1);
+  width: 175px;
+  height: 10px;
+  border-radius: 7.5px;
+}
+
+
+
+
+
+.rightContainer{
+  width: 50%;
+}

@@ -1,0 +1,146 @@
+<% include partials/_head %>
+<link rel="stylesheet" href="/style/profile.css">
+
+
+<div class="mainNav">
+  <ul class="mainMenu">
+    <li><a class="mainActive" href="/profile/<%= foundUser._id%>"><img src="/images/icons/nav branca - 1 inicio.svg" alt="nav branca - 1 inicio.svg">Início</a></li>
+    <li><a href="/lessons"><img src="/images/icons/nav branca - 2 trilha.svg" alt="nav branca - 2 trilha.svg">Trilha</a></li>
+    <li><a href="/builder/<%= foundUser._id %>"><img src="/images/icons/nav branca - 3 construtor.svg" alt="nav branca - nav branca - 3 construtor.svg">Construtor</a></li>
+    <li><a href="/projects/all"><img src="/images/icons/nav branca - 4 projetos.svg" alt="nav branca - 4 projetos.svg">Projetos</a></li>
+    <div class="mainRight">
+      <li><%= foundUser.firstName%> <%= foundUser.lastName %> | 000 Pontos</li>
+      <li>
+        <img id="imgProfile" src="/images/profile_default.png" alt="profile_default.png">
+        <button id="dropBtn" type="button" name="button">
+          <img id="dropBtnIcon" src="/images/icons/expande perfil nav branca.svg" alt="expande perfil.svg">
+        </button>
+        <div class="dropdownContent">
+          <a href="/profile">Profile</a>
+          <hr>
+          <a href="/auth/logout">Logout</a>
+        </div>
+      </li>
+    </div>
+  </ul>
+</div>
+
+
+<div class="row">
+  <div class="leftContainer">
+      <div id="imageContainer">
+        <img id=bgLogin src="/images/bg menu perfil.png" alt="bg menu perfil.png">
+        <div onclick="changeImage()" class="profileImage">
+          <p>Escolha seu avatar</p>
+        </div>
+      </div>
+      <div class="studentInfoContainer">
+        <p id="studentName">Nome do Aluno</p>
+        <hr>
+        <p id="studentPoints">000 pontos</p>
+      </div>
+      <div class="badgesContainer">
+        <div class="unppluggedBadge">
+          <img src="/images/menu perfil - icone desplugada.png" alt="menu perfil - icone desplugada.png">
+          <p class="badgesTitle">Desplugada</p>
+          <p class="badgesScore">00</p>
+        </div>
+        <div class="xpBadge">
+          <img src="/images/menu perfil - icone xp.png" alt="menu perfil - icone xp.png">
+          <p class="badgesTitle">EXP</p>
+          <p class="badgesScore">00</p>
+        </div>
+        <div class="missionBadge">
+          <img src="/images/menu perfil - icone missao.png" alt="menu perfil - icone missao.png">
+          <p class="badgesTitle">Missão</p>
+          <p class="badgesScore">00</p>
+        </div>
+      </div>
+      <div class="statusContainerVariable">
+        <div class="skillStatus">
+          <p class="skillStatusTitle">Variáveis</p><p class="skillStatusPercentVariable">90%</p>
+        </div>
+        <div class="skillStatusProgressBar">
+          <div class="skillStatusCurrentProgressVariable">
+          </div>
+        </div>
+      </div>
+      <div class="statusContainerMethod">
+        <div class="skillStatus">
+          <p class="skillStatusTitle">Métodos</p><p class="skillStatusPercentMethod">90%</p>
+        </div>
+        <div class="skillStatusProgressBar">
+          <div class="skillStatusCurrentProgressMethod">
+          </div>
+        </div>
+      </div>
+      <div class="statusContainerParameters">
+        <div class="skillStatus">
+          <p class="skillStatusTitle">Parâmetros</p><p class="skillStatusPercentParameters">90%</p>
+        </div>
+        <div class="skillStatusProgressBar">
+          <div class="skillStatusCurrentProgressParameters">
+          </div>
+        </div>
+      </div>
+      <div class="statusContainerEvents">
+        <div class="skillStatus">
+          <p class="skillStatusTitle">Eventos</p><p class="skillStatusPercentEvents">90%</p>
+        </div>
+        <div class="skillStatusProgressBar">
+          <div class="skillStatusCurrentProgressEvents">
+          </div>
+        </div>
+      </div>
+      <div class="statusContainerLoops">
+        <div class="skillStatus">
+          <p class="skillStatusTitle">Loops</p><p class="skillStatusPercentLoops">50%</p>
+        </div>
+        <div class="skillStatusProgressBar">
+          <div class="skillStatusCurrentProgressLoops">
+          </div>
+        </div>
+      </div>
+  </div>
+  <div class="rightContainer">
+
+    </div>
+  </div>
+</div>
+
+
+<script type="text/javascript">
+
+  $('#myProjectsTab').hide()
+
+  $('#galleryBtn').click(function(){
+    $('#allProjectsTab').show();
+    $('#myProjectsTab').hide()
+  })
+
+  $('#myProjectsBtn').click(function(){
+    $('#allProjectsTab').hide();
+    $('#myProjectsTab').show()
+  })
+
+
+  $('#dropBtn').click(function(){
+    console.log('dropBtn clicked');
+    $('.dropdownContent').addClass('show')
+  })
+
+  $(window).click(function(e) {
+    console.log(e.target, 'e.target.class');
+    if(e.target.id != ('dropBtn' || 'dropBtnIcon')) {
+      console.log('this is not dropBtn');
+      $('.dropdownContent').removeClass('show')
+    }else{
+      console.log('this is dropBtn');
+    }
+  })
+
+  function changeImage(){
+    alert('changeImage called!')
+  }
+
+</script>
