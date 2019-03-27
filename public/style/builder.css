@@ -286,3 +286,8 @@ h1 {
   bottom: 0;
   text-align: center;
 }
+
+canvas {
+  background-color: lightgrey;
+  border: 1px solid black;
+}

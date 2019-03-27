@@ -2,20 +2,23 @@ console.log('canvastest Script Working!');
 
 
 var myGamePiece;
+var myBackground;
+
 
 
 window.onload = function startGame() {
   console.log('start game called!');
   myGameArea.start();
   myGamePiece = new component(81, 81, "images/builder-assets/pato_azul_A25_Rectangle_28_pattern.png", 10, 120, "image");
+  myBackground = new component(596, 720, "images/builder-assets/Background_01_A25_Rectangle_34_pattern.png", 0, 0, "image");
 }
 
 
 var myGameArea = {
   canvas: document.createElement("canvas"),
   start: function() {
-    this.canvas.width = 480;
-    this.canvas.height = 270;
+    this.canvas.width = 596;
+    this.canvas.height = 720;
     this.context = this.canvas.getContext("2d");
     document.body.insertBefore(this.canvas, document.body.childNodes[0]);
     this.interval = setInterval(updateGameArea, 20);
@@ -65,6 +68,9 @@ function component(width, height, color, x, y, type) {
 
 function updateGameArea() {
   myGameArea.clear();
+
+  myBackground.newPos();
+  myBackground.update();
   //---This is for Touch
   if (myGameArea.x && myGameArea.y) {
   myGamePiece.x = myGameArea.x;
