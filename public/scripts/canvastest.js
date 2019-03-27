@@ -66,7 +66,7 @@ var myGameArea = {
 
     this.interval = setInterval(updateGameArea, 20);
     //---This is for Touch
-    document.getElementById('canvasContainer').addEventListener('touchmove', function (e) {
+    document.getElementsByTagName('canvas')[0].addEventListener('touchmove', function (e) {
       console.log(e, 'this is the (e)Vent');
       myGameArea.x = e.touches[0].screenX;
       myGameArea.y = e.touches[0].screenY;
