@@ -291,3 +291,13 @@ canvas {
   background-color: lightgrey;
   border: 1px solid black;
 }
+
+.modal-title {
+  font-weight: bold;
+  font-size: 16px;
+
+}
+
+.modal-body {
+  font-size: 14px;
+}

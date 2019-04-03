@@ -65,14 +65,35 @@ var myGameArea = {
     document.getElementById('canvasContainer').insertBefore(this.canvas, document.getElementById('canvasContainer').childNodes[0]);
 
     this.interval = setInterval(updateGameArea, 20);
-    //---This is for Touch
-    document.getElementsByTagName('canvas')[0].addEventListener('touchmove', function (e) {
-      console.log(e, 'this is the (e)Vent');
-      myGameArea.x = e.touches[0].screenX;
-      myGameArea.y = e.touches[0].screenY;
+
+    //This is for TouchStart
+    document.getElementsByTagName('canvas')[0].addEventListener('touchstart', function (e) {
+      console.log(e, 'touch Start Event');
+      var touchedX = Math.round(e.touches[0].clientX);
+      var touchedY = Math.round(e.touches[0].clientY);
+      console.log(touchedX, 'Touched X');
+      console.log(touchedY, 'Touched Y');
+      for (var i = 0; i < elements.length; i++) {
+        if(getComponentArea(elements[i], myGameArea, touchedX, touchedY)){
+          console.log(elements[i],'found One');
+        }else{
+          console.log(elements[i],'Found Anyone');
+        }
+      }
+      // getComponentArea(myGamePiece, myGameArea, touchedX, touchedY);
 
     })
-    //---This is for Touch
+
+
+    //---This is for TouchDrag
+    document.getElementsByTagName('canvas')[0].addEventListener('touchmove', function (e) {
+      console.log(e, 'touchmove event');
+      myGameArea.x = e.touches[0].screenX;
+      myGameArea.y = e.touches[0].screenY;
+      console.log(myGameArea.x, 'myGameArea X');
+      console.log(myGameArea.y, 'myGameArea Y');
+    })
+    //---This is for TouchDrag
   },
   clear: function() {
     this.context.clearRect(0, 0, this.canvas.width, this.canvas.height)
@@ -109,6 +130,43 @@ function component(width, height, color, x, y, type) {
   }
 }
 
+function getComponentArea(component, gameArea, touchedX, touchedY){
+    // console.log(component, 'component');
+    // console.log(gameArea, 'gameArea');
+    //
+    // console.log(component.width, 'component width');
+    // console.log(component.height, 'component height');
+    // console.log(component.x, 'component X');
+    // console.log(component.y, 'component Y');
+    // console.log(gameArea.canvas.width, 'gameArea width');
+    // console.log(gameArea.canvas.height, 'gameArea height');
+
+
+
+
+    var currentX = [];
+    for (var i = component.x; i < (component.x + component.width); i++) {
+      currentX.push(i)
+    }
+
+    var currentY = [];
+    for (var i = component.y; i < (component.y + component.width); i++) {
+      currentY.push(i)
+    }
+
+    if(currentX.includes(touchedX) && currentX.includes(touchedY)){
+      return true;
+    }else {
+      return false
+    }
+
+    console.log(currentX, 'currentX');
+    console.log(currentY, 'currentY');
+
+}
+
+
+
 
 function updateGameArea() {
   myGameArea.clear();
@@ -120,10 +178,11 @@ function updateGameArea() {
   myGamePiece2.update();
 
   //---This is for Touch
-  if (myGameArea.x && myGameArea.y) {
-  myGamePiece.x = myGameArea.x;
-  myGamePiece.y = myGameArea.y;
-  }
+  // if (getComponentArea(myGamePiece2)) {
+  //   console.log('myGamePiece Touched');
+  // // myGamePiece.x = myGameArea.x;
+  // // myGamePiece.y = myGameArea.y;
+  // }
   //---This is for Touch
 
   // myGamePiece.newPos();

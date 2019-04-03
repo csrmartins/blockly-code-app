@@ -27,7 +27,7 @@
 <div class="mainNav">
   <ul class="mainMenu">
     <li><a href="/profile/<%= foundUser._id%>"><img src="/images/icons/nav roxa - 1 inicio inativo.svg" alt="nav branca - 1 inicio.svg">Início</a></li>
-    <li><a href="/lessons"><img src="/images/icons/nav roxa - 2 trilha inativo.svg" alt="nav branca - 2 trilha.svg">Trilha</a></li>
+    <li><a href="/lessons/<%= foundUser._id%>"><img src="/images/icons/nav roxa - 2 trilha inativo.svg" alt="nav branca - 2 trilha.svg">Trilha</a></li>
     <li><a class="mainActive" href="/builder"><img src="/images/icons/nav roxa - 3 construtor ativo.svg" alt="nav branca - nav branca - 3 construtor.svg">Construtor</a></li>
     <li><a href="/projects/<%= foundUser._id %>"><img src="/images/icons/nav roxa - 4 projetos inativo.svg" alt="nav branca - 4 projetos.svg">Projetos</a></li>
     <div class="mainRight">
@@ -104,15 +104,15 @@
 
   </div> <!--Left Container -->
   <div class="rightContainer" ondrop="drop(event)" ondragover="allowDrop(event)">
-
+    <!-- <img class="draggableAsset" id="cvsBlueDuck" src="/images/builder-assets/pato_azul_A25_Rectangle_28_pattern.png" alt="pato_azul_A25_Rectangle_28_pattern.pngcahrac" /> -->
     <!-- <div id="canvas"> -->
       <div class="bottomButtons">
         <div class="rightBtnContainer">
           <button id= "btnRun"type="button" onclick="runCode()" name="button"> <img id="playIcon"src="/images/icons/const - botao play.svg" alt="const - botao play.svg"> </button>
         </div>
         <div class="centerBtnContainer">
-          <button id= "btnSave"type="button" onclick="saveProject()" name="button">Salvar</button>
-          <button id= "btnPublish"type="button" onclick="publishProject()" name="button">Publicar</button>
+          <button id= "btnSave"type="button" name="button" data-toggle="modal" data-target="#myModal">Salvar</button>
+          <button id= "btnPublish"type="button" onclick="testFetch()" name="button">Publicar</button>
         </div>
       </div>
     <!-- </div> -->
@@ -152,111 +152,42 @@
           <block type="math_single"></block>
         </category>
         <category name="Custom Blocks" colour="90">
+          <block type="move_character_right"></block>
+          <block type="move_character_left"></block>
+          <block type="move_character_up"></block>
+          <block type="move_character_down"></block>
           <block type="definir-cor"></block>
-        </category>
-        <category name="Assets" colour="120">
-          <div id="ball"></div>
-          <div id="ball"></div>
         </category>
     </xml>
 </div>
 
 
+<!-- The Modal -->
+<div class="modal" id="myModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
 
-
-<!-- <div class="row">
-  <div class="leftContainer"> -->
-
-      <!-- <nav>
-        <div class="nav nav-tabs" id="nav-tab" role="tablist">
-          <a class="nav-item nav-link active" id="nav-blockly-tab" data-toggle="tab" href="#nav-blockly" role="tab" aria-controls="nav-blockly" aria-selected="true">Blockly</a>
-          <a class="nav-item nav-link" id="nav-javascript-tab" data-toggle="tab" href="#nav-javascript" role="tab" aria-controls="nav-javascript" aria-selected="false">JavaScript</a>
-          <a class="nav-item nav-link disabled" id="nav-design-tab" data-toggle="tab" href="#nav-design" role="tab" aria-controls="nav-design" aria-selected="false">Design</a>
-        </div>
-      </nav>
-      <div class="tab-content" id="nav-tabContent">
-        <div class="tab-pane fade show active" id="nav-blockly" role="tabpanel" aria-labelledby="nav-blockly-tab">
-          <!-- Blockly toolbox and workspace -->
-              <!-- <div id="blocklyArea">
-                <div id="blocklyDiv" style="position: absolute"></div>
-              </div>
-
-              <xml id="toolbox" style="display: none">
-                  <category name="Loops" colour="%{BKY_LOOPS_HUE}">
-                    <block type="controls_repeat_ext">
-                      <value name="TIMES">
-                        <block type="math_number">
-                          <field name="NUM">10</field>
-                        </block>
-                      </value>
-                    </block>
-                    <block type="controls_whileUntil"></block>
-                  </category>
-                  <category name="Logic" colour="%{BKY_LOGIC_HUE}">
-                    <block type="controls_if"></block>
-                    <block type="logic_compare"></block>
-                    <block type="logic_operation"></block>
-                    <block type="logic_negate"></block>
-                    <block type="logic_boolean"></block>
-                  </category>
-                  <category name="Math" colour="%{BKY_MATH_HUE}">
-                    <block type="math_number">
-                      <field name="NUM">123</field>
-                    </block>
-                    <block type="math_arithmetic"></block>
-                    <block type="math_single"></block>
-                  </category>
-                  <category name="Custom Blocks" colour="90">
-                    <block type="definir-cor"></block>
-                    <block type='element_color'></block>
-                  </category>
-                  <category name="Assets" colour="120">
-                    <div id="ball"></div>
-                    <div id="ball"></div>
-                  </category>
-              </xml>
-        </div>
-        <div class="tab-pane fade" id="nav-javascript" role="tabpanel" aria-labelledby="nav-javascript-tab">-->
-          <!-- JavaScript Div usando a classe Code da biblioteca Hightlight -->
-          <!-- <pre><code class="javascript"  style="height: 480px; width: 600px;">
-            <div id="jsArea"></div>
-          </code></pre>
-
-        </div>
-        <div class="tab-pane fade" id="nav-design" role="tabpanel" aria-labelledby="nav-design-tab">
-          Design
-        </div>
-      </div>
-  </div>
-  <div class="rightContainer">
-
-    <div id="canvas"><!-- this is the Project Canvas -->
-
-      <!-- <div id="canvasButtons">
-        <!-- Button trigger SAVE modal -->
-        <!-- <button type="button" class="btn btn-primary" id="btnSalvar" data-toggle="modal" data-target="#saveModal">
-          Salvar
-        </button>
-
-        <button class="btn btn-primary" id="btnRun" onclick="runCode()">
-          Run
-        </button>
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h2 class="modal-title">Salvar Projeto</h2>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
       </div>
 
-    </div> -->
+      <!-- Modal body -->
+      <div class="modal-body">
+        Adicione um nome para o seu projeto:
+          <input id="prjNameInput" type="text" name="name" value="">
+      </div>
 
+      <!-- Modal footer -->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-dismiss="modal">Salvar</button>
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Fechar</button>
+      </div>
 
-
-
-
-  <!-- test buttons -->
-
-<!--
+    </div>
   </div>
-</div> -->
-
-
-
+</div>
 
 
 
@@ -288,8 +219,6 @@
       Blockly.svgResize(workspace);
 
     </script>
-
-
 
 
 
@@ -352,25 +281,25 @@
 
 //-------- Array of Assets Objects
 
+
 const assetsArray = [
-  {id: 'background', class:'background', html: '<img src="/images/builder-assets/Background_01_A25_Rectangle_34_pattern.png" width="100%" height="100%">'},
-  {id: 'smallTree', class: 'object', html: '<img class="draggableAsset" id="smallTree" src="/images/builder-assets/arvore_1_peq_A25_Rectangle_6_pattern.png" alt="arvore_1_peq_A25_Rectangle_6_pattern.png"'},
-  {id: 'bigTree', class: 'object', html: '<img class="draggableAsset" id="bigTree" src="/images/builder-assets/arvore_1_peq_A25_Rectangle_8_pattern.png" alt="arvore_1_peq_A25_Rectangle_8_pattern.png"'},
-  {id: 'smallPipeDown', class: 'object', html: '<img class="draggableAsset" id="smallPipeDown" src="/images/builder-assets/arvore_1_peq_A25_Rectangle_10_pattern.png" alt="arvore_1_peq_A25_Rectangle_10_pattern.png"'},
-  {id: 'mediumPipeDown', class: 'object', html: '<img class="draggableAsset" id="mediumPipeDown" src="/images/builder-assets/arvore_1_peq_A25_Rectangle_12_pattern.png" alt="arvore_1_peq_A25_Rectangle_12_pattern.png"'},
-  {id: 'bigPipeDown', class: 'object', html: '<img class="draggableAsset" id="bigPipeDown" src="/images/builder-assets/arvore_1_peq_A25_Rectangle_14_pattern.png" alt="arvore_1_peq_A25_Rectangle_14_pattern.png"'},
-  {id: 'smallPipeUp', class: 'object', html: '<img class="draggableAsset" id="smallPipeUp" src="/images/builder-assets/arvore_1_peq_A25_Rectangle_16_pattern.png" alt="arvore_1_peq_A25_Rectangle_16_pattern.png"'},
-  {id: 'mediumPipeUp', class: 'object', html: '<img class="draggableAsset" id="mediumPipeUp" src="/images/builder-assets/arvore_1_peq_A25_Rectangle_18_pattern.png" alt="arvore_1_peq_A25_Rectangle_18_pattern.png"'},
-  {id: 'bigPipeUp', class: 'object', html: '<img class="draggableAsset" id="bigPipeUp" src="/images/builder-assets/arvore_1_peq_A25_Rectangle_20_pattern.png" alt="arvore_1_peq_A25_Rectangle_20_pattern.png"'},
-  {id: 'heart', class: 'object', html: '<img class="draggableAsset" id="heart" src="/images/builder-assets/arvore_1_peq_A25_Rectangle_22_pattern.png" alt="arvore_1_peq_A25_Rectangle_22_pattern.png"'},
-  {id: 'star', class: 'object', html: '<img class="draggableAsset" id="star" src="/images/builder-assets/arvore_1_peq_A25_Rectangle_24_pattern.png" alt="arvore_1_peq_A25_Rectangle_24_pattern.png"'},
-  {id: 'redDuck', class: 'character', html: '<img class="draggableAsset" id="redDuck" src="/images/builder-assets/pato_azul_A25_Rectangle_32_pattern.png" alt="pato_azul_A25_Rectangle_32_pattern.png"'},
-  {id: 'greenDuck', class: 'character', html: '<img class="draggableAsset" id="greenDuck" src="/images/builder-assets/pato_azul_A25_Rectangle_30_pattern.png" alt="pato_azul_A25_Rectangle_30_pattern.png"'},
-  {id: 'blueDuck', class: 'character', html: '<img class="draggableAsset" id="blueDuck" src="/images/builder-assets/pato_azul_A25_Rectangle_28_pattern.png" alt="pato_azul_A25_Rectangle_28_pattern.png"'}
+  {ref: 'background', id: 'cvsBackground', class: 'draggableAsset', cathegory:'background', html: '<img src="/images/builder-assets/Background_01_A25_Rectangle_34_pattern.png" width="100%" height="100%">'},
+  {ref: 'smallTree', id: 'cvsSmallTree', class: 'draggableAsset', cathegory: 'object', imgPath: '/images/builder-assets/arvore_1_peq_A25_Rectangle_6_pattern.png'},
+  {ref: 'bigTree', id: 'cvsBigTree', class: 'draggableAsset', cathegory: 'object', imgPath: '/images/builder-assets/arvore_1_peq_A25_Rectangle_8_pattern.png'},
+  {ref: 'smallPipeDown', id: 'cvsSmallPipeDown', class: 'draggableAsset', cathegory: 'object', imgPath: '/images/builder-assets/arvore_1_peq_A25_Rectangle_10_pattern.png'},
+  {ref: 'mediumPipeDown', id: 'cvsMediumPipeDown', class: 'draggableAsset', cathegory: 'object', imgPath: '/images/builder-assets/arvore_1_peq_A25_Rectangle_12_pattern.png'},
+  {ref: 'bigPipeDown', id: 'cvsBigPipeDown', class: 'draggableAsset', cathegory: 'object', imgPath: '/images/builder-assets/arvore_1_peq_A25_Rectangle_14_pattern.png'},
+  {ref: 'smallPipeUp', id: 'cvsSmallPipeUp', class: 'draggableAsset', cathegory: 'object', imgPath: '/images/builder-assets/arvore_1_peq_A25_Rectangle_16_pattern.png'},
+  {ref: 'mediumPipeUp', id: 'cvsMediumPipeUp', class: 'draggableAsset', cathegory: 'object', imgPath: '/images/builder-assets/arvore_1_peq_A25_Rectangle_18_pattern.png'},
+  {ref: 'bigPipeUp', id: 'cvsBigPipeUp', class: 'draggableAsset', cathegory: 'object', imgPath: '/images/builder-assets/arvore_1_peq_A25_Rectangle_20_pattern.png'},
+  {ref: 'heart', id: 'cvsHeart', class: 'draggableAsset', cathegory: 'object', imgPath: '/images/builder-assets/arvore_1_peq_A25_Rectangle_22_pattern.png'},
+  {ref: 'star', id: 'cvsStar', class: 'draggableAsset', cathegory: 'object', imgPath: '/images/builder-assets/arvore_1_peq_A25_Rectangle_24_pattern.png'},
+  {ref: 'redDuck', id: 'cvsRedDuck', class: 'draggableAsset', cathegory: 'character', imgPath: '/images/builder-assets/pato_azul_A25_Rectangle_32_pattern.png'},
+  {ref: 'greenDuck', id: 'cvsGreenDuck', class: 'draggableAsset', cathegory: 'character', imgPath: '/images/builder-assets/pato_azul_A25_Rectangle_30_pattern.png'},
+  {ref: 'blueDuck', id: 'cvsBlueDuck', class: 'draggableAsset', cathegory: 'character', imgPath: '/images/builder-assets/pato_azul_A25_Rectangle_28_pattern.png'}
 ]
 
-
-console.log(assetsArray);
+const appendedAssets = [];
 
 
   function drag(e) {
@@ -387,10 +316,20 @@ console.log(assetsArray);
     var data = e.dataTransfer.getData('asset')
     var assetHtml = getHtml(data, posX, posY);
     console.log(assetHtml, 'this is asset Html');
-    $('.rightContainer').append(assetHtml);
-    var canvasHtml = $('.rightContainer').html();
-    console.log(canvasHtml);
+    addItems(assetHtml);
+    appendedAssets.push(assetHtml);
+    console.log(appendedAssets, 'All Assets');
+    // $('.rightContainer').append(assetHtml);
   }
+
+  var addItems = function(html) {
+    var $html = $(html);
+    $('.rightContainer').append($html)
+  }
+
+
+
+
 
   //-------- Identifies the droped Object and finds and returns the respective Html Code.
 
@@ -398,13 +337,14 @@ console.log(assetsArray);
     console.log(data, 'This is passed data');
     console.log('getHtml called');
     for (var i = 0; i < assetsArray.length; i++) {
-      console.log(assetsArray[i].id, 'assetsArray[i] id');
-      if(assetsArray[i].id === data){
-        if(assetsArray[i].class === 'background'){
+      console.log(assetsArray[i].ref, 'assetsArray[i] id');
+      if(assetsArray[i].ref === data){
+        if(assetsArray[i].cathegory === 'background'){
           var newHtml = assetsArray[i].html
         }else{
-          var foundAssetHtml = assetsArray[i].html
-          var newHtml = `${foundAssetHtml}style="position:absolute; top:${posX}px; right:${posY}px">`
+          var foundAsset = assetsArray[i];
+          // var newHtml = `${foundAssetHtml}style="position:absolute; top:${posX}px; right:${posY}px">`
+          var newHtml = `<img id="${foundAsset.id}" class="${foundAsset.class}" src="${foundAsset.imgPath}" alt="game-asset" style="position:absolute; top:${posY}px; left:${posX}px" >`
         }
       }
     }
@@ -414,6 +354,33 @@ console.log(assetsArray);
   function allowDrop(e) {
     e.preventDefault();
   }
+
+
+  //=======================SAVE FUNCTION ======================================
+
+  var project = {author: `<%= foundUser._id%>`, name: '', xml: '', txt: '', playground: appendedAssets}
+
+  // var project = {};
+  function saveProject(name) {
+    console.log('Save Project clicked');
+    project.xml = Blockly.Xml.workspaceToDom(workspace);
+    project.txt = Blockly.Xml.domToText(project.xml);
+    console.log(document.getElementsByClassName('rightContainer')[0], 'rightContainer');
+    console.log(project, 'project');
+  }
+
+  $("#prjNameInput").change(function(){
+    project.name = $("#prjNameInput").val();
+    console.log(project.name, 'project.name');
+    saveProject();
+  });
+
+  //=======================POST WITH AJAX TEST FUNCTION ======================================
+
+
+
+
+
 
   //=======================DRAGABLE INTERACT ==================================
 
@@ -459,10 +426,16 @@ console.log(assetsArray);
       // update the posiion attributes
       target.setAttribute('data-x', x);
       target.setAttribute('data-y', y);
+
+
+
+      console.log(x, 'Drag Move X!');
     }
 
+    // console.log(document.getElementById('#cvsRedDuck').currentX);
+
     // this is used later in the resizing and gesture demos
-    window.dragMoveListener = dragMoveListener;
+    // window.dragMoveListener = dragMoveListener;
 
 
 
@@ -472,54 +445,145 @@ console.log(assetsArray);
 
 //-----------------TESTE COM MOVIMENTO
 
-// var change = {
-//   37: {
-//     left: "-=1"
-//   },
-//
-//   38: {
-//     top: "-=1"
-//   },
-//
-//   39: {
-//     left: "+=1"
-//   },
-//
-//   40: {
-//     top: "+=1"
-//   },
-// }
-// $(document).one("keydown", keyDown)
-//
-// var going;
-//
-// function keyDown(e) {
-//   console.log("down")
-//   $(document).one("keyup", keyup)
-//   var animation = change[e.which];
-//   going = setInterval(keepGoing, 1);
-//
-//   function keepGoing() {
-//     $("#blueDuck").css(animation)
-//   }
-//
-// }
-//
-// function keyup(e) {
-//   console.log("up")
-//   clearInterval(going)
-//   $(document).one("keydown", keyDown)
-// }
 
-    $(document).one('keydown', keyDown)
-    //
-    function keyDown(e) {
-      console.log(e.which);
-      if(e.which === 38){
-        console.log('pressed 38')
-        $('#blueDuck').css({"width": "80px"})
-      }
-    }
+
+
+
+  // document.addEventListener('keydown', function(e) {
+  //   var character = document.getElementById('cvsBlueDuck')
+  //   console.log(character.style);
+  //   var pressedKey = e.which;
+  //   if(pressedKey === 39){
+  //     character.style.transform = "translate(100px, 0)"
+  //     console.log('pressed character.style');
+  //   }
+  //   console.log(e.which, 'e.which');
+  // })
+
+
+const redDuck = {
+  moveRight: function() {
+      console.log('moveRight function called!');
+      var target = document.getElementById('cvsRedDuck'),
+      x = (parseFloat(target.getAttribute('data-x') || 0) + 100),
+      y = parseFloat(target.getAttribute('data-y') || 0);
+
+
+      target.style.webkitTransform =
+      target.style.transform =
+        'translate(' + x + 'px, ' + y + 'px)';
+
+      document.getElementById('cvsRedDuck').setAttribute('data-x', x)
+      document.getElementById('cvsRedDuck').setAttribute('data-y', y)
+  },
+  moveLeft: function() {
+      console.log('moveLeft function called!');
+      var target = document.getElementById('cvsRedDuck'),
+      x = (parseFloat(target.getAttribute('data-x') || 0) - 100),
+      y = parseFloat(target.getAttribute('data-y') || 0);
+
+
+      target.style.webkitTransform =
+      target.style.transform =
+        'translate(' + x + 'px, ' + y + 'px)';
+
+      document.getElementById('cvsRedDuck').setAttribute('data-x', x)
+      document.getElementById('cvsRedDuck').setAttribute('data-y', y)
+  },
+
+  moveUp: function() {
+      console.log('moveUp function called!');
+      var target = document.getElementById('cvsRedDuck'),
+      x = parseFloat(target.getAttribute('data-x') || 0),
+      y = (parseFloat(target.getAttribute('data-y') || 0) - 100);
+
+      target.style.webkitTransform =
+      target.style.transform =
+        'translate(' + x + 'px, ' + y + 'px)';
+
+      document.getElementById('cvsRedDuck').setAttribute('data-x', x)
+      document.getElementById('cvsRedDuck').setAttribute('data-y', y)
+  },
+
+  moveDown: function() {
+      console.log('moveDown function called!');
+      var target = document.getElementById('cvsRedDuck'),
+      x = parseFloat(target.getAttribute('data-x') || 0),
+      y = (parseFloat(target.getAttribute('data-y') || 0) + 100);
+
+      target.style.webkitTransform =
+      target.style.transform =
+        'translate(' + x + 'px, ' + y + 'px)';
+
+      document.getElementById('cvsRedDuck').setAttribute('data-x', x)
+      document.getElementById('cvsRedDuck').setAttribute('data-y', y)
+  },
+}
+
+const blueDuck = {
+  moveRight: function() {
+      console.log('moveRight function called!');
+      var target = document.getElementById('cvsBlueDuck'),
+      x = (parseFloat(target.getAttribute('data-x') || 0) + 100),
+      y = parseFloat(target.getAttribute('data-y') || 0);
+
+      target.style.webkitTransform =
+      target.style.transform =
+        'translate(' + x + 'px, ' + y + 'px)';
+
+      document.getElementById('cvsBlueDuck').setAttribute('data-x', x)
+      document.getElementById('cvsBlueDuck').setAttribute('data-y', y)
+  },
+
+  moveLeft: function() {
+      console.log('moveLeft function called!');
+      var target = document.getElementById('cvsBlueDuck'),
+      x = (parseFloat(target.getAttribute('data-x') || 0) - 100),
+      y = parseFloat(target.getAttribute('data-y') || 0);
+
+      target.style.webkitTransform =
+      target.style.transform =
+        'translate(' + x + 'px, ' + y + 'px)';
+
+      document.getElementById('cvsBlueDuck').setAttribute('data-x', x)
+      document.getElementById('cvsBlueDuck').setAttribute('data-y', y)
+  },
+
+  moveUp: function() {
+      console.log('moveUp function called!');
+      var target = document.getElementById('cvsBlueDuck'),
+      x = parseFloat(target.getAttribute('data-x') || 0),
+      y = (parseFloat(target.getAttribute('data-y') || 0) - 100);
+
+      target.style.webkitTransform =
+      target.style.transform =
+        'translate(' + x + 'px, ' + y + 'px)';
+
+      document.getElementById('cvsBlueDuck').setAttribute('data-x', x)
+      document.getElementById('cvsBlueDuck').setAttribute('data-y', y)
+  },
+
+  moveDown: function() {
+      console.log('moveDown function called!');
+      var target = document.getElementById('cvsBlueDuck'),
+      x = parseFloat(target.getAttribute('data-x') || 0),
+      y = (parseFloat(target.getAttribute('data-y') || 0) + 100);
+
+      target.style.webkitTransform =
+      target.style.transform =
+        'translate(' + x + 'px, ' + y + 'px)';
+
+      document.getElementById('cvsBlueDuck').setAttribute('data-x', x)
+      document.getElementById('cvsBlueDuck').setAttribute('data-y', y)
+  },
+
+}
+
+
+
+
+
+
 
   </script>
 

@@ -9,23 +9,14 @@ function runCode() {
   var code = Blockly.JavaScript.workspaceToCode(workspace);
   Blockly.JavaScript.INFINITE_LOOP_TRAP = null;
   try {
+    console.log(code, 'Try Eval Code!');
     eval(code);
   } catch (e) {
     alert(e);
   }
 }
 
-var project = {xml: '', txt: ''}
-console.log(project);
 
-function saveProject() {
-  console.log('Save Project clicked');
-  project.xml = Blockly.Xml.workspaceToDom(workspace);
-  project.txt = Blockly.Xml.domToText(project.xml);
-  document.getElementById('text').append(project.txt)
-
-  console.log(project, 'project');
-}
 
 
 function loadProject() {

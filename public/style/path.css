@@ -1,0 +1,140 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans');
+
+
+body{
+  font-family: 'Open Sans', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: rgba(53,63,73,1);
+}
+
+.mainNav{
+  background-color: rgba(117,135,249,1);
+  color: rgba(255,255,255,1);
+  font-size: 12px;
+  height: 45px;
+}
+
+ul {
+  padding: 10px 0;
+  list-style-type: none;
+}
+
+li {
+  display: inline;
+  margin: 0 10px;
+}
+
+a {
+  color: rgba(255,255,255,1);
+}
+
+a:hover {
+  color: rgba(255,255,255,1);
+  text-decoration: none;
+  font-weight: bold;
+}
+
+img {
+  margin-right: 5px;
+}
+
+.mainActive {
+  border-bottom: 3px solid #7FD38F;
+  padding-bottom: 12px;
+}
+
+
+
+.mainRight {
+  float: right;
+  max-width: 260px;
+  overflow: visible;
+  max-height:
+}
+
+#imgProfile {
+  width: 33px;
+  height: 33px;
+  border-radius: 50%;
+}
+
+#dropBtn{
+  background-color: transparent;
+  border: none;
+}
+
+.dropdownContent{
+  display: none;
+  background-color: #FFFFFF;
+  border-radius: 10px;
+  width: 235px;
+  height: auto;
+  overflow: visible;
+  filter: drop-shadow(8px 8px 20px rgba(0, 0, 0, 0.102));
+
+}
+
+.dropdownContent a {
+  padding: 10px;
+  text-align: center;
+  display: block;
+  width: inherit;
+  height: 40px;
+  font-size: 12px;
+  color: rgba(53,63,73,1);
+}
+
+.dropdownContent hr {
+  margin: 0 10px;
+}
+
+.show {
+  display: block;
+}
+
+.leftContainer {
+  width: 342px;
+  height: 723px;
+  background-color: rgba(235,239,252,1);
+}
+
+.leftContainer h1 {
+  font-weight: bold;
+  font-size: 24px;
+  color: rgba(53,63,73,1);
+}
+
+.leftContainer p {
+  width: inherit;
+  font-size: 12px;
+  color: rgba(53,63,73,1);
+}
+
+.textContainer{
+  width: inherit;
+  margin-left: 30px;
+  position: absolute;
+  top: 50%;
+}
+
+.pagination a {
+  color: black;
+  float: left;
+  padding: 8px 16px;
+  text-decoration: none;
+  transition: background-color .3s;
+}
+
+.pagination a.active {
+  background-color: dodgerblue;
+  color: white;
+}
+
+.pagination a:hover:not(.active) {background-color: #ddd;}
+
+.videoContainer {
+  margin-left: 30px;
+  position: absolute;
+  top: 200px;
+}

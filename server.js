@@ -5,6 +5,8 @@ const authController = require('./controllers/authController');
 const projectController = require('./controllers/projectController');
 const builderController = require('./controllers/builderController');
 const userController = require('./controllers/userController');
+const lessonController = require('./controllers/lessonController');
+
 
 
 
@@ -43,17 +45,22 @@ app.get('/canvas', (req,res) => {
   res.render('canvastest.ejs')
 })
 
+
+
 // app.get('/builder', (req,res) => {
 //   console.log('builder route');
 //   res.render('builder.ejs')
 // })
 
-
-
 app.use('/auth', authController)
 app.use('/projects', projectController);
 app.use('/builder', builderController);
 app.use('/profile', userController);
+app.use('/lessons', lessonController);
+
+
+
+
 
 
 
