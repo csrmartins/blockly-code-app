@@ -8,7 +8,7 @@
     <script src="/blockly/msg/js/en.js"></script>
     <script src="/blockly/custom-blocks.js"></script>
     <script src="/scripts/builder.js"></script>
-    <script src="/scripts/gameController.js"></script>
+    <!-- <script src="/scripts/gameController.js"></script> -->
     <!-- <script type="text/javascript" src="../scripts/canvastest.js"></script> -->
     <link rel="stylesheet" href="/highlight/styles/atom-one-dark.css">
     <script src="highlight/highlight.pack.js"></script>
@@ -24,6 +24,8 @@
 
 <!-- Main NavBar -->
 
+
+
 <div class="mainNav">
   <ul class="mainMenu">
     <li><a href="/profile/<%= foundUser._id%>"><img src="/images/icons/nav roxa - 1 inicio inativo.svg" alt="nav branca - 1 inicio.svg">Início</a></li>
@@ -31,7 +33,7 @@
     <li><a class="mainActive" href="/builder"><img src="/images/icons/nav roxa - 3 construtor ativo.svg" alt="nav branca - nav branca - 3 construtor.svg">Construtor</a></li>
     <li><a href="/projects/<%= foundUser._id %>"><img src="/images/icons/nav roxa - 4 projetos inativo.svg" alt="nav branca - 4 projetos.svg">Projetos</a></li>
     <div class="mainRight">
-      <li><%= foundUser.firstName%> <%= foundUser.lastName %> | 000 Pontos</li>
+      <li><%= foundUser.firstName%> <%= foundUser.lastName %> | <%= foundUser.score.xp%> Pontos</li>
       <li>
         <img id="imgProfile" src="/images/profile_default.png" alt="profile_default.png">
         <button id="dropBtn" type="button" name="button">
@@ -111,7 +113,7 @@
           <button id= "btnRun"type="button" onclick="runCode()" name="button"> <img id="playIcon"src="/images/icons/const - botao play.svg" alt="const - botao play.svg"> </button>
         </div>
         <div class="centerBtnContainer">
-          <button id= "btnSave"type="button" name="button" data-toggle="modal" data-target="#myModal">Salvar</button>
+          <button id= "btnSave"type="button" name="button" data-toggle="modal" data-target="#myModal" onclick="saveProject()">Salvar</button>
           <button id= "btnPublish"type="button" onclick="testFetch()" name="button">Publicar</button>
         </div>
       </div>
@@ -159,35 +161,43 @@
           <block type="definir-cor"></block>
         </category>
     </xml>
-</div>
+
 
 
 <!-- The Modal -->
 <div class="modal" id="myModal">
   <div class="modal-dialog">
     <div class="modal-content">
-
+      <form action="/projects/new" method="POST">
       <!-- Modal Header -->
       <div class="modal-header">
         <h2 class="modal-title">Salvar Projeto</h2>
         <button type="button" class="close" data-dismiss="modal">&times;</button>
       </div>
 
-      <!-- Modal body -->
-      <div class="modal-body">
-        Adicione um nome para o seu projeto:
-          <input id="prjNameInput" type="text" name="name" value="">
-      </div>
 
-      <!-- Modal footer -->
-      <div class="modal-footer">
-        <button type="button" class="btn btn-primary" data-dismiss="modal">Salvar</button>
-        <button type="button" class="btn btn-danger" data-dismiss="modal">Fechar</button>
-      </div>
+        <!-- Modal body -->
+        <div class="modal-body">
+          <p>Adicione um nome para o seu projeto:</p>
+          <input type="text" name="name" value="">
+          <input type="hidden" name="author" value="<%= foundUser._id%>">
+          <input id="txtInput" type="hidden" name="txt" >
+          <input id="playgroundInput" type="hidden" name="playground">
+        </div>
 
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-primary">Salvar</button>
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Fechar</button>
+        </div>
+      </form>
     </div>
   </div>
 </div>
+
+
+
+<!-- var project = {author: `<%= foundUser._id%>`, name: '', xml: '', txt: '', playground: appendedAssets} -->
 
 
 
@@ -360,20 +370,27 @@ const appendedAssets = [];
 
   var project = {author: `<%= foundUser._id%>`, name: '', xml: '', txt: '', playground: appendedAssets}
 
+
+
+
   // var project = {};
-  function saveProject(name) {
+  function saveProject() {
     console.log('Save Project clicked');
     project.xml = Blockly.Xml.workspaceToDom(workspace);
     project.txt = Blockly.Xml.domToText(project.xml);
     console.log(document.getElementsByClassName('rightContainer')[0], 'rightContainer');
     console.log(project, 'project');
+
+    document.getElementById('txtInput').value = project.txt;
+    document.getElementById('playgroundInput').value = JSON.stringify(project.playground);
   }
 
-  $("#prjNameInput").change(function(){
-    project.name = $("#prjNameInput").val();
-    console.log(project.name, 'project.name');
-    saveProject();
-  });
+  // $("#prjNameInput").change(function(){
+  //   project.name = $("#prjNameInput").val();
+  //   console.log(project.name, 'project.name');
+  //   saveProject();
+  // });
+
 
   //=======================POST WITH AJAX TEST FUNCTION ======================================
 
@@ -476,6 +493,7 @@ const redDuck = {
       document.getElementById('cvsRedDuck').setAttribute('data-x', x)
       document.getElementById('cvsRedDuck').setAttribute('data-y', y)
   },
+
   moveLeft: function() {
       console.log('moveLeft function called!');
       var target = document.getElementById('cvsRedDuck'),
@@ -576,8 +594,9 @@ const blueDuck = {
       document.getElementById('cvsBlueDuck').setAttribute('data-x', x)
       document.getElementById('cvsBlueDuck').setAttribute('data-y', y)
   },
-
 }
+
+
 
 
 

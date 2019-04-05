@@ -11,7 +11,7 @@
     <li><a href="/builder/<%= foundUser._id %>"><img src="/images/icons/nav roxa - 3 construtor inativo.svg" alt="nav branca - nav branca - 3 construtor.svg">Construtor</a></li>
     <li><a class="mainActive" href="/projects/all"><img src="/images/icons/nav roxa - 4 projetos ativo.svg" alt="nav branca - 4 projetos.svg">Projetos</a></li>
     <div class="mainRight">
-      <li><%= foundUser.firstName%> <%= foundUser.lastName %> | 000 Pontos</li>
+      <li><%= foundUser.firstName%> <%= foundUser.lastName %> | <%= foundUser.score.xp%> Pontos</li>
       <li>
         <img id="imgProfile" src="/images/profile_default.png" alt="profile_default.png">
         <button id="dropBtn" type="button" name="button">
@@ -65,6 +65,9 @@
                 <!-- </div> -->
               </div>
               <img src="/images/project-print-2.png" alt="project-print.png">
+              <div class="cardButtons">
+                <a href="#" data-toggle="modal" data-target="#myModal"><img class="shareIcon" src="/images/icons/compartilhar.svg" alt="compartilhar.svg"></a>
+              </div>
             </div>
           <% } %>
         <% } %>
@@ -86,7 +89,6 @@
                   <p class="cardHeaderCathegory">Games</p>
                 <!-- </div> -->
               </div>
-              <img src="/images/project-print-2.png" alt="project-print.png">
             </div>
           <% } %>
         <% } %>
@@ -104,18 +106,56 @@
   <div id="allProjectsContainer">
     <% if (allProjects) { %>
           <% for (let i = 0; i < allProjects.length ; i++) { %>
-            <div class="projectCard">
-              <div class="prjCardHeader">
-                <div class="cardHeaderText">
-                  <p class="cardHeaderTitle"><%= allProjects[i].name%></p>
-                  <div class="cardHeaderSubLine"></div>
-                  <p class="cardHeaderCathegory">Games</p>
-                </div>
+            <div class="myProjCard">
+              <div class="myProjImg">
+                <img src="/images/project-print-2.png" alt="project-print.png">
               </div>
-              <img src="/images/project-print-2.png" alt="project-print.png">
+              <div class="myProjDescription">
+                <p class="myProjTitle"><%= allProjects[i].name%></p>
+              </div>
+              <div class="myProjButtons">
+                <form action='/builder/edit/<%=projects[i]._id%>?' method='GET'>
+                  <button id="btnEdit" type='submit'> Editar </button>
+                </form>
+                <form action='/projects/<%=allProjects[i]._id%>?_method=DELETE' method='POST'>
+                  <button id="btnDelete" type='submit' name='deleteProject' value='<%= i %>'> Delete </button>
+                </form>
+              </div>
             </div>
           <% } %>
         <% } %>
+  </div>
+</div>
+
+
+<!-- The Modal -->
+<div class="modal" id="myModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <form action="/projects/new" method="POST">
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h2 class="modal-title">Salvar Projeto</h2>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+
+
+        <!-- Modal body -->
+        <div class="modal-body">
+          <p>Adicione um nome para o seu projeto:</p>
+          <input type="text" name="name" value="">
+          <input type="hidden" name="author" value="<%= foundUser._id%>">
+          <input id="txtInput" type="hidden" name="txt" >
+          <input id="playgroundInput" type="hidden" name="playground">
+        </div>
+
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-primary">Salvar</button>
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Fechar</button>
+        </div>
+      </form>
+    </div>
   </div>
 </div>
 

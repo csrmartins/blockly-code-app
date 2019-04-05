@@ -9,7 +9,7 @@
     <li><a href="/builder/<%= foundUser._id %>"><img src="/images/icons/nav branca - 3 construtor.svg" alt="nav branca - nav branca - 3 construtor.svg">Construtor</a></li>
     <li><a href="/projects/all"><img src="/images/icons/nav branca - 4 projetos.svg" alt="nav branca - 4 projetos.svg">Projetos</a></li>
     <div class="mainRight">
-      <li><%= foundUser.firstName%> <%= foundUser.lastName %> | 000 Pontos</li>
+      <li><%= foundUser.firstName%> <%= foundUser.lastName %> | <%= foundUser.score.xp%> Pontos</li>
       <li>
         <img id="imgProfile" src="/images/profile_default.png" alt="profile_default.png">
         <button id="dropBtn" type="button" name="button">

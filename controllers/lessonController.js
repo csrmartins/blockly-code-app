@@ -21,6 +21,10 @@ router.get('/:id', async (req, res) => {
 
 });
 
+router.get('/demo/:id', (req, res) => {
+  res.render(`lessons/demo-${req.params.id}.ejs`)
+})
+
 
 
 module.exports = router
