@@ -298,10 +298,81 @@ img {
   border-radius: 7.5px;
 }
 
-
-
-
-
 .rightContainer{
   width: 50%;
+}
+
+.lessonCard {
+  display: block;
+  border-radius: 10px;
+  position: relative;
+  width: 432px;
+  height: 160px;
+  opacity: 1;
+  filter: drop-shadow(0 0 50px rgba(0, 0, 0, 0.161));
+  background-color: rgba(255,255,255,1);
+}
+
+.lessonTitle h3{
+  margin: 5px;
+  padding: 5px;
+  font-weight: bold;
+  font-size: 18px;
+  color: rgba(53,63,73,1);
+}
+
+.lessonTitle p {
+  margin: 5px;
+  padding: 5px;
+  font-weight: normal;
+  font-size: 12px;
+  color: rgba(53,63,73,1);
+}
+
+.lessonCard button {
+  margin-left: 10px;
+  padding: 5px;
+  border: none;
+  border-radius: 10px;
+  width: 110px;
+  height: 35px;
+  opacity: 1;
+  filter: drop-shadow(2px 2px 6px rgba(0, 0, 0, 0.161));
+  background-color: rgba(232,198,92,1);
+  font-weight: normal;
+  font-size: 12px;
+  color: #FFFFFF;
+  margin-bottom: 15px;
+}
+
+.lessonBallContainer {
+  margin-left: 10px;
+}
+
+.lessonBall {
+  display: inline-flex;
+  background-color: #E5E5E5;
+  border-top: 10px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+.lessonProgress p {
+  font-weight: bold;
+  margin-left: 10px;
+  font-weight: normal;
+  font-size: 10px;
+  color: rgba(232,198,92,1);;
+}
+
+#imgLessonCard {
+  margin: 0;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+  position: absolute;
+  width: 160px;
+  height: 160px;
+  top: 0;
+  right: 0;
 }

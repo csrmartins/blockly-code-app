@@ -22,11 +22,16 @@
   <body>
 
 
+
+
 <!-- Main NavBar -->
 
 
 
 <div class="mainNav">
+
+
+
   <ul class="mainMenu">
     <li><a href="/profile/<%= foundUser._id%>"><img src="/images/icons/nav roxa - 1 inicio inativo.svg" alt="nav branca - 1 inicio.svg">Início</a></li>
     <li><a href="/lessons/<%= foundUser._id%>"><img src="/images/icons/nav roxa - 2 trilha inativo.svg" alt="nav branca - 2 trilha.svg">Trilha</a></li>
@@ -106,6 +111,7 @@
 
   </div> <!--Left Container -->
   <div class="rightContainer" ondrop="drop(event)" ondragover="allowDrop(event)">
+
     <!-- <img class="draggableAsset" id="cvsBlueDuck" src="/images/builder-assets/pato_azul_A25_Rectangle_28_pattern.png" alt="pato_azul_A25_Rectangle_28_pattern.pngcahrac" /> -->
     <!-- <div id="canvas"> -->
       <div class="bottomButtons">
@@ -161,7 +167,7 @@
           <block type="definir-cor"></block>
         </category>
     </xml>
-
+</div>
 
 
 <!-- The Modal -->
@@ -180,8 +186,7 @@
         <div class="modal-body">
           <p>Adicione um nome para o seu projeto:</p>
           <input type="text" name="name" value="">
-          <input type="hidden" name="author" value="<%= foundUser._id%>">
-          <input id="txtInput" type="hidden" name="txt" >
+          <!-- <input id="prjInput" type="hidden" name="prj"> -->
           <input id="playgroundInput" type="hidden" name="playground">
         </div>
 
@@ -247,6 +252,9 @@
     // alert(code);
     $('#jsCode').html(`${code}`)
   })
+
+//======================= LOAD PROJECT IF IT EXISTS =============================
+
 
 
 //======================= DROPDOWN MENU HIDE/SHOW LPOGIC =============================
@@ -328,8 +336,7 @@ const appendedAssets = [];
     console.log(assetHtml, 'this is asset Html');
     addItems(assetHtml);
     appendedAssets.push(assetHtml);
-    console.log(appendedAssets, 'All Assets');
-    // $('.rightContainer').append(assetHtml);
+    console.log(appendedAssets[0], 'All Assets');
   }
 
   var addItems = function(html) {
@@ -381,18 +388,24 @@ const appendedAssets = [];
     console.log(document.getElementsByClassName('rightContainer')[0], 'rightContainer');
     console.log(project, 'project');
 
-    document.getElementById('txtInput').value = project.txt;
-    document.getElementById('playgroundInput').value = JSON.stringify(project.playground);
-  }
+    var projectToSave = JSON.stringify(project)
 
-  // $("#prjNameInput").change(function(){
-  //   project.name = $("#prjNameInput").val();
-  //   console.log(project.name, 'project.name');
-  //   saveProject();
-  // });
+    console.log(projectToSave, 'projectToSave');
+
+    var projectToLoad = JSON.parse(projectToSave)
+
+    console.log(projectToLoad, 'PROJECT to LoAD');
+
+    // document.getElementById('playgroundInput').value = JSON.stringfy(project);
+    // console.log(document.getElementById('playgroundInput').value, 'project JSON OBject');
 
 
-  //=======================POST WITH AJAX TEST FUNCTION ======================================
+    // document.getElementById('txtInput').value = JSON.stringify(project.txt);
+    // document.getElementById('playgroundInput').value = JSON.stringify(project.playground);
+    // console.log(document.getElementById('playgroundInput').value, 'Value of PlaygourndINput');
+    // console.log(project.playground[0], 'this is project playground index 0');
+
+  } // ------------------- End of Save Project
 
 
 
@@ -463,19 +476,6 @@ const appendedAssets = [];
 //-----------------TESTE COM MOVIMENTO
 
 
-
-
-
-  // document.addEventListener('keydown', function(e) {
-  //   var character = document.getElementById('cvsBlueDuck')
-  //   console.log(character.style);
-  //   var pressedKey = e.which;
-  //   if(pressedKey === 39){
-  //     character.style.transform = "translate(100px, 0)"
-  //     console.log('pressed character.style');
-  //   }
-  //   console.log(e.which, 'e.which');
-  // })
 
 
 const redDuck = {
@@ -595,10 +595,6 @@ const blueDuck = {
       document.getElementById('cvsBlueDuck').setAttribute('data-y', y)
   },
 }
-
-
-
-
 
 
 

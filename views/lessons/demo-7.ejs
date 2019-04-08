@@ -71,37 +71,27 @@
   <div class="rightContainer">
     <div class="pagination">
       <a href="/lessons/<%= foundUser._id%>">0</a>
-      <a class="active" href="/lessons/demo/1">1</a>
+      <a href="/lessons/demo/1">1</a>
       <a href="/lessons/demo/2">2</a>
       <a href="/lessons/demo/3">3</a>
       <a href="/lessons/demo/4">4</a>
       <a href="/lessons/demo/5">5</a>
       <a href="/lessons/demo/6">6</a>
-      <a href="/lessons/demo/7">7</a>
+      <a class="active" href="/lessons/demo/7">7</a>
       <a href="/lessons/demo/8">8</a>
       <a href="/lessons/demo/9">9</a>
       <a href="/lessons/demo/10">10</a>
-    </div>
-    <img src="/images/lesson-assets/planos de fundo/Space-01-001.png" width="100%" height="100%">
-
-    <img id="astronaut" class="draggableAsset" src="/images/lesson-assets/personagens/Charac_F-S01-Idle_0.png" alt="game-asset">
-    <img id="landMine" class="draggableAsset" src="/images/lesson-assets/objetos/Obj_Landmine.gif" alt="game-asset">
-
-    <div class="bottomButtons">
-      <div class="rightBtnContainer">
-      </div>
-      <div class="centerBtnContainer">
-        <button id= "btnRun"type="button" onclick="runCode()" name="button">Executar</button>
-      </div>
     </div>
   </div>
 
 
 
-
   <xml id="toolbox" style="display: none">
       <category name="Custom Blocks" colour="90">
-        <block type="move_astronaut_right"></block>
+        <block type="move_character_right"></block>
+        <block type="move_character_left"></block>
+        <block type="move_character_up"></block>
+        <block type="move_character_down"></block>
         <block type="definir-cor"></block>
       </category>
   </xml>
@@ -206,70 +196,6 @@
       $('#blocklyArea').hide();
       $('#jsArea').show();
     })
-
-
-
-//BLockly FUNCTIONS
-
-const astronaut = {
-  moveRight: function() {
-      console.log('moveRight function called!');
-      var target = document.getElementById('astronaut'),
-      x = (parseFloat(target.getAttribute('data-x') || 0) + 100),
-      y = parseFloat(target.getAttribute('data-y') || 0);
-
-
-      target.style.webkitTransform =
-      target.style.transform =
-        'translate(' + x + 'px, ' + y + 'px)';
-
-      document.getElementById('astronaut').setAttribute('data-x', x)
-      document.getElementById('astronaut').setAttribute('data-y', y)
-  },
-
-  // moveLeft: function() {
-  //     console.log('moveLeft function called!');
-  //     var target = document.getElementById('cvsRedDuck'),
-  //     x = (parseFloat(target.getAttribute('data-x') || 0) - 100),
-  //     y = parseFloat(target.getAttribute('data-y') || 0);
-  //
-  //
-  //     target.style.webkitTransform =
-  //     target.style.transform =
-  //       'translate(' + x + 'px, ' + y + 'px)';
-  //
-  //     document.getElementById('cvsRedDuck').setAttribute('data-x', x)
-  //     document.getElementById('cvsRedDuck').setAttribute('data-y', y)
-  // },
-  //
-  // moveUp: function() {
-  //     console.log('moveUp function called!');
-  //     var target = document.getElementById('cvsRedDuck'),
-  //     x = parseFloat(target.getAttribute('data-x') || 0),
-  //     y = (parseFloat(target.getAttribute('data-y') || 0) - 100);
-  //
-  //     target.style.webkitTransform =
-  //     target.style.transform =
-  //       'translate(' + x + 'px, ' + y + 'px)';
-  //
-  //     document.getElementById('cvsRedDuck').setAttribute('data-x', x)
-  //     document.getElementById('cvsRedDuck').setAttribute('data-y', y)
-  // },
-  //
-  // moveDown: function() {
-  //     console.log('moveDown function called!');
-  //     var target = document.getElementById('cvsRedDuck'),
-  //     x = parseFloat(target.getAttribute('data-x') || 0),
-  //     y = (parseFloat(target.getAttribute('data-y') || 0) + 100);
-  //
-  //     target.style.webkitTransform =
-  //     target.style.transform =
-  //       'translate(' + x + 'px, ' + y + 'px)';
-  //
-  //     document.getElementById('cvsRedDuck').setAttribute('data-x', x)
-  //     document.getElementById('cvsRedDuck').setAttribute('data-y', y)
-  // },
-}
 
 
 

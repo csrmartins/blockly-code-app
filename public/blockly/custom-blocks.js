@@ -98,7 +98,7 @@ Blockly.JavaScript['move_character_up'] = function(block) {
   return code;
 };
 
-//Move Character Down----------------------------------------------------------------
+//Move Character  Down----------------------------------------------------------------
 Blockly.Blocks['move_character_down'] = {
   init: function() {
     this.appendDummyInput()
@@ -117,6 +117,30 @@ Blockly.JavaScript['move_character_down'] = function(block) {
   var dropdown_charid = block.getFieldValue('charId');
   // TODO: Assemble JavaScript into code variable.
   var code = `${dropdown_charid}.moveDown();`
+
+  return code;
+};
+
+//Move Astronaut Right ---------------------------------------------------------
+
+Blockly.Blocks['move_astronaut_right'] = {
+  init: function() {
+    this.appendDummyInput()
+        .appendField("Mover ")
+        .appendField(new Blockly.FieldDropdown([["Astronauta","astronaut"]]), "charId")
+        .appendField("para direita")
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour(230);
+ this.setTooltip("");
+ this.setHelpUrl("");
+  }
+};
+
+Blockly.JavaScript['move_astronaut_right'] = function(block) {
+  var dropdown_charid = block.getFieldValue('charId');
+  // TODO: Assemble JavaScript into code variable.
+  var code = `${dropdown_charid}.moveRight();`
 
   return code;
 };
