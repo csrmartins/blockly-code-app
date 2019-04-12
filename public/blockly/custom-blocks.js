@@ -144,3 +144,25 @@ Blockly.JavaScript['move_astronaut_right'] = function(block) {
 
   return code;
 };
+
+Blockly.Blocks['move_astronaut_up'] = {
+  init: function() {
+    this.appendDummyInput()
+        .appendField("Mover ")
+        .appendField(new Blockly.FieldDropdown([["Astronauta","astronaut"]]), "charId")
+        .appendField("para cima")
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour(230);
+ this.setTooltip("");
+ this.setHelpUrl("");
+  }
+};
+
+Blockly.JavaScript['move_astronaut_up'] = function(block) {
+  var dropdown_charid = block.getFieldValue('charId');
+  // TODO: Assemble JavaScript into code variable.
+  var code = `${dropdown_charid}.moveUp();`
+
+  return code;
+};

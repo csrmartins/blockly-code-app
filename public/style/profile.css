@@ -305,6 +305,7 @@ img {
 .lessonCard {
   display: block;
   border-radius: 10px;
+  margin-bottom: 50px;
   position: relative;
   width: 432px;
   height: 160px;
@@ -313,7 +314,7 @@ img {
   background-color: rgba(255,255,255,1);
 }
 
-.lessonTitle h3{
+.lessonTitle h3 {
   margin: 5px;
   padding: 5px;
   font-weight: bold;

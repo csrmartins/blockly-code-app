@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/interactjs@1.3/dist/interact.min.js"></script>
-    <link rel="stylesheet" href="/style/demo.css">
+    <link rel="stylesheet" href="/style/lessons/demo-2.css">
     <title></title>
   </head>
   <body>
@@ -48,8 +48,9 @@
 <div class="row">
   <div class="leftContainer">
     <div class="textContainer">
-      <h1>Demonstração</h1>
-      <p>Texto de orientação do passo. Texto de orientação do passo. Texto de orientação do passo. Texto de orientação do passo. Texto de orientação do passo.</p>
+      <h1>Fase 3</h1>
+      <p>Combine os blocos do tipo <b>"Mover o astronauta para direita"</b>,
+      <b>"Mover astronauta para cima"</b> para levar o astronauta até o portal de teletrasporte. Porém, desta vez, utilize também os blocos do tipo <b>"Repeat"</b> </p>
     </div>
     <div class="builderNav">
       <ul class="builderNavMenu">
@@ -82,17 +83,47 @@
       <a href="/lessons/demo/9">9</a>
       <a href="/lessons/demo/10">10</a>
     </div>
+    <img src="/images/lesson-assets/planos de fundo/Space-01-001.png" width="100%" height="100%">
+
+    <div class="platform1">
+      <img id="platformLeft" class="draggableAsset" src="/images/lesson-assets/cenario/Night-Time-t-a000.png" alt="game-asset">
+      <img id="platformRight" class="draggableAsset" src="/images/lesson-assets/cenario/Night-Time-t-c000.png" alt="game-asset">
+    </div>
+
+    <div class="platform2">
+      <img id="platformLeft" class="draggableAsset" src="/images/lesson-assets/cenario/Night-Time-t-a000.png" alt="game-asset">
+      <img id="platformRight" class="draggableAsset" src="/images/lesson-assets/cenario/Night-Time-t-c000.png" alt="game-asset">
+    </div>
+
+
+    <img id="landMine" class="draggableAsset" src="/images/lesson-assets/objetos/Obj_Landmine.gif" alt="game-asset">
+    <img id="astronaut" class="draggableAsset" src="/images/lesson-assets/personagens/Charac_F-S01-Idle_0.png" alt="game-asset">
+
+    <div class="bottomButtons">
+      <div class="rightBtnContainer">
+      </div>
+      <div class="centerBtnContainer">
+        <button id= "btnRun"type="button" onclick="checkCode()" name="button">Executar</button>
+      </div>
+    </div>
   </div>
 
 
 
   <xml id="toolbox" style="display: none">
       <category name="Custom Blocks" colour="90">
-        <block type="move_character_right"></block>
-        <block type="move_character_left"></block>
-        <block type="move_character_up"></block>
-        <block type="move_character_down"></block>
+        <block type="move_astronaut_right"></block>
+        <block type="move_astronaut_up"></block>
         <block type="definir-cor"></block>
+      </category>
+      <category name="Loops" colour="%{BKY_LOOPS_HUE}">
+        <block type="controls_repeat_ext">
+          <value name="TIMES">
+            <block type="math_number">
+              <field name="NUM">10</field>
+            </block>
+          </value>
+        </block>
       </category>
   </xml>
 </div>
@@ -133,8 +164,29 @@
 
 <script>
 
-//======================= JAVASCRIPT TAB CODE  ======================================
 
+
+//CHECKING ANSWER====================================================================
+var checkCode = function(){
+  runCode();
+  var code = Blockly.JavaScript.workspaceToCode(workspace);
+  var newCode = code.replace(/[^a-zA-Z]/g, "");
+
+  console.log(newCode, 'THIS IS CODE');
+  var rightAnswer = 'for (var count = 0; count < 2; count++) {astronaut.moveRight();astronaut.moveUp();}astronaut.moveRight();'
+  var newRightAnswer =   rightAnswer.replace(/[^a-zA-Z]/g, "");
+
+  if(newCode == newRightAnswer) {
+    alert('PARABÉNS!!!RESPOSTA CORRETA!!!')
+    window.location.href = '/lessons/demo/3'
+  }else {
+    alert('RESPOSTA ERRADA! TENTE OUTRA VEZ!')
+    window.location.href = '/lessons/demo/2'
+  }
+  console.log(code);
+}
+
+//======================= JAVASCRIPT TAB CODE  ======================================
 
   $('#jsBtn').on('click', function (e) {
     e.preventDefault()
@@ -196,6 +248,72 @@
       $('#blocklyArea').hide();
       $('#jsArea').show();
     })
+
+
+
+// BLockly FUNCTIONS
+
+//BLockly FUNCTIONS
+
+const astronaut = {
+  moveRight: function() {
+      console.log('moveRight function called!');
+      var target = document.getElementById('astronaut'),
+      x = (parseFloat(target.getAttribute('data-x') || 0) + 200),
+      y = parseFloat(target.getAttribute('data-y') || 0);
+
+
+      target.style.webkitTransform =
+      target.style.transform =
+        'translate(' + x + 'px, ' + y + 'px)';
+
+      document.getElementById('astronaut').setAttribute('data-x', x)
+      document.getElementById('astronaut').setAttribute('data-y', y)
+  },
+
+  // moveLeft: function() {
+  //     console.log('moveLeft function called!');
+  //     var target = document.getElementById('cvsRedDuck'),
+  //     x = (parseFloat(target.getAttribute('data-x') || 0) - 100),
+  //     y = parseFloat(target.getAttribute('data-y') || 0);
+  //
+  //
+  //     target.style.webkitTransform =
+  //     target.style.transform =
+  //       'translate(' + x + 'px, ' + y + 'px)';
+  //
+  //     document.getElementById('cvsRedDuck').setAttribute('data-x', x)
+  //     document.getElementById('cvsRedDuck').setAttribute('data-y', y)
+  // },
+  //
+  moveUp: function() {
+      console.log('moveUp function called!');
+      var target = document.getElementById('astronaut'),
+      x = parseFloat(target.getAttribute('data-x') || 0),
+      y = (parseFloat(target.getAttribute('data-y') || 0) - 50);
+
+      target.style.webkitTransform =
+      target.style.transform =
+        'translate(' + x + 'px, ' + y + 'px)';
+
+      document.getElementById('astronaut').setAttribute('data-x', x)
+      document.getElementById('astronaut').setAttribute('data-y', y)
+  },
+  //
+  // moveDown: function() {
+  //     console.log('moveDown function called!');
+  //     var target = document.getElementById('cvsRedDuck'),
+  //     x = parseFloat(target.getAttribute('data-x') || 0),
+  //     y = (parseFloat(target.getAttribute('data-y') || 0) + 100);
+  //
+  //     target.style.webkitTransform =
+  //     target.style.transform =
+  //       'translate(' + x + 'px, ' + y + 'px)';
+  //
+  //     document.getElementById('cvsRedDuck').setAttribute('data-x', x)
+  //     document.getElementById('cvsRedDuck').setAttribute('data-y', y)
+  // },
+}
 
 
 

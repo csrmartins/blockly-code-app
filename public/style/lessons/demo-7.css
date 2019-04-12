@@ -1,0 +1,348 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans');
+
+
+body{
+  font-family: 'Open Sans', sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.mainNav{
+  background-color: rgba(117,135,249,1);
+  color: rgba(255,255,255,1);
+  font-size: 12px;
+  height: 45px;
+}
+
+ul {
+  padding: 10px 0;
+  list-style-type: none;
+}
+
+li {
+  display: inline;
+  margin: 0 10px;
+}
+
+a {
+  color: rgba(255,255,255,1);
+}
+
+a:hover {
+  color: rgba(255,255,255,1);
+  text-decoration: none;
+  font-weight: bold;
+}
+
+img {
+  margin-right: 5px;
+}
+
+.mainActive {
+  border-bottom: 3px solid #7FD38F;
+  padding-bottom: 12px;
+}
+
+
+.mainRight {
+  text-align: center;
+  float: right;
+}
+
+#imgProfile {
+  width: 33px;
+  height: 33px;
+  border-radius: 50%;
+}
+
+#dropBtn{
+  background-color: transparent;
+  border: none;
+}
+
+.dropdownContent{
+  display: none;
+  background-color: #FFFFFF;
+  border-radius: 10px;
+  width: 235px;
+  height: auto;
+  overflow: visible;
+  filter: drop-shadow(8px 8px 20px rgba(0, 0, 0, 0.102));
+
+}
+
+.dropdownContent a {
+  padding: 10px;
+  text-align: center;
+  display: block;
+  width: inherit;
+  height: 40px;
+  font-size: 12px;
+  color: rgba(53,63,73,1);
+}
+
+.dropdownContent hr {
+  margin: 0 10px;
+}
+
+.show {
+  display: block;
+}
+
+
+
+
+.pagination {
+  position: absolute;
+  margin-top: 3%;
+  margin-left: 7%;
+}
+
+
+.pagination a {
+  background-color: #C5C5C5;
+  opacity: 0.5;
+  margin: 5px;
+  border-radius: 50%;
+  display: block;
+  display: inline-block;
+  color: rgba(53,63,73,1);
+  float: left;
+  padding: 6px 16px;
+  text-decoration: none;
+}
+
+
+.pagination a.active {
+  color: rgba(53,63,73,1);
+  border: 2px solid #e8c65c;
+  background-color: #FFFFFF;
+}
+
+.pagination a:hover:not(.active) {
+  background-color: #C5C5C5;
+  opacity: 1;
+}
+
+.row {
+  position: absolute;
+  top: inherit;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.leftContainer {
+  background-color: #ECEFFB;
+  width: 33.33%;
+}
+
+.builderNavMenu{
+  padding: 0;
+  background-color: #ECEFFB;
+  height: 45px;
+  font-size: 12px;
+  margin-bottom: 0;
+}
+
+
+
+.btnBuilderNav{
+  width: 50%;
+  float: left;
+  color: rgba(53,63,73,1);
+  font-size: 12px;
+  background-color: #ECEFFB;
+  display:inline-block;
+  padding: 12px;
+}
+
+.btnBuilderNav:hover, .btnBuilderNav:active{
+  max-height: 45px;
+  float: left;
+  color: rgba(53,63,73,1);
+  font-size: 12px;
+  background-color: #FFFFFF;
+  display:inline-block;
+  padding: 15px;
+}
+
+.btn-primary {
+  background-color: #7887F1;
+  border-color: #7887F1;
+}
+
+
+pre {
+  margin: 0;
+}
+
+h1 {
+  font-weight: bold;
+  font-size: 24px;
+  color: rgba(53,63,73,1);
+}
+
+.textContainer {
+  margin-left: 10px;
+  margin-top: 30px;
+}
+
+.textContainer h1{
+  margin-bottom: 30px;
+}
+
+.textContainer p{
+  font-weight: normal;
+  font-size: 12px;
+  color: rgba(53,63,73,1);
+  margin: 0;
+  margin-bottom: 50px;
+}
+
+#blocklyArea {
+  width: 100%;
+  height: 72%;
+}
+
+#jsArea{
+  background-color: #FFFFFF;
+  width: 100%;
+  height: 100%;
+}
+
+#jsCode {
+  margin-left: 10px;
+}
+
+
+.rightContainer {
+  background-color: lightgrey;
+  position: absolute;
+  right: 0;
+  height: 100%;
+  width: 66.66%;
+}
+
+.bottomButtons {
+  text-align: center;
+  margin-left: 0;
+  padding-left: 0;
+  position: absolute;
+  bottom: 0px;
+  width: 100%;
+  /* z-index: 1; */
+}
+
+/* #btnRun{
+  height: 50px;
+  width: auto;
+  opacity: 0.5;
+  margin-bottom: 35px;
+  padding: 0;
+  border:none;
+} */
+
+#btnSave{
+  border-radius: 10px;
+  border: none;
+  width: 80px;
+  height: 25px;
+  font-size: 12px;
+  font-weight: bold;
+  opacity: 0.5;
+}
+
+#btnRun{
+  position: absolute;
+  bottom: 35px;
+  border-radius: 10px;
+  border: none;
+  width: 80px;
+  height: 25px;
+  font-size: 12px;
+  font-weight: bold;
+  opacity: 0.5;
+}
+
+#playIcon{
+  background-color: transparent;
+  /* z-index: 1; */
+}
+
+.rightBtnContainer{
+  float: right;
+}
+
+.centerBtnContainer{
+  align-content: center;
+}
+
+
+#canvasButtons {
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  text-align: center;
+}
+
+canvas {
+  background-color: lightgrey;
+  border: 1px solid black;
+}
+
+.modal-title {
+  font-weight: bold;
+  font-size: 16px;
+
+}
+
+.modal-body {
+  font-size: 14px;
+}
+
+.modal-body input {
+  width: 100%;
+}
+
+.modal-body p {
+  margin-left: 0
+}
+
+.btn-primary {
+  margin: 0;
+  padding: 0;
+  border-radius: 10px;
+  border: none;
+  width: 80px;
+  height: 25px;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+
+.btn-danger {
+  margin: 0;
+  padding: 0;
+  border-radius: 10px;
+  border: none;
+  width: 80px;
+  height: 25px;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+#astronaut{
+  position: absolute;
+  left: 100px;
+  bottom: 100px;
+  height: 120px;
+}
+
+#landMine {
+  position: absolute;
+  left: 490px;
+  bottom: 80px;
+  width: 120px;
+}
