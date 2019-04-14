@@ -47,7 +47,7 @@ Blockly.Blocks['move_character_right'] = {
 Blockly.JavaScript['move_character_right'] = function(block) {
   var dropdown_charid = block.getFieldValue('charId');
   // TODO: Assemble JavaScript into code variable.
-  var code = `${dropdown_charid}.moveRight();`
+  var code = `${dropdown_charid}.moveRight();\n`
 
   return code;
 };
@@ -70,7 +70,7 @@ Blockly.Blocks['move_character_left'] = {
 Blockly.JavaScript['move_character_left'] = function(block) {
   var dropdown_charid = block.getFieldValue('charId');
   // TODO: Assemble JavaScript into code variable.
-  var code = `${dropdown_charid}.moveLeft();`
+  var code = `${dropdown_charid}.moveLeft();\n`
 
   return code;
 };
@@ -93,7 +93,7 @@ Blockly.Blocks['move_character_up'] = {
 Blockly.JavaScript['move_character_up'] = function(block) {
   var dropdown_charid = block.getFieldValue('charId');
   // TODO: Assemble JavaScript into code variable.
-  var code = `${dropdown_charid}.moveUp();`
+  var code = `${dropdown_charid}.moveUp();\n`
 
   return code;
 };
@@ -116,7 +116,81 @@ Blockly.Blocks['move_character_down'] = {
 Blockly.JavaScript['move_character_down'] = function(block) {
   var dropdown_charid = block.getFieldValue('charId');
   // TODO: Assemble JavaScript into code variable.
-  var code = `${dropdown_charid}.moveDown();`
+  var code = `${dropdown_charid}.moveDown();\n`
+
+  return code;
+};
+
+
+
+//move Astronaut Up
+
+Blockly.Blocks['move_astronaut_up'] = {
+  init: function() {
+    this.appendDummyInput()
+        .appendField("Mover ")
+        .appendField(new Blockly.FieldDropdown([["Astronauta","astronaut"]]), "charId")
+        .appendField("para cima")
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour(120);
+ this.setTooltip("");
+ this.setHelpUrl("");
+  }
+};
+
+Blockly.JavaScript['move_astronaut_up'] = function(block) {
+  var dropdown_charid = block.getFieldValue('charId');
+  // TODO: Assemble JavaScript into code variable.
+  var code = `${dropdown_charid}.moveUp();\n`
+
+  return code;
+};
+
+//move Astronaut Up
+
+Blockly.Blocks['move_astronaut_down'] = {
+  init: function() {
+    this.appendDummyInput()
+        .appendField("Mover ")
+        .appendField(new Blockly.FieldDropdown([["Astronauta","astronaut"]]), "charId")
+        .appendField("para baixo")
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour(120);
+ this.setTooltip("");
+ this.setHelpUrl("");
+  }
+};
+
+Blockly.JavaScript['move_astronaut_down'] = function(block) {
+  var dropdown_charid = block.getFieldValue('charId');
+  // TODO: Assemble JavaScript into code variable.
+  var code = `${dropdown_charid}.moveDown();\n`
+
+  return code;
+};
+
+//Move Astronaut Left ---------------------------------------------------------
+
+Blockly.Blocks['move_astronaut_left'] = {
+  init: function() {
+    this.appendDummyInput()
+        .appendField("Mover ")
+        .appendField(new Blockly.FieldDropdown([["Astronauta","astronaut"]]), "charId")
+        .appendField("para esquerda")
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour(120);
+ this.setTooltip("");
+ this.setHelpUrl("");
+  }
+};
+
+Blockly.JavaScript['move_astronaut_left'] = function(block) {
+  var dropdown_charid = block.getFieldValue('charId');
+  // TODO: Assemble JavaScript into code variable.
+  var code = `${dropdown_charid}.moveLeft();\n`
 
   return code;
 };
@@ -131,7 +205,7 @@ Blockly.Blocks['move_astronaut_right'] = {
         .appendField("para direita")
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
-    this.setColour(230);
+    this.setColour(120);
  this.setTooltip("");
  this.setHelpUrl("");
   }
@@ -140,17 +214,101 @@ Blockly.Blocks['move_astronaut_right'] = {
 Blockly.JavaScript['move_astronaut_right'] = function(block) {
   var dropdown_charid = block.getFieldValue('charId');
   // TODO: Assemble JavaScript into code variable.
-  var code = `${dropdown_charid}.moveRight();`
+  var code = `${dropdown_charid}.moveRight();\n`
 
   return code;
 };
 
-Blockly.Blocks['move_astronaut_up'] = {
+//Bloco AO CLICAR PARA CIMA
+Blockly.Blocks['on_up_click'] = {
   init: function() {
     this.appendDummyInput()
-        .appendField("Mover ")
-        .appendField(new Blockly.FieldDropdown([["Astronauta","astronaut"]]), "charId")
-        .appendField("para cima")
+        .appendField("Ao clicar em ")
+        .appendField(new Blockly.FieldImage("/images/builder-assets/controls/up-01.png", 30, 30, "*"));
+    this.appendStatementInput("KEY")
+        .setCheck(null);
+    this.setColour(65);
+ this.setTooltip("");
+ this.setHelpUrl("");
+  }
+};
+
+Blockly.JavaScript['on_up_click'] = function(block) {
+  var statements_key = Blockly.JavaScript.statementToCode(block, 'KEY');
+  // TODO: Assemble JavaScript into code variable.
+  var code = `document.getElementById('cvsUpControl').addEventListener("click", function(){${statements_key}});\n`;
+  return code;
+};
+
+//Bloco AO CLICAR PARA BAIXO
+Blockly.Blocks['on_down_click'] = {
+  init: function() {
+    this.appendDummyInput()
+        .appendField("Ao clicar em ")
+        .appendField(new Blockly.FieldImage("/images/builder-assets/controls/down-01.png", 30, 30, "*"));
+    this.appendStatementInput("KEY")
+        .setCheck(null);
+    this.setColour(65);
+ this.setTooltip("");
+ this.setHelpUrl("");
+  }
+};
+
+Blockly.JavaScript['on_down_click'] = function(block) {
+  var statements_key = Blockly.JavaScript.statementToCode(block, 'KEY');
+  // TODO: Assemble JavaScript into code variable.
+  var code = `document.getElementById('cvsDownControl').addEventListener("click", function(){${statements_key}});\n`;
+  return code;
+};
+
+//Bloco AO CLICAR PARA DIREITA
+Blockly.Blocks['on_right_click'] = {
+  init: function() {
+    this.appendDummyInput()
+        .appendField("Ao clicar em ")
+        .appendField(new Blockly.FieldImage("/images/builder-assets/controls/right-01.png", 30, 30, "*"));
+    this.appendStatementInput("KEY")
+        .setCheck(null);
+    this.setColour(65);
+ this.setTooltip("");
+ this.setHelpUrl("");
+  }
+};
+
+Blockly.JavaScript['on_right_click'] = function(block) {
+  var statements_key = Blockly.JavaScript.statementToCode(block, 'KEY');
+  // TODO: Assemble JavaScript into code variable.
+  var code = `document.getElementById('cvsRightControl').addEventListener("click", function(){${statements_key}});\n`;
+  return code;
+};
+
+//Bloco AO CLICAR PARA ESQUERDA
+Blockly.Blocks['on_left_click'] = {
+  init: function() {
+    this.appendDummyInput()
+        .appendField("Ao clicar em ")
+        .appendField(new Blockly.FieldImage("/images/builder-assets/controls/left-01.png", 30, 30, "*"));
+    this.appendStatementInput("KEY")
+        .setCheck(null);
+    this.setColour(65);
+ this.setTooltip("");
+ this.setHelpUrl("");
+  }
+};
+
+Blockly.JavaScript['on_left_click'] = function(block) {
+  var statements_key = Blockly.JavaScript.statementToCode(block, 'KEY');
+  // TODO: Assemble JavaScript into code variable.
+  var code = `document.getElementById('cvsLeftControl').addEventListener("click", function(){${statements_key}});\n`;
+  return code;
+};
+
+//COMNSOLE LOG BLOCK
+Blockly.Blocks['console_log'] = {
+  init: function() {
+    this.appendDummyInput()
+        .appendField("Console.log")
+        .appendField(new Blockly.FieldTextInput("Log Message"), "LOG");
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
     this.setColour(230);
@@ -159,10 +317,9 @@ Blockly.Blocks['move_astronaut_up'] = {
   }
 };
 
-Blockly.JavaScript['move_astronaut_up'] = function(block) {
-  var dropdown_charid = block.getFieldValue('charId');
+Blockly.JavaScript['console_log'] = function(block) {
+  var text_log = block.getFieldValue('LOG');
   // TODO: Assemble JavaScript into code variable.
-  var code = `${dropdown_charid}.moveUp();`
-
+  var code = `console.log("${text_log}")\n`;
   return code;
 };

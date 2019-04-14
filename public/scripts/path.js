@@ -1,6 +1,6 @@
 //Função para Rodar o Código JavaScript
 function runCode() {
-  console.log('Run code Clicked');
+  console.log('Run code CLicked');
   // Generate JavaScript code and run it.
   Blockly.JavaScript.addReservedWords('code');
   window.LoopTrap = 1000;

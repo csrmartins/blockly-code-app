@@ -346,3 +346,33 @@ canvas {
   bottom: 80px;
   width: 120px;
 }
+
+
+.correctFeedbackWindow {
+  position: absolute;
+  top: 40%;
+  left: 40%;
+  height: 180px;
+  width: 320px;
+  background-color: #FFFFFF;
+  opacity: 1;
+}
+
+.modal-body {
+  display: flex;
+  flex-direction: row;
+}
+
+.modal-body p {
+  margin-top: 10px;
+  margin-left: 40px;
+}
+
+.modal-body img{
+  height: 60px;
+  width: auto;
+}
+
+.modal-footer {
+  text-align: center;
+}

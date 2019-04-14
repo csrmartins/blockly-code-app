@@ -165,7 +165,8 @@ h1 {
 
 #designArea{
   width: 100%;
-  height: 710px;
+  height: 680px;
+  overflow: scroll;
 }
 
 .sessionTitle{
@@ -190,7 +191,7 @@ h1 {
 
 .designCathegory img{
   height: 98px;
-  width: 98px;
+  width: auto;
   margin: 5px;
 }
 
@@ -233,7 +234,7 @@ h1 {
   position: absolute;
   bottom: 0px;
   width: 100%;
-  /* z-index: 1; */
+  z-index: 1;
 }
 
 #btnRun{

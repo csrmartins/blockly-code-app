@@ -6,7 +6,7 @@
     <script src="/blockly/javascript_compressed.js"></script>
     <script src="/blockly/msg/js/en.js"></script>
     <script src="/blockly/custom-blocks.js"></script>
-    <script src="/scripts/builder.js"></script>
+    <script src="/scripts/path.js"></script>
     <!-- <script src="/scripts/gameController.js"></script> -->
     <!-- <script type="text/javascript" src="../scripts/canvastest.js"></script> -->
     <link rel="stylesheet" href="/highlight/styles/atom-one-dark.css">
@@ -100,12 +100,66 @@
 
 
   <xml id="toolbox" style="display: none">
-      <category name="Custom Blocks" colour="90">
+      <category name="Controle" colour="230">
         <block type="move_astronaut_right"></block>
-        <block type="definir-cor"></block>
       </category>
   </xml>
 </div>
+
+<!-- The Modal form Builder-->
+<div class="modal" id="correctModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <form action="/lessons/demo/2" method="GET">
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h2 class="modal-title">Excelente!</h2>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+
+
+        <!-- Modal body -->
+        <div class="modal-body">
+          <img src="/images/popup - xp10.png" alt="popup - xp10.png">
+          <p>Você acertou e ganhou 10 pontos de EXP! <br> Vamos para a proxima fase?</p>
+        </div>
+
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-primary">Próximo</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<div class="modal" id="wrongModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <form action="/lessons/demo/1" method="GET">
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h2 class="modal-title">Ops!</h2>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+
+
+        <!-- Modal body -->
+        <div class="modal-body">
+          <img src="/images/popup - alert vermelho.png" alt="popup - alert vermelho.png">
+          <p>Resposta Errada! <br> Vamos tentar novamente?</p>
+        </div>
+
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-primary">Ok</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+
 
 
 
@@ -143,20 +197,28 @@
 
 <script>
 
+
+
+
 //CHECKING ANSWER====================================================================
 var checkCode = function(){
   runCode();
   var code = Blockly.JavaScript.workspaceToCode(workspace);
+  var newCode = code.replace(/[^a-zA-Z]/g, "");
   var rightAnswer = 'astronaut.moveRight();astronaut.moveRight();'
+  var newRightAnswer =   rightAnswer.replace(/[^a-zA-Z]/g, "");
 
-  if(code == rightAnswer) {
-    alert('CCORRECT ANSWER!!!')
-    window.location.href = '/lessons/demo/2'
+
+  if(newCode == newRightAnswer) {
+    setTimeout(function(){$('#correctModal').modal('show')}, 2000) // initializes and invokes show immediately
   }else {
-    alert('WRONG ANSWER')
+    console.log('WRONG ANSWER');
+    setTimeout(function(){ $('#wrongModal').modal('show') }, 2000);
   }
   console.log(code);
 }
+
+
 
 
 //======================= JAVASCRIPT TAB CODE  ======================================
@@ -238,6 +300,7 @@ const astronaut = {
       target.style.webkitTransform =
       target.style.transform =
         'translate(' + x + 'px, ' + y + 'px)';
+      target.style.transition = '1s'
 
       document.getElementById('astronaut').setAttribute('data-x', x)
       document.getElementById('astronaut').setAttribute('data-y', y)
@@ -290,3 +353,10 @@ const astronaut = {
 
 
 </script>
+
+<!-- Bootstrap Scripts  -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+  </body>
+</html>

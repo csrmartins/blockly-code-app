@@ -21,16 +21,19 @@
   </head>
   <body>
 
+<% console.log(foundProject.playground, "FOUNDPROJECTS.PLAYGROUND") %>
+<% var parsedProject = JSON.parse(foundProject.playground) %>
+
+<input id="blockInput" type="hidden" name="blocksToLoad" value="<%= parsedProject.txt %>">
+
 
 
 
 <!-- Main NavBar -->
 
 
+
 <div class="mainNav">
-
-
-
   <ul class="mainMenu">
     <li><a href="/profile/<%= foundUser._id%>"><img src="/images/icons/nav roxa - 1 inicio inativo.svg" alt="nav branca - 1 inicio.svg">Início</a></li>
     <li><a href="/lessons/<%= foundUser._id%>"><img src="/images/icons/nav roxa - 2 trilha inativo.svg" alt="nav branca - 2 trilha.svg">Trilha</a></li>
@@ -145,10 +148,14 @@
     </div> <!-- closing designArea -->
 
   </div> <!--Left Container -->
-  <div class="rightContainer" ondrop="drop(event)" ondragover="allowDrop(event)">
-
-    <!-- <img class="draggableAsset" id="cvsBlueDuck" src="/images/builder-assets/pato_azul_A25_Rectangle_28_pattern.png" alt="pato_azul_A25_Rectangle_28_pattern.pngcahrac" /> -->
-    <!-- <div id="canvas"> -->
+  <% if(foundProject) { %>
+    <% var projectToLoad = JSON.parse(foundProject.playground)%>
+    <div class="rightContainer" ondrop="drop(event)" ondragover="allowDrop(event)">
+    <% for(i = 0 ; i < projectToLoad.playground.length; i++) { %>
+      <% console.log(i, "THIS IS I")%>
+      <% console.log(projectToLoad.playground[i])%>
+        <%- projectToLoad.playground[i]%>
+    <% } %>
       <div class="bottomButtons">
         <div class="rightBtnContainer">
           <button id= "btnRun"type="button" onclick="runCode()" name="button"> <img id="playIcon"src="/images/icons/const - botao play.svg" alt="const - botao play.svg"> </button>
@@ -158,8 +165,8 @@
           <button id= "btnPublish"type="button" onclick="testFetch()" name="button">Publicar</button>
         </div>
       </div>
-    <!-- </div> -->
-  </div>
+    </div>
+  <% } %>
 </div>
 
 
@@ -293,7 +300,9 @@
     $('#jsCode').html(`${code}`)
   })
 
-//======================= LOAD PROJECT IF IT EXISTS =============================
+//======================= LOAD BLOCKS TO EDIT IF IT EXISTS =============================
+// var blocksTxt = '<%= foundProject.playground.txt %>'
+// console.log(blocksTxt);
 
 
 
@@ -410,8 +419,9 @@ const appendedAssets = [];
   }
 
   var addItems = function(html) {
-    var $html = $(html);
-    $('.rightContainer').append($html)
+    console.log(html);
+    // var $html = $(html);
+    // $('.rightContainer').append($html)
   }
 
 
@@ -459,13 +469,7 @@ const appendedAssets = [];
     console.log(project, 'project');
 
     var projectToSave = JSON.stringify(project)
-
     console.log(projectToSave, 'projectToSave');
-
-    var projectToLoad = JSON.parse(projectToSave)
-
-    console.log(projectToLoad, 'PROJECT to LoAD');
-
     document.getElementById('playgroundInput').value = projectToSave;
     // console.log(document.getElementById('playgroundInput').value, 'project JSON OBject');
 
@@ -477,8 +481,18 @@ const appendedAssets = [];
 
   } // ------------------- End of Save Project
 
+//LOAD BLOCKS IF PROJECT EXISTS
+var blocksToLoad = document.getElementById('blockInput').value
+console.log(blocksToLoad, "BLOCKS TO LOAD");
 
+function loadBLocks(txt) {
+  console.log("loadBLocks CALLED!!");
+  var xmlToLoad = Blockly.Xml.textToDom(txt);
+  console.log(xmlToLoad, "XML TO LOAD");
+  Blockly.Xml.domToWorkspace(xmlToLoad, workspace);
+}
 
+loadBLocks(blocksToLoad);
 
 
 

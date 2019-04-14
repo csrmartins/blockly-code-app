@@ -94,7 +94,7 @@ router.get('/edit/:id', async (req, res) => {
       .then(json => {(
         foundProject = json.data,
         console.log(foundProject, 'this is foundProject'),
-        res.render('builder/builder.ejs', {
+        res.render('builder/builder-editor.ejs', {
               project: foundProject
         })
       )})

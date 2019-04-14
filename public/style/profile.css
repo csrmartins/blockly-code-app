@@ -299,18 +299,18 @@ img {
 }
 
 .rightContainer{
+  float: right;
   width: 50%;
 }
 
 .lessonCard {
   display: block;
   border-radius: 10px;
-  margin-bottom: 50px;
-  position: relative;
-  width: 432px;
+  margin-bottom: 30px;
+  width: 490px;;
   height: 160px;
   opacity: 1;
-  filter: drop-shadow(0 0 50px rgba(0, 0, 0, 0.161));
+  filter: drop-shadow(0 0 20px rgba(0, 0, 0, 0.161));
   background-color: rgba(255,255,255,1);
 }
 
@@ -372,7 +372,7 @@ img {
   border-top-right-radius: 10px;
   border-bottom-right-radius: 10px;
   position: absolute;
-  width: 160px;
+  width: auto;
   height: 160px;
   top: 0;
   right: 0;
