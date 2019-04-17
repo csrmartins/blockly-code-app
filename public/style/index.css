@@ -51,7 +51,7 @@ h3 {
 
 
 .formContainer {
-  width: 399px;
+  width: 400px;
 }
 
 .formInputs {
@@ -60,7 +60,7 @@ h3 {
   margin-right: 50%;
   font-size: 12px;
   color: rgba(53,63,73,1);
-  width: 100%;
+  min-width: 400px;
 }
 
 

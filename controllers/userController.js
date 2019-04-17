@@ -14,6 +14,8 @@ router.get('/:id', async (req, res) => {
 
   try{
     fetch(`https://ancient-woodland-36793.herokuapp.com/api/v1/users/${req.params.id}`)
+    // fetch(`http://localhost:9000/api/v1/users/${req.params.id}`)
+
     .then(res => res.json())
     .then(json => {(
       foundUser = json.data,
@@ -39,6 +41,8 @@ router.get('/:id', async (req, res) => {
     res.send(err)
   }
 });
+
+
 
 
 

@@ -73,6 +73,7 @@
     </div>
 
     <div id="designArea">
+      <button type="button" name="button" onclick="collisionDetection()">Detectar Colisão</button>
       <div class="sessionTitle">
         <h3>Background</h3>
         <div class="sessionTitleSubline"></div>
@@ -175,6 +176,7 @@
         <block type="on_down_click"></block>
         <block type="on_left_click"></block>
         <block type="on_right_click"></block>
+        <block type="detect_colision"></block>
       </category>
       <category name="Movimento" colour="120">
         <block type="move_astronaut_up"></block>
@@ -205,6 +207,9 @@
           </block>
           <block type="math_arithmetic"></block>
           <block type="math_single"></block>
+        </category>
+        <category name="Log" colour="330">
+          <block type="console_log"></block>
         </category>
     </xml>
 </div>
@@ -381,10 +386,6 @@ const assetsArray = [
   {ref: 'downControl', id: 'cvsDownControl', class: 'draggableAsset', cathegory:'control', imgPath: '/images/builder-assets/controls/down-01.png', width: 'auto', height: '100px'},
   {ref: 'leftControl', id: 'cvsLeftControl', class: 'draggableAsset', cathegory:'control', imgPath: '/images/builder-assets/controls/left-01.png', width: '100px', height: 'auto'},
   {ref: 'rightControl', id: 'cvsRightControl', class: 'draggableAsset', cathegory:'control', imgPath: '/images/builder-assets/controls/right-01.png', width: '100px', height: 'auto'},
-
-
-
-
 ]
 
 const appendedAssets = [];
@@ -459,21 +460,9 @@ const appendedAssets = [];
     console.log(project, 'project');
 
     var projectToSave = JSON.stringify(project)
-
-    console.log(projectToSave, 'projectToSave');
-
     var projectToLoad = JSON.parse(projectToSave)
 
-    console.log(projectToLoad, 'PROJECT to LoAD');
-
     document.getElementById('playgroundInput').value = projectToSave;
-    // console.log(document.getElementById('playgroundInput').value, 'project JSON OBject');
-
-
-    // document.getElementById('txtInput').value = JSON.stringify(project.txt);
-    // document.getElementById('playgroundInput').value = JSON.stringify(project.playground);
-    // console.log(document.getElementById('playgroundInput').value, 'Value of PlaygourndINput');
-    // console.log(project.playground[0], 'this is project playground index 0');
 
   } // ------------------- End of Save Project
 
@@ -528,9 +517,8 @@ const appendedAssets = [];
       target.setAttribute('data-x', x);
       target.setAttribute('data-y', y);
 
-
-
       console.log(x, 'Drag Move X!');
+
     }
 
     // console.log(document.getElementById('#cvsRedDuck').currentX);
@@ -610,6 +598,53 @@ const astronaut = {
       document.getElementById('cvsChar01').setAttribute('data-y', y)
   },
 }
+
+
+
+var collisionDetection = function(name1, name2){
+
+  console.log(name1, "this is Name1");
+
+  console.log(name2, "This is name 2");
+  var obj1 = document.getElementById(`${name1}`);
+  var obj2 = document.getElementById(`${name2}`);
+
+
+  console.log(obj1, 'This is OBJ 1');
+  console.log(obj2, 'This is OBJ 2');
+
+  var colideBox1 = {
+    x: (parseInt(obj1.getAttribute('data-x') || 0) + parseInt(obj1.style.left.replace("px", ""))),
+    y: (parseInt(obj1.getAttribute('data-y') || 0) + parseInt(obj1.style.top.replace("px", ""))),
+    width: obj1.width,
+    height: obj1.height,
+  }
+
+  var colideBox2 = {
+    x: (parseInt(obj2.getAttribute('data-x') || 0) + parseInt(obj2.style.left.replace("px", ""))),
+    y: (parseInt(obj2.getAttribute('data-y') || 0) + parseInt(obj2.style.top.replace("px", ""))),
+    width: obj2.width,
+    height: obj2.height,
+  }
+
+  if (colideBox1.x < colideBox2.x + colideBox2.width &&
+   colideBox1.x + colideBox1.width > colideBox2.x &&
+   colideBox1.y < colideBox2.y + colideBox2.height &&
+   colideBox1.y + colideBox1.height > colideBox2.y) {
+    // collision detected!
+  return true;
+}
+
+  console.log(colideBox1, "colideBox1");
+  console.log(colideBox2, "colideBox2");
+
+
+}
+
+
+
+
+
 
 
 

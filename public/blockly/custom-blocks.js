@@ -311,7 +311,7 @@ Blockly.Blocks['console_log'] = {
         .appendField(new Blockly.FieldTextInput("Log Message"), "LOG");
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
-    this.setColour(230);
+    this.setColour(330);
  this.setTooltip("");
  this.setHelpUrl("");
   }
@@ -321,5 +321,34 @@ Blockly.JavaScript['console_log'] = function(block) {
   var text_log = block.getFieldValue('LOG');
   // TODO: Assemble JavaScript into code variable.
   var code = `console.log("${text_log}")\n`;
+  return code;
+};
+
+//COLISION DETECTION
+
+Blockly.Blocks['detect_colision'] = {
+  init: function() {
+    this.appendDummyInput()
+        .appendField("Ao")
+        .appendField(new Blockly.FieldDropdown([["Astronauta Branco","cvsChar01"], ["Astronauta Laranja","cvsChar02"], ["AstronautaRosa","cvsChar03"]]), "NAME1");
+    this.appendDummyInput()
+        .appendField("Colidir com")
+        .appendField(new Blockly.FieldDropdown([["Astronauta Branco","cvsChar01"], ["Astronauta Laranja","cvsChar02"], ["AstronautaRosa","cvsChar03"]]), "NAME2");
+    this.appendStatementInput("OBJ1")
+        .setCheck(null);
+    this.setColour(65);
+ this.setTooltip("");
+ this.setHelpUrl("");
+  }
+};
+
+Blockly.JavaScript['detect_colision'] = function(block) {
+  var dropdown_name1 = block.getFieldValue('NAME1');
+  var dropdown_name2 = block.getFieldValue('NAME2');
+  var statements_obj1 = Blockly.JavaScript.statementToCode(block, 'OBJ1');
+  // TODO: Assemble JavaScript into code variable.
+  var code = `while (true) {
+    if (collisionDetection("${dropdown_name1}", "${dropdown_name2}")) {\n${statements_obj1}}
+  };\n`;
   return code;
 };
