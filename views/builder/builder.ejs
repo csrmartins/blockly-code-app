@@ -364,7 +364,7 @@ const assetsArray = [
   {ref: 'platform05', id: 'cvsPlatform05', class: 'draggableAsset', cathegory:'platform', imgPath: '/images/builder-assets/platform/Alien-Planet-01-t-c000.png', width: 'auto', height: '50px'},
   {ref: 'platform06', id: 'cvsPlatform06', class: 'draggableAsset', cathegory:'platform', imgPath: '/images/builder-assets/platform/Alien-Planet-01-t-c001.png', width: 'auto', height: '50px'},
   {ref: 'platform01', id: 'cvsPlatform01', class: 'draggableAsset', cathegory:'platform', imgPath: '/images/builder-assets/platform/Alien-Planet-01-t-a000.png', width: 'auto', height: '50px'},
-  {ref: 'char01', id: 'cvsChar01', class: 'draggableAsset', cathegory:'character', imgPath: '/images/builder-assets/characters/Charac_F-S01-Idle_0.png', width: 'auto', height: '90px'},
+  {ref: 'char01', id: 'cvsChar01', class: 'draggableAsset', cathegory:'character', imgPath: '/images/builder-assets/characters/Charac_F-S01-Idle_0.png', width: '90px', height: 'auto'},
   {ref: 'char02', id: 'cvsChar02', class: 'draggableAsset', cathegory:'character', imgPath: '/images/builder-assets/characters/Charac_F-S02-Idle_0.png', width: 'auto', height: '90px'},
   {ref: 'char03', id: 'cvsChar03', class: 'draggableAsset', cathegory:'character', imgPath: '/images/builder-assets/characters/Charac_F-S03-Idle_0.png', width: 'auto', height: '90px'},
   {ref: 'char04', id: 'cvsChar04', class: 'draggableAsset', cathegory:'character', imgPath: '/images/builder-assets/characters/Charac_F-S04-Idle_0.png', width: 'auto', height: '90px'},
@@ -433,7 +433,7 @@ const appendedAssets = [];
         }else{
           var foundAsset = assetsArray[i];
           // var newHtml = `${foundAssetHtml}style="position:absolute; top:${posX}px; right:${posY}px">`
-          var newHtml = `<img id="${foundAsset.id}" class="${foundAsset.class}" src="${foundAsset.imgPath}" alt="game-asset" style="position:absolute; top:${posY}px; left:${posX}px; width:${foundAsset.width}; height:${foundAsset.height}">`
+          var newHtml = `<img id="${foundAsset.id}" class="${foundAsset.class}" src="${foundAsset.imgPath}" alt="game-asset" style="position:absolute; bottom:${posY}px; left:${posX}px; width:${foundAsset.width}; height:${foundAsset.height}">`
         }
       }
     }
@@ -448,9 +448,6 @@ const appendedAssets = [];
   //=======================SAVE FUNCTION ======================================
 
   var project = {author: `<%= foundUser._id%>`, name: 'Untitled', xml: '', txt: '', playground: appendedAssets}
-
-
-
 
   // var project = {};
   function saveProject() {
@@ -653,9 +650,14 @@ var pular = function() {
   console.log('Vamos pular | Y = ', y);
 
   target.src = '/images/builder-assets/characters/gifs/Charac_S-S01-Jump-2.gif'
+  console.log(target.style.height, 'TARGET STYLE HEIGHT');
 
-  setTimeout(function(){target.src = '/images/builder-assets/characters/Charac_F-S01-Idle_0.png'}, 700)
-  
+
+
+  setTimeout(function(){
+    target.src = '/images/builder-assets/characters/Charac_F-S01-Idle_0.png'
+    }, 700)
+
 }
 
 

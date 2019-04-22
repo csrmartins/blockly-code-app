@@ -186,42 +186,7 @@
     }
   })
 
-  // $(window).click(function(event){
-  //   console.log('window clicked');
-  //   console.log(event.target, 'this is target');
-  //   if(event.target.class != 'dropBtn'){
-  //     console.log('this is not dropBtn');
-  //     var $dropdownContent = $('.dropdownContent')
-  //     console.log($dropdownContent[0].classList);
-  //       if($dropdownContent[0].classList.contains('show')){
-  //         console.log('It contains Show');
-  //         $('dropdownContent').removeClass('show')
-  //         console.log();
-  //       }else {
-  //         console.log('it does not contains show');
-  //       }
-  //   }else {
-  //     console.log('this is dropBtn');
-  //   }
-  // })
 
-
-
-//   /* When the user clicks on the button,
-// toggle between hiding and showing the dropdown content */
-// function myFunction() {
-//   document.getElementById("myDropdown").classList.toggle("show");
-// }
-//
-// // Close the dropdown if the user clicks outside of it
-// window.onclick = function(e) {
-//   if (!e.target.matches('.dropbtn')) {
-//   var myDropdown = document.getElementById("myDropdown");
-//     if (myDropdown.classList.contains('show')) {
-//       myDropdown.classList.remove('show');
-//     }
-//   }
-// }
 
 var sendEmail = function(name, email, id) {
   Email.send({
@@ -233,11 +198,11 @@ var sendEmail = function(name, email, id) {
     Subject : "App Code | E-mail teste",
     Body : `Olá, ${name}! Olhe o projeto que o que alguém especial compartilhou com você! Acesso o link: https://limitless-thicket-77273.herokuapp.com/builder/edit/${id} `
   }).then(
-  message => alert(message)
+  setTimeout(location.reload(), 3000),
   );
 }
 
-
+//function that attributes the value of the Id of the clicked Project to the input which will be used to send the Email.
 function shareProject(params) {
   document.getElementById('projectId').value = params
   console.log(document.getElementById('projectId'), ' THIS IS PROJECT ID FIELD!');

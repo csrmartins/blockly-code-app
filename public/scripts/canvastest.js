@@ -28,7 +28,7 @@ var elements = [
     name: 'Background',
     width: 596,
     height: 720,
-    color: 'images/builder-assets/Background_01_A25_Rectangle_34_pattern.png',
+    color: 'images/builder-assets/background/Alien-Planet-01-002.png',
     x: 0,
     y: 0,
     type: 'image'
