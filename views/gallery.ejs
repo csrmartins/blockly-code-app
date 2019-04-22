@@ -231,7 +231,7 @@ var sendEmail = function(name, email, id) {
     To : email,
     From : "cesar.martins@happycodeschool.com",
     Subject : "App Code | E-mail teste",
-    Body : `Olá, ${name}! Olhe o projeto que o que alguém especial compartilhou com você! Acesso o link: http://localhost:3000/builder/edit/${id} `
+    Body : `Olá, ${name}! Olhe o projeto que o que alguém especial compartilhou com você! Acesso o link: https://limitless-thicket-77273.herokuapp.com/builder/edit/${id} `
   }).then(
   message => alert(message)
   );
