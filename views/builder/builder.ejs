@@ -73,7 +73,7 @@
     </div>
 
     <div id="designArea">
-      <button type="button" name="button" onclick="collisionDetection()">Detectar Colisão</button>
+      <button type="button" name="button" onclick="pular()">Testar Pulo</button>
       <div class="sessionTitle">
         <h3>Background</h3>
         <div class="sessionTitleSubline"></div>
@@ -363,6 +363,7 @@ const assetsArray = [
   {ref: 'platform04', id: 'cvsPlatform04', class: 'draggableAsset', cathegory:'platform', imgPath: '/images/builder-assets/platform/Alien-Planet-01-t-b001.png', width: 'auto', height: '50px'},
   {ref: 'platform05', id: 'cvsPlatform05', class: 'draggableAsset', cathegory:'platform', imgPath: '/images/builder-assets/platform/Alien-Planet-01-t-c000.png', width: 'auto', height: '50px'},
   {ref: 'platform06', id: 'cvsPlatform06', class: 'draggableAsset', cathegory:'platform', imgPath: '/images/builder-assets/platform/Alien-Planet-01-t-c001.png', width: 'auto', height: '50px'},
+  {ref: 'platform01', id: 'cvsPlatform01', class: 'draggableAsset', cathegory:'platform', imgPath: '/images/builder-assets/platform/Alien-Planet-01-t-a000.png', width: 'auto', height: '50px'},
   {ref: 'char01', id: 'cvsChar01', class: 'draggableAsset', cathegory:'character', imgPath: '/images/builder-assets/characters/Charac_F-S01-Idle_0.png', width: 'auto', height: '90px'},
   {ref: 'char02', id: 'cvsChar02', class: 'draggableAsset', cathegory:'character', imgPath: '/images/builder-assets/characters/Charac_F-S02-Idle_0.png', width: 'auto', height: '90px'},
   {ref: 'char03', id: 'cvsChar03', class: 'draggableAsset', cathegory:'character', imgPath: '/images/builder-assets/characters/Charac_F-S03-Idle_0.png', width: 'auto', height: '90px'},
@@ -638,8 +639,26 @@ var collisionDetection = function(name1, name2){
   console.log(colideBox1, "colideBox1");
   console.log(colideBox2, "colideBox2");
 
-
 }
+
+var pular = function() {
+
+  var target = document.getElementById('cvsChar01');
+  console.log(target, "vamos pular Target");
+
+  x = parseFloat(target.getAttribute('data-x') || 0)
+  y = parseFloat(target.getAttribute('data-y') || 0)
+
+  console.log('Vamos pular | X = ', x);
+  console.log('Vamos pular | Y = ', y);
+
+  target.src = '/images/builder-assets/characters/gifs/Charac_S-S01-Jump-2.gif'
+
+  setTimeout(function(){target.src = '/images/builder-assets/characters/Charac_F-S01-Idle_0.png'}, 700)
+  
+}
+
+
 
 
 

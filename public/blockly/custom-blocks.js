@@ -336,6 +336,8 @@ Blockly.Blocks['detect_colision'] = {
         .appendField(new Blockly.FieldDropdown([["Astronauta Branco","cvsChar01"], ["Astronauta Laranja","cvsChar02"], ["AstronautaRosa","cvsChar03"]]), "NAME2");
     this.appendStatementInput("OBJ1")
         .setCheck(null);
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
     this.setColour(65);
  this.setTooltip("");
  this.setHelpUrl("");
@@ -347,8 +349,6 @@ Blockly.JavaScript['detect_colision'] = function(block) {
   var dropdown_name2 = block.getFieldValue('NAME2');
   var statements_obj1 = Blockly.JavaScript.statementToCode(block, 'OBJ1');
   // TODO: Assemble JavaScript into code variable.
-  var code = `while (true) {
-    if (collisionDetection("${dropdown_name1}", "${dropdown_name2}")) {\n${statements_obj1}}
-  };\n`;
+  var code = `if (collisionDetection("${dropdown_name1}", "${dropdown_name2}")) {\n${statements_obj1}};\n`;
   return code;
 };

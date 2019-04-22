@@ -332,3 +332,45 @@ img {
   bottom: 10px;
   right: 15px;
 }
+
+.modal-title {
+  font-weight: bold;
+  font-size: 16px;
+
+}
+
+.modal-body {
+  font-size: 14px;
+}
+
+.modal-body input {
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.modal-body p {
+  margin-left: 0
+}
+
+.btn-primary {
+  margin: 0;
+  padding: 0;
+  border-radius: 10px;
+  border: none;
+  width: 80px;
+  height: 25px;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+
+.btn-danger {
+  margin: 0;
+  padding: 0;
+  border-radius: 10px;
+  border: none;
+  width: 80px;
+  height: 25px;
+  font-size: 12px;
+  font-weight: bold;
+}

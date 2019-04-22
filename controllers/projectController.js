@@ -5,6 +5,8 @@ const fetch = require('node-fetch');
 const session = require('express-session');
 
 
+
+
 // router.get('/', (req,res) => {
 //   console.log('project route');
 //   res.render('projects.ejs')
@@ -36,6 +38,12 @@ router.post('/new', async (req, res) => {
   }
 
 });
+
+router.post('/share', (req, res) => {
+  console.log(req.body, "this is Share REQ.BODY");
+
+
+})
 
 router.get('/all', async (req, res) => {
 

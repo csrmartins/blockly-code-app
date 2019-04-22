@@ -1,5 +1,6 @@
 <% include partials/_head %>
 <link rel="stylesheet" href="/style/gallery.css">
+<script src="https://smtpjs.com/v3/smtp.js"></script>
 
 
 
@@ -66,7 +67,7 @@
               </div>
               <img src="/images/project-print-2.png" alt="project-print.png">
               <div class="cardButtons">
-                <a href="#" data-toggle="modal" data-target="#myModal"><img class="shareIcon" src="/images/icons/compartilhar.svg" alt="compartilhar.svg"></a>
+                <a href="#" data-toggle="modal" data-target="#myModal" onclick="shareProject('<%= allProjects[i]._id%>')"><img class="shareIcon" src="/images/icons/compartilhar.svg" alt="compartilhar.svg"></a>
               </div>
             </div>
           <% } %>
@@ -132,29 +133,29 @@
 <div class="modal" id="myModal">
   <div class="modal-dialog">
     <div class="modal-content">
-      <form action="/projects/new" method="POST">
       <!-- Modal Header -->
       <div class="modal-header">
-        <h2 class="modal-title">Salvar Projeto</h2>
+        <h2 class="modal-title">Compartilhar Projeto</h2>
         <button type="button" class="close" data-dismiss="modal">&times;</button>
       </div>
 
 
         <!-- Modal body -->
         <div class="modal-body">
-          <p>Adicione um nome para o seu projeto:</p>
-          <input type="text" name="name" value="">
-          <input type="hidden" name="author" value="<%= foundUser._id%>">
-          <input id="txtInput" type="hidden" name="txt" >
-          <input id="playgroundInput" type="hidden" name="playground">
+          <p>Adicione o nome do destinatário:</p>
+          <input id="toName" type="text" name="name" value="">
+          <p>Adicione o e-mail do destinatário:</p>
+          <input id="toEmail" type="text" name="email" value="">
+          <input id="projectId" type="hidden" name="projectId">
+
+
         </div>
 
         <!-- Modal footer -->
         <div class="modal-footer">
-          <button type="submit" class="btn btn-primary">Salvar</button>
+          <button type="button" class="btn btn-primary" onclick="sendEmail(document.getElementById('toName').value, document.getElementById('toEmail').value, document.getElementById('projectId').value) ">Enviar</button>
           <button type="button" class="btn btn-danger" data-dismiss="modal">Fechar</button>
         </div>
-      </form>
     </div>
   </div>
 </div>
@@ -180,12 +181,8 @@
   })
 
   $(window).click(function(e) {
-    console.log(e.target, 'e.target.class');
     if(e.target.id != ('dropBtn' || 'dropBtnIcon')) {
-      console.log('this is not dropBtn');
       $('.dropdownContent').removeClass('show')
-    }else{
-      console.log('this is dropBtn');
     }
   })
 
@@ -225,4 +222,36 @@
 //     }
 //   }
 // }
+
+var sendEmail = function(name, email, id) {
+  Email.send({
+    Host : "smtp.office365.com",
+    Username : "cesar.martins@happycodeschool.com",
+    Password : "Help789&*(",
+    To : email,
+    From : "cesar.martins@happycodeschool.com",
+    Subject : "App Code | E-mail teste",
+    Body : `Olá, ${name}! Olhe o projeto que o que alguém especial compartilhou com você! Acesso o link: http://localhost:3000/builder/edit/${id} `
+  }).then(
+  message => alert(message)
+  );
+  location.reload()
+}
+
+
+function shareProject(params) {
+  document.getElementById('projectId').value = params
+  console.log(document.getElementById('projectId'), ' THIS IS PROJECT ID FIELD!');
+}
+
 </script>
+
+
+
+
+<!-- Bootstrap Scripts  -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+  </body>
+</html>
