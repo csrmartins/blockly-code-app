@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Open+Sans');
+/* @import url('https://fonts.googleapis.com/css?family=Open+Sans');
 
 
 body{
@@ -72,6 +72,96 @@ img {
   overflow: visible;
   filter: drop-shadow(8px 8px 20px rgba(0, 0, 0, 0.102));
 
+}
+
+.dropdownContent a {
+  padding: 10px;
+  text-align: center;
+  display: block;
+  width: inherit;
+  height: 40px;
+  font-size: 12px;
+  color: rgba(53,63,73,1);
+}
+
+.dropdownContent hr {
+  margin: 0 10px;
+}
+
+.show {
+  display: block;
+} */
+
+@import url('https://fonts.googleapis.com/css?family=Open+Sans');
+
+
+body{
+  font-family: 'Open Sans', sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.mainNav{
+  background-color: rgba(117,135,249,1);
+  color: rgba(255,255,255,1);
+  font-size: 12px;
+  height: 45px;
+}
+
+ul {
+  padding: 10px 0;
+  list-style-type: none;
+}
+
+li {
+  display: inline;
+  margin: 0 10px;
+}
+
+a {
+  color: rgba(255,255,255,1);
+}
+
+a:hover {
+  color: rgba(255,255,255,1);
+  text-decoration: none;
+  font-weight: bold;
+}
+
+img {
+  margin-right: 5px;
+}
+
+.mainActive {
+  border-bottom: 3px solid rgba(255,151,91,1);
+  padding-bottom: 12px;
+}
+
+.mainRight {
+  float: right;
+  max-width: 260px;
+  overflow: visible;
+}
+
+#imgProfile {
+  width: 33px;
+  height: 33px;
+  border-radius: 50%;
+}
+
+#dropBtn{
+  background-color: transparent;
+  border: none;
+}
+
+.dropdownContent{
+  display: none;
+  background-color: #FFFFFF;
+  border-radius: 10px;
+  width: 235px;
+  height: auto;
+  overflow: visible;
+  filter: drop-shadow(8px 8px 20px rgba(0, 0, 0, 0.102));
 }
 
 .dropdownContent a {
@@ -219,12 +309,13 @@ h1 {
 
 
 .rightContainer {
-  background-color: lightgrey;
+  background-color: #C5C5C5C5;
   position: absolute;
   right: 0;
   top: inherit;
   height: 100%;
   width: 50%;
+  overflow: scroll;
 }
 
 .bottomButtons {
@@ -237,7 +328,8 @@ h1 {
   z-index: 1;
 }
 
-#btnRun{
+#btnFullScreen {
+  background-color: #FFFFFF;
   opacity: 0.5;
   margin-bottom: 30px;
   margin-right: 50px;
@@ -246,7 +338,28 @@ h1 {
   border:none;
 }
 
+#btnFullScreen img {
+  margin: 0;
+  padding: 0;
+}
+
+#btnRun{
+  background-color: #FFFFFF;
+  opacity: 0.5;
+  margin-bottom: 30px;
+  margin-right: 50px;
+  padding: 0;
+  border-radius: 50%;
+  border:none;
+}
+
+#btnRun img {
+  margin: 0;
+  padding: 0;
+}
+
 #btnSave{
+  background-color: #FFFFFF;
   border-radius: 10px;
   border: none;
   width: 80px;
@@ -257,6 +370,7 @@ h1 {
 }
 
 #btnPublish{
+  background-color: #FFFFFF;
   border-radius: 10px;
   border: none;
   width: 80px;

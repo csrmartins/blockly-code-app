@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="31" height="31" viewBox="0 0 31 31">
+  <defs>
+    <style>
+      .cls-1 {
+        opacity: 0.5;
+      }
+
+      .cls-2 {
+        fill: #fff;
+      }
+
+      .cls-3 {
+        fill: #353f49;
+      }
+    </style>
+  </defs>
+  <g id="const_-_botao_tela_maior" data-name="const - botao tela maior" class="cls-1" transform="translate(-733 997) rotate(-90)">
+    <circle id="Ellipse_11" data-name="Ellipse 11" class="cls-2" cx="15.5" cy="15.5" r="15.5" transform="translate(966 733)"/>
+    <g id="Group_92" data-name="Group 92" transform="translate(1012.678 866.268)">
+      <path id="Path_116" data-name="Path 116" class="cls-3" d="M-25.906-124.268H-36.677a1,1,0,0,0-1,1,1,1,0,0,0,1,1h9.771v9.77a1,1,0,0,0,1,1,1,1,0,0,0,1-1v-10.77A1,1,0,0,0-25.906-124.268Z"/>
+      <path id="Path_117" data-name="Path 117" class="cls-3" d="M-30.786-119.388h-5.64a1,1,0,0,0-1,1,1,1,0,0,0,1,1H-33.2l-3.6,3.6a1,1,0,0,0,0,1.415,1,1,0,0,0,.707.293,1,1,0,0,0,.707-.293l3.6-3.6v3.225a1,1,0,0,0,1,1,1,1,0,0,0,1-1v-5.639A1,1,0,0,0-30.786-119.388Z"/>
+    </g>
+  </g>
+</svg>

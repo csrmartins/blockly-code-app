@@ -73,7 +73,6 @@
     </div>
 
     <div id="designArea">
-      <button type="button" name="button" onclick="pular()">Testar Pulo</button>
       <div class="sessionTitle">
         <h3>Background</h3>
         <div class="sessionTitleSubline"></div>
@@ -152,7 +151,9 @@
     <!-- <div id="canvas"> -->
       <div class="bottomButtons">
         <div class="rightBtnContainer">
-          <button id= "btnRun"type="button" onclick="runCode()" name="button"> <img id="playIcon"src="/images/icons/const - botao play.svg" alt="const - botao play.svg"> </button>
+          <img src="" alt="">
+          <button id= "btnRun"type="button" onclick="runCode()" name="button"> <img id="playIcon" src="/images/icons/const - botao play.svg" alt="const - botao play.svg"> </button>
+          <button id= "btnFullScreen"type="button" onclick="fullScreen()" name="button"><img id="fullScreenIcon" src="/images/icons/const - botao tela maior.svg" alt=""></button>
         </div>
         <div class="centerBtnContainer">
           <button id= "btnSave"type="button" name="button" data-toggle="modal" data-target="#myModal" onclick="saveProject()">Salvar</button>
@@ -346,17 +347,18 @@
 
 
 const assetsArray = [
-  {ref: 'alienBackground001', id: 'cvsAlienBackground001', class: 'draggableAsset', cathegory:'background', html: '<img src="/images/builder-assets/background/Alien-Planet-01-001.png" width="100%" height="100%" style="position:absolute; top:0; left:0">'},
-  {ref: 'alienBackground002', id: 'cvsAlienBackground002', class: 'draggableAsset', cathegory:'background', html: '<img src="/images/builder-assets/background/Alien-Planet-01-002.png" width="100%" height="100%" style="position:absolute; top:0; left:0">'},
-  {ref: 'alienBackground003', id: 'cvsAlienBackground003', class: 'draggableAsset', cathegory:'background', html: '<img src="/images/builder-assets/background/Alien-Planet-01-003.png" width="100%" height="100%" style="position:absolute; top:0; left:0">'},
-  {ref: 'alienBackground004', id: 'cvsAlienBackground004', class: 'draggableAsset', cathegory:'background', html: '<img src="/images/builder-assets/background/Alien-Planet-01-004.png" width="100%" height="100%" style="position:absolute; top:0; left:0">'},
-  {ref: 'alienBackground005', id: 'cvsAlienBackground005', class: 'draggableAsset', cathegory:'background', html: '<img src="/images/builder-assets/background/Alien-Planet-01-005.png" width="100%" height="100%" style="position:absolute; top:0; left:0">'},
-  {ref: 'alienBackground006', id: 'cvsAlienBackground006', class: 'draggableAsset', cathegory:'background', html: '<img src="/images/builder-assets/background/Alien-Planet-01-006.png" width="100%" height="100%" style="position:absolute; top:0; left:0">'},
-  {ref: 'alienBackground007', id: 'cvsAlienBackground007', class: 'draggableAsset', cathegory:'background', html: '<img src="/images/builder-assets/background/Alien-Planet-01-007.png" width="100%" height="100%" style="position:absolute; top:0; left:0">'},
-  {ref: 'alienBackground009', id: 'cvsAlienBackground009', class: 'draggableAsset', cathegory:'background', html: '<img src="/images/builder-assets/background/Alien-Planet-01-009.png" width="100%" height="100%" style="position:absolute; top:0; left:0">'},
-  {ref: 'alienBackground010', id: 'cvsAlienBackground010', class: 'draggableAsset', cathegory:'background', html: '<img src="/images/builder-assets/background/Alien-Planet-01-010.png" width="100%" height="100%" style="position:absolute; top:0; left:0">'},
-  {ref: 'alienBackground011', id: 'cvsAlienBackground011', class: 'draggableAsset', cathegory:'background', html: '<img src="/images/builder-assets/background/Alien-Planet-01-011.png" width="100%" height="100%" style="position:absolute; top:0; left:0">'},
-  {ref: 'alienBackground012', id: 'cvsAlienBackground012', class: 'draggableAsset', cathegory:'background', html: '<img src="/images/builder-assets/background/Alien-Planet-01-012.png" width="100%" height="100%" style="position:absolute; top:0; left:0">'},
+  {ref: 'alienBackground001', id: 'cvsAlienBackground001', class: 'draggableAsset', cathegory:'background', html: '<img src="/images/builder-assets/background/Alien-Planet-01-001.png" width="1024px" height="768px" style="position:absolute; top:0; left:0">'},
+  {ref: 'alienBackground002', id: 'cvsAlienBackground002', class: 'draggableAsset', cathegory:'background', html: '<img src="/images/builder-assets/background/Alien-Planet-01-002.png" width="1024px" height="768px" style="position:absolute; top:0; left:0">'},
+  {ref: 'alienBackground003', id: 'cvsAlienBackground003', class: 'draggableAsset', cathegory:'background', html: '<img src="/images/builder-assets/background/Alien-Planet-01-003.png" width="1024px" height="768px" style="position:absolute; top:0; left:0">'},
+  {ref: 'alienBackground004', id: 'cvsAlienBackground004', class: 'draggableAsset', cathegory:'background', html: '<img src="/images/builder-assets/background/Alien-Planet-01-004.png" width="1024px" height="768px" style="position:absolute; top:0; left:0">'},
+  {ref: 'alienBackground005', id: 'cvsAlienBackground005', class: 'draggableAsset', cathegory:'background', html: '<img src="/images/builder-assets/background/Alien-Planet-01-005.png" width="1024px" height="768px" style="position:absolute; top:0; left:0">'},
+  {ref: 'alienBackground006', id: 'cvsAlienBackground006', class: 'draggableAsset', cathegory:'background', html: '<img src="/images/builder-assets/background/Alien-Planet-01-006.png" width="1024px" height="768px" style="position:absolute; top:0; left:0">'},
+  {ref: 'alienBackground007', id: 'cvsAlienBackground007', class: 'draggableAsset', cathegory:'background', html: '<img src="/images/builder-assets/background/Alien-Planet-01-007.png" width="1024px" height="768px" style="position:absolute; top:0; left:0">'},
+  {ref: 'alienBackground008', id: 'cvsAlienBackground008', class: 'draggableAsset', cathegory:'background', html: '<img src="/images/builder-assets/background/Alien-Planet-01-008.png" width="1024px" height="768px" style="position:absolute; top:0; left:0">'},
+  {ref: 'alienBackground009', id: 'cvsAlienBackground009', class: 'draggableAsset', cathegory:'background', html: '<img src="/images/builder-assets/background/Alien-Planet-01-009.png" width="1024px" height="768px" style="position:absolute; top:0; left:0">'},
+  {ref: 'alienBackground010', id: 'cvsAlienBackground010', class: 'draggableAsset', cathegory:'background', html: '<img src="/images/builder-assets/background/Alien-Planet-01-010.png" width="1024px" height="768px" style="position:absolute; top:0; left:0">'},
+  {ref: 'alienBackground011', id: 'cvsAlienBackground011', class: 'draggableAsset', cathegory:'background', html: '<img src="/images/builder-assets/background/Alien-Planet-01-011.png" width="1024px" height="768px" style="position:absolute; top:0; left:0">'},
+  {ref: 'alienBackground012', id: 'cvsAlienBackground012', class: 'draggableAsset', cathegory:'background', html: '<img src="/images/builder-assets/background/Alien-Planet-01-012.png" width="1024px" height="768px" style="position:absolute; top:0; left:0">'},
   {ref: 'platform01', id: 'cvsPlatform01', class: 'draggableAsset', cathegory:'platform', imgPath: '/images/builder-assets/platform/Alien-Planet-01-t-a000.png', width: 'auto', height: '50px'},
   {ref: 'platform02', id: 'cvsPlatform02', class: 'draggableAsset', cathegory:'platform', imgPath: '/images/builder-assets/platform/Alien-Planet-01-t-a001.png', width: 'auto', height: '50px'},
   {ref: 'platform03', id: 'cvsPlatform03', class: 'draggableAsset', cathegory:'platform', imgPath: '/images/builder-assets/platform/Alien-Planet-01-t-b000.png', width: 'auto', height: '50px'},
@@ -464,7 +466,31 @@ const appendedAssets = [];
 
   } // ------------------- End of Save Project
 
+var fullScreenState = false;
 
+var leftContainer =   document.getElementsByClassName('leftContainer')
+var rightContainer = document.getElementsByClassName('rightContainer')
+var fullScreenIcon = document.getElementById('fullScreenIcon')
+
+function fullScreen() {
+  console.log("Full Screen Clicked!");
+
+  if(fullScreenState === false) {
+    leftContainer[0].hidden = true;
+    rightContainer[0].style.width = "100%"
+    fullScreenIcon.src = '/images/icons/const - botao tela menor.svg'
+
+    fullScreenState = true;
+
+  } else if (fullScreenState === true) {
+    leftContainer[0].hidden = false;
+    rightContainer[0].style.width = "50%"
+
+    fullScreenIcon.src = '/images/icons/const - botao tela maior.svg'
+
+    fullScreenState = false;
+  }
+}
 
 
 
@@ -543,7 +569,8 @@ const astronaut = {
       x = (parseFloat(target.getAttribute('data-x') || 0) + 50),
       y = parseFloat(target.getAttribute('data-y') || 0);
 
-      console.log(target.src, 'this is TRGET');
+      target.src = '/images/builder-assets/characters/gifs/Charac_S-S01-Walk.gif'
+
       target.style.webkitTransform =
       target.style.transform =
         'translate(' + x + 'px, ' + y + 'px)';
@@ -551,6 +578,10 @@ const astronaut = {
 
       document.getElementById('cvsChar01').setAttribute('data-x', x)
       document.getElementById('cvsChar01').setAttribute('data-y', y)
+
+      setTimeout(function(){
+        target.src = '/images/builder-assets/characters/Charac_F-S01-Idle_0.png'
+      }, 1000)
   },
 
   moveLeft: function() {
@@ -646,34 +677,17 @@ var pular = function() {
   x = parseFloat(target.getAttribute('data-x') || 0)
   y = parseFloat(target.getAttribute('data-y') || 0)
 
-  console.log('Vamos pular | X = ', x);
-  console.log('Vamos pular | Y = ', y);
-
   target.src = '/images/builder-assets/characters/gifs/Charac_S-S01-Jump-2.gif'
   console.log(target.style.height, 'TARGET STYLE HEIGHT');
-
 
 
   setTimeout(function(){
     target.src = '/images/builder-assets/characters/Charac_F-S01-Idle_0.png'
     }, 700)
-
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-  </script>
+</script>
 
 
 <!-- Bootstrap Scripts  -->
