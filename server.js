@@ -24,8 +24,14 @@ app.use(session({
   saveUninitialized: false
 }));
 
+app.use(bodyParser.json({ limit: '10mb'}))
+
+
 app.use(methodOverride('_method'));
 app.use(bodyParser.urlencoded({extended: false}));
+
+//Set Request Size Limit
+// app.use(express.limit(100000000));
 
 app.use(express.static('public'));
 

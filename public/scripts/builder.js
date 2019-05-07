@@ -1,3 +1,6 @@
+
+console.log('builder.js loaded!');
+
 //Função para Rodar o Código JavaScript
 function runCode() {
   console.log('Run code Clicked');

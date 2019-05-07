@@ -1,11 +1,11 @@
 @import url('https://fonts.googleapis.com/css?family=Open+Sans');
 
 
-body{
+/* body{
   font-family: 'Open Sans', sans-serif;
   margin: 0;
   padding: 0;
-}
+} */
 
 .mainNav{
   background-color: rgba(117,135,249,1);
@@ -135,6 +135,13 @@ h1 {
   color: #93D195;
 }
 
+h6  {
+  align-items: center;
+  background-color: #93D195;
+  padding: 0;
+  margin: 0;
+}
+
 .jumboHeader{
   background-color: #ECEFFB;
   height: 250px;
@@ -184,6 +191,7 @@ code {
 .sessionTitle h3{
   color: rgba(53,63,73,1);
   font-size: 14px;
+  margin: 0;
 }
 
 .designCathegory{
@@ -196,6 +204,38 @@ code {
   margin: 5px;
 }
 
+.designCathegory button {
+  margin: 10px;
+}
+
+.designCathegory label {
+  margin: 10px;
+}
+
+#whiteCard{
+  margin-bottom: 10px;
+  width: 270px;
+}
+
+#cvsWhiteCard{
+  margin-bottom: 10px;
+  width: 270px;
+}
+
+#cvsColorRoundButton {
+  z-index: 1;
+}
+
+
+
+/* .blocklyDiv{
+  position: relative;
+} */
+
+/* .injectionDiv{
+  position: absolute;
+  left: 0;
+} */
 
 #canvas {
   z-index: -1;
@@ -204,6 +244,8 @@ code {
   height: 755px;
   position: relative;
 }
+
+
 
 .row {
   position: absolute;
@@ -219,7 +261,7 @@ code {
 }
 
 
-.rightContainer {
+.rightContainerMainDiv {
   background-color: #C5C5C5C5;
   position: absolute;
   right: 0;
@@ -227,6 +269,22 @@ code {
   height: 100%;
   width: 50%;
   overflow: scroll;
+}
+
+.phoneContainer img {
+  position: absolute;
+  left:190px;
+  height: 700px;
+  width: auto;
+  /* margin-left: 190px; */
+}
+
+.rightContainer {
+  height: 540px;
+  width: 310px;
+  position: absolute;
+  top: 76px;
+  left: 216px;
 }
 
 
@@ -321,7 +379,6 @@ canvas {
 .modal-title {
   font-weight: bold;
   font-size: 16px;
-
 }
 
 .modal-body {

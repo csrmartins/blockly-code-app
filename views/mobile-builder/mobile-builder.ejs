@@ -13,9 +13,15 @@
     <script src="/scripts/highlight/highlight.pack.js"></script>
     <script>hljs.initHighlightingOnLoad();</script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/interactjs@1.3/dist/interact.min.js"></script>
-    <link rel="stylesheet" href="/style/builder.css">
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
+    <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+
+    <link rel="stylesheet" href="/style/mobile-builder.css">
     <title></title>
   </head>
   <body>
@@ -23,13 +29,10 @@
 <!-- hidden canvas to save print screen -->
 <div id="hiddenCanvas" hidden></div>
 
-
+<h6>Mobile Builder Test</h6>
 
 <!-- Main NavBar -->
 <div class="mainNav">
-
-
-
   <ul class="mainMenu">
     <li><a href="/profile/<%= foundUser._id%>"><img src="/images/icons/nav roxa - 1 inicio inativo.svg" alt="nav branca - 1 inicio.svg">Início</a></li>
     <li><a href="/lessons/<%= foundUser._id%>"><img src="/images/icons/nav roxa - 2 trilha inativo.svg" alt="nav branca - 2 trilha.svg">Trilha</a></li>
@@ -51,7 +54,6 @@
     </div>
   </ul>
 </div>
-
 <div class="row">
   <div class="leftContainer">
     <div class="builderNav">
@@ -73,78 +75,73 @@
 
     <div id="designArea">
       <div class="sessionTitle">
-        <h3>Background</h3>
+        <h3>Botões</h3>
         <div class="sessionTitleSubline"></div>
       </div>
       <div class="designCathegory">
-        <img id="alienBackground001" draggable="true" ondragstart="drag(event)" src="/images/builder-assets/background/Alien-Planet-01-001.png" alt="Alien-Planet-01-001.png">
-        <img id="alienBackground002" draggable="true" ondragstart="drag(event)" src="/images/builder-assets/background/Alien-Planet-01-002.png" alt="Alien-Planet-01-002.png">
-        <img id="alienBackground003" draggable="true" ondragstart="drag(event)" src="/images/builder-assets/background/Alien-Planet-01-003.png" alt="Alien-Planet-01-003.png">
-        <img id="alienBackground004" draggable="true" ondragstart="drag(event)" src="/images/builder-assets/background/Alien-Planet-01-004.png" alt="Alien-Planet-01-004.png">
-        <img id="alienBackground005" draggable="true" ondragstart="drag(event)" src="/images/builder-assets/background/Alien-Planet-01-005.png" alt="Alien-Planet-01-005.png">
-        <img id="alienBackground006" draggable="true" ondragstart="drag(event)" src="/images/builder-assets/background/Alien-Planet-01-006.png" alt="Alien-Planet-01-006.png">
-        <img id="alienBackground007" draggable="true" ondragstart="drag(event)" src="/images/builder-assets/background/Alien-Planet-01-007.png" alt="Alien-Planet-01-007.png">
-        <img id="alienBackground008" draggable="true" ondragstart="drag(event)" src="/images/builder-assets/background/Alien-Planet-01-008.png" alt="Alien-Planet-01-008.png">
-        <img id="alienBackground009" draggable="true" ondragstart="drag(event)" src="/images/builder-assets/background/Alien-Planet-01-009.png" alt="Alien-Planet-01-009.png">
+        <button id="regularButton" draggable="True" ondragstart="drag(event)" type="button" name="button">Botão de Teste</button><br>
+        <!-- Accent-colored raised button with ripple -->
+        <button class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--colored" id="colorRoundButton" draggable="True" ondragstart="drag(event)"><i class="material-icons">add</i></button>
+        <button class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab"><i class="material-icons">add</i></button><br>
+        <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">Button</button>
+        <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--accent">Button</button>
+        <button class="mdl-button mdl-js-button mdl-button--raised">Button</button>
+        <button class="mdl-button mdl-js-button mdl-button--raised" disabled>Button</button><br>
+        <button class="mdl-button mdl-js-button mdl-button--primary">Button</button>
+        <button class="mdl-button mdl-js-button mdl-button--accent">Button</button>
+        <button class="mdl-button mdl-js-button">Button</button>
+        <button class="mdl-button mdl-js-button" disabled>Button</button><br>
       </div>
       <div class="sessionTitle">
-        <h3>Cenário</h3>
+        <h3>Toggles</h3>
         <div class="sessionTitleSubline"></div>
       </div>
       <div class="designCathegory">
-        <img id="platform01" draggable="true" ondragstart="drag(event)" src="/images/builder-assets/platform/Alien-Planet-01-t-a000.png" alt="Alien-Planet-01-t-a000.png">
-        <img id="platform02" draggable="true" ondragstart="drag(event)" src="/images/builder-assets/platform/Alien-Planet-01-t-a001.png" alt="Alien-Planet-01-t-a001.png">
-        <img id="platform03" draggable="true" ondragstart="drag(event)" src="/images/builder-assets/platform/Alien-Planet-01-t-b000.png" alt="Alien-Planet-01-t-b000.png">
-        <img id="platform04" draggable="true" ondragstart="drag(event)" src="/images/builder-assets/platform/Alien-Planet-01-t-b001.png" alt="Alien-Planet-01-t-b001.png">
-        <img id="platform05" draggable="true" ondragstart="drag(event)" src="/images/builder-assets/platform/Alien-Planet-01-t-c000.png" alt="Alien-Planet-01-t-c000.png">
-        <img id="platform06" draggable="true" ondragstart="drag(event)" src="/images/builder-assets/platform/Alien-Planet-01-t-c001.png" alt="Alien-Planet-01-t-c001.png">
+        <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="checkbox-1">
+          <input type="checkbox" id="checkbox-1" class="mdl-checkbox__input" checked>
+          <span class="mdl-checkbox__label">Checkbox</span>
+        </label><!-- Check On-->
+        <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="checkbox-2">
+          <input type="checkbox" id="checkbox-2" class="mdl-checkbox__input">
+          <span class="mdl-checkbox__label">Checkbox</span>
+        </label><!-- Check Off-->
+        <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="option-1">
+          <input type="radio" id="option-1" class="mdl-radio__button" name="options" value="1" checked>
+          <span class="mdl-radio__label">First</span>
+        </label>
+        <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="option-2">
+          <input type="radio" id="option-2" class="mdl-radio__button" name="options" value="2">
+          <span class="mdl-radio__label">Second</span>
+        </label>
+        <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="switch-1">
+          <input type="checkbox" id="switch-1" class="mdl-switch__input" checked>
+          <span class="mdl-switch__label"></span>
+        </label>
+        <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="switch-2">
+          <input type="checkbox" id="switch-2" class="mdl-switch__input">
+          <span class="mdl-switch__label"></span>
+        </label>
       </div>
       <div class="sessionTitle">
-        <h3>Personagens</h3>
+        <h3>Cards</h3>
         <div class="sessionTitleSubline"></div>
       </div>
       <div class="designCathegory">
-        <img id="char01" draggable="true" ondragstart="drag(event)" src="/images/builder-assets/characters/Charac_F-S01-Idle_0.png" alt="Charac_F-S01-Idle_0.png">
-        <img id="char02" draggable="true" ondragstart="drag(event)" src="/images/builder-assets/characters/Charac_F-S02-Idle_0.png" alt="Charac_F-S02-Idle_0.png">
-        <img id="char03" draggable="true" ondragstart="drag(event)" src="/images/builder-assets/characters/Charac_F-S03-Idle_0.png" alt="Charac_F-S03-Idle_0.png">
-        <img id="char04" draggable="true" ondragstart="drag(event)" src="/images/builder-assets/characters/Charac_F-S04-idle_0.png" alt="Charac_F-S04-Idle_0.png">
-        <img id="char05" draggable="true" ondragstart="drag(event)" src="/images/builder-assets/characters/Charac_F-S05-idle_3.png" alt="Charac_F-S05-Idle_3.png">
-        <img id="char07" draggable="true" ondragstart="drag(event)" src="/images/builder-assets/characters/Charac_F-S07-idle_0.png" alt="Charac_F-S07-Idle_0.png">
-        <img id="char08" draggable="true" ondragstart="drag(event)" src="/images/builder-assets/characters/Charac_F-S08-Idle_0.png" alt="Charac_F-S08-Idle_0.png">
-        <img id="char09" draggable="true" ondragstart="drag(event)" src="/images/builder-assets/characters/Charac_F-S09-Idle_0.png" alt="Charac_F-S09-Idle_0.png">
-        <img id="char10" draggable="true" ondragstart="drag(event)" src="/images/builder-assets/characters/Charac_F-S10-Idle_0.png" alt="Charac_F-S10-Idle_0.png">
+        <div class="demo-card-wide mdl-card mdl-shadow--2dp" id="whiteCard" draggable="True" ondragstart="drag(event)"></div>
       </div>
-      <div class="sessionTitle">
-        <h3>Objetos</h3>
-        <div class="sessionTitleSubline"></div>
-      </div>
-      <div class="designCathegory">
-        <img id="coinBronze" draggable="true" ondragstart="drag(event)" src="/images/builder-assets/objects/coin_01-bronze.png" alt="coin_01-bronze.png">
-        <img id="coinGold" draggable="true" ondragstart="drag(event)" src="/images/builder-assets/objects/coin_01-gold.png" alt="coin_01-gold.png">
-        <img id="coinSilver" draggable="true" ondragstart="drag(event)" src="/images/builder-assets/objects/coin_01-silver.png" alt="coin_01-silver.png">
-        <img id="coinGold2" draggable="true" ondragstart="drag(event)" src="/images/builder-assets/objects/coin_02-gold.png" alt="coin_02-gold.png">
-        <img id="coinSilver2" draggable="true" ondragstart="drag(event)" src="/images/builder-assets/objects/coin_02-silver.png" alt="coin_02-gold.png">
-        <img id="jewelCrystal" draggable="true" ondragstart="drag(event)" src="/images/builder-assets/objects/jewel-crystal.png" alt="jewel-crystal.png">
-        <img id="jewelDiamond" draggable="true" ondragstart="drag(event)" src="/images/builder-assets/objects/jewel-diamond.png" alt="jewel-diamond.png">
-        <img id="jewelGem" draggable="true" ondragstart="drag(event)" src="/images/builder-assets/objects/jewel-gem.png" alt="jewel-gem.png">
-        <img id="jewelQuartz" draggable="true" ondragstart="drag(event)" src="/images/builder-assets/objects/jewel-quartz.png" alt="jewel-quartz.png">
-        <img id="jewelPendant" draggable="true" ondragstart="drag(event)" src="/images/builder-assets/objects/jewel-pendant.png" alt="jewel-pendant.png">
-      </div>
-      <div class="sessionTitle">
-        <h3>Controle (UI)</h3>
-        <div class="sessionTitleSubline"></div>
-      </div>
-      <div class="designCathegory">
-        <img id="upControl" draggable="true" ondragstart="drag(event)" src="/images/builder-assets/controls/up-01.png" alt="up-01.png">
-        <img id="downControl" draggable="true" ondragstart="drag(event)" src="/images/builder-assets/controls/down-01.png" alt="up-01.png">
-        <img id="leftControl" draggable="true" ondragstart="drag(event)" src="/images/builder-assets/controls/left-01.png" alt="up-01.png">
-        <img id="rightControl" draggable="true" ondragstart="drag(event)" src="/images/builder-assets/controls/right-01.png" alt="up-01.png">
-      </div>
+
+
 
     </div> <!-- closing designArea -->
 
   </div> <!--Left Container -->
-  <div class="rightContainer" ondrop="drop(event)" ondragover="allowDrop(event)">
+  <div class="rightContainerMainDiv">
+    <div class="phoneContainer">
+      <img src="/images/celular_mockup.png" alt="phone image">
+      <div class="rightContainer" ondrop="drop(event)" ondragover="allowDrop(event)">
+
+      </div>
+    </div>
       <div class="bottomButtons">
         <div class="rightBtnContainer">
           <img src="" alt="">
@@ -175,6 +172,7 @@
         <block type="on_left_click"></block>
         <block type="on_right_click"></block>
         <block type="detect_colision"></block>
+        <block type="on_button_click"></block>
       </category>
       <category name="Movimento" colour="120">
         <block type="move_astronaut_up"></block>
@@ -370,48 +368,9 @@
 
 
 const assetsArray = [
-  {ref: 'alienBackground001', id: 'cvsAlienBackground001', class: 'draggableAsset', cathegory:'background', html: '<img id="cvsAlienBackground001" src="/images/builder-assets/background/Alien-Planet-01-001.png" width="1024px" height="768px" style="position:absolute; top:0; left:0">'},
-  {ref: 'alienBackground002', id: 'cvsAlienBackground002', class: 'draggableAsset', cathegory:'background', html: '<img id="cvsAlienBackground002" src="/images/builder-assets/background/Alien-Planet-01-002.png" width="1024px" height="768px" style="position:absolute; top:0; left:0">'},
-  {ref: 'alienBackground003', id: 'cvsAlienBackground003', class: 'draggableAsset', cathegory:'background', html: '<img id="cvsAlienBackground003" src="/images/builder-assets/background/Alien-Planet-01-003.png" width="1024px" height="768px" style="position:absolute; top:0; left:0">'},
-  {ref: 'alienBackground004', id: 'cvsAlienBackground004', class: 'draggableAsset', cathegory:'background', html: '<img id="cvsAlienBackground004" src="/images/builder-assets/background/Alien-Planet-01-004.png" width="1024px" height="768px" style="position:absolute; top:0; left:0">'},
-  {ref: 'alienBackground005', id: 'cvsAlienBackground005', class: 'draggableAsset', cathegory:'background', html: '<img id="cvsAlienBackground005" src="/images/builder-assets/background/Alien-Planet-01-005.png" width="1024px" height="768px" style="position:absolute; top:0; left:0">'},
-  {ref: 'alienBackground006', id: 'cvsAlienBackground006', class: 'draggableAsset', cathegory:'background', html: '<img id="cvsAlienBackground006" src="/images/builder-assets/background/Alien-Planet-01-006.png" width="1024px" height="768px" style="position:absolute; top:0; left:0">'},
-  {ref: 'alienBackground007', id: 'cvsAlienBackground007', class: 'draggableAsset', cathegory:'background', html: '<img id="cvsAlienBackground007" src="/images/builder-assets/background/Alien-Planet-01-007.png" width="1024px" height="768px" style="position:absolute; top:0; left:0">'},
-  {ref: 'alienBackground008', id: 'cvsAlienBackground008', class: 'draggableAsset', cathegory:'background', html: '<img id="cvsAlienBackground008" src="/images/builder-assets/background/Alien-Planet-01-008.png" width="1024px" height="768px" style="position:absolute; top:0; left:0">'},
-  {ref: 'alienBackground009', id: 'cvsAlienBackground009', class: 'draggableAsset', cathegory:'background', html: '<img id="cvsAlienBackground009" src="/images/builder-assets/background/Alien-Planet-01-009.png" width="1024px" height="768px" style="position:absolute; top:0; left:0">'},
-  {ref: 'alienBackground010', id: 'cvsAlienBackground010', class: 'draggableAsset', cathegory:'background', html: '<img id="cvsAlienBackground010" src="/images/builder-assets/background/Alien-Planet-01-010.png" width="1024px" height="768px" style="position:absolute; top:0; left:0">'},
-  {ref: 'alienBackground011', id: 'cvsAlienBackground011', class: 'draggableAsset', cathegory:'background', html: '<img id="cvsAlienBackground011" src="/images/builder-assets/background/Alien-Planet-01-011.png" width="1024px" height="768px" style="position:absolute; top:0; left:0">'},
-  {ref: 'alienBackground012', id: 'cvsAlienBackground012', class: 'draggableAsset', cathegory:'background', html: '<img id="cvsAlienBackground012" src="/images/builder-assets/background/Alien-Planet-01-012.png" width="1024px" height="768px" style="position:absolute; top:0; left:0">'},
-  {ref: 'platform01', id: 'cvsPlatform01', class: 'draggableAsset', cathegory:'platform', imgPath: '/images/builder-assets/platform/Alien-Planet-01-t-a000.png', width: 'auto', height: '50px'},
-  {ref: 'platform02', id: 'cvsPlatform02', class: 'draggableAsset', cathegory:'platform', imgPath: '/images/builder-assets/platform/Alien-Planet-01-t-a001.png', width: 'auto', height: '50px'},
-  {ref: 'platform03', id: 'cvsPlatform03', class: 'draggableAsset', cathegory:'platform', imgPath: '/images/builder-assets/platform/Alien-Planet-01-t-b000.png', width: 'auto', height: '50px'},
-  {ref: 'platform04', id: 'cvsPlatform04', class: 'draggableAsset', cathegory:'platform', imgPath: '/images/builder-assets/platform/Alien-Planet-01-t-b001.png', width: 'auto', height: '50px'},
-  {ref: 'platform05', id: 'cvsPlatform05', class: 'draggableAsset', cathegory:'platform', imgPath: '/images/builder-assets/platform/Alien-Planet-01-t-c000.png', width: 'auto', height: '50px'},
-  {ref: 'platform06', id: 'cvsPlatform06', class: 'draggableAsset', cathegory:'platform', imgPath: '/images/builder-assets/platform/Alien-Planet-01-t-c001.png', width: 'auto', height: '50px'},
-  {ref: 'platform01', id: 'cvsPlatform01', class: 'draggableAsset', cathegory:'platform', imgPath: '/images/builder-assets/platform/Alien-Planet-01-t-a000.png', width: 'auto', height: '50px'},
-  {ref: 'char01', id: 'cvsChar01', class: 'draggableAsset', cathegory:'character', imgPath: '/images/builder-assets/characters/Charac_F-S01-Idle_0.png', width: '90px', height: 'auto'},
-  {ref: 'char02', id: 'cvsChar02', class: 'draggableAsset', cathegory:'character', imgPath: '/images/builder-assets/characters/Charac_F-S02-Idle_0.png', width: 'auto', height: '90px'},
-  {ref: 'char03', id: 'cvsChar03', class: 'draggableAsset', cathegory:'character', imgPath: '/images/builder-assets/characters/Charac_F-S03-Idle_0.png', width: 'auto', height: '90px'},
-  {ref: 'char04', id: 'cvsChar04', class: 'draggableAsset', cathegory:'character', imgPath: '/images/builder-assets/characters/Charac_F-S04-Idle_0.png', width: 'auto', height: '90px'},
-  {ref: 'char05', id: 'cvsChar05', class: 'draggableAsset', cathegory:'character', imgPath: '/images/builder-assets/characters/Charac_F-S05-Idle_3.png', width: 'auto', height: '90px'},
-  {ref: 'char07', id: 'cvsChar07', class: 'draggableAsset', cathegory:'character', imgPath: '/images/builder-assets/characters/Charac_F-S07-Idle_0.png', width: 'auto', height: '90px'},
-  {ref: 'char08', id: 'cvsChar08', class: 'draggableAsset', cathegory:'character', imgPath: '/images/builder-assets/characters/Charac_F-S08-Idle_0.png', width: 'auto', height: '90px'},
-  {ref: 'char09', id: 'cvsChar09', class: 'draggableAsset', cathegory:'character', imgPath: '/images/builder-assets/characters/Charac_F-S09-Idle_0.png', width: 'auto', height: '90px'},
-  {ref: 'char10', id: 'cvsChar10', class: 'draggableAsset', cathegory:'character', imgPath: '/images/builder-assets/characters/Charac_F-S10-Idle_0.png', width: 'auto', height: '90px'},
-  {ref: 'coinBronze', id: 'cvsCoinBronze', class: 'draggableAsset', cathegory:'object', imgPath: '/images/builder-assets/objects/coin_01-bronze.png', width: 'auto', height: '50px'},
-  {ref: 'coinGold', id: 'cvsCoinGold', class: 'draggableAsset', cathegory:'object', imgPath: '/images/builder-assets/objects/coin_01-gold.png', width: 'auto', height: '50px'},
-  {ref: 'coisSilver', id: 'cvsCoisSilver', class: 'draggableAsset', cathegory:'object', imgPath: '/images/builder-assets/objects/coin_01-silver.png', width: 'auto', height: '50px'},
-  {ref: 'coinGold2', id: 'cvsCoinGold2', class: 'draggableAsset', cathegory:'object', imgPath: '/images/builder-assets/objects/coin_02-gold.png', width: 'auto', height: '50px'},
-  {ref: 'coinSilver2', id: 'cvsCoinSilver2', class: 'draggableAsset', cathegory:'object', imgPath: '/images/builder-assets/objects/coin_02-silver.png', width: 'auto', height: '50px'},
-  {ref: 'jewelCrystal', id: 'cvsJewelCrystal', class: 'draggableAsset', cathegory:'object', imgPath: '/images/builder-assets/objects/jewel-crystal.png', width: 'auto', height: '50px'},
-  {ref: 'jewelDiamond', id: 'cvsJewelDiamond', class: 'draggableAsset', cathegory:'object', imgPath: '/images/builder-assets/objects/jewel-diamond.png', width: 'auto', height: '50px'},
-  {ref: 'jewelGem', id: 'cvsJewelGem', class: 'draggableAsset', cathegory:'object', imgPath: '/images/builder-assets/objects/jewel-gem.png', width: 'auto', height: '50px'},
-  {ref: 'jewelQuartz', id: 'cvsJewelQuartz', class: 'draggableAsset', cathegory:'object', imgPath: '/images/builder-assets/objects/jewel-quartz.png', width: 'auto', height: '50px'},
-  {ref: 'jewelPendant', id: 'cvsJewelPendant', class: 'draggableAsset', cathegory:'object', imgPath: '/images/builder-assets/objects/jewel-pendant.png', width: 'auto', height: '50px'},
-  {ref: 'upControl', id: 'cvsUpControl', class: 'draggableAsset', cathegory:'control', imgPath: '/images/builder-assets/controls/up-01.png', width: 'auto', height: '100px'},
-  {ref: 'downControl', id: 'cvsDownControl', class: 'draggableAsset', cathegory:'control', imgPath: '/images/builder-assets/controls/down-01.png', width: 'auto', height: '100px'},
-  {ref: 'leftControl', id: 'cvsLeftControl', class: 'draggableAsset', cathegory:'control', imgPath: '/images/builder-assets/controls/left-01.png', width: '100px', height: 'auto'},
-  {ref: 'rightControl', id: 'cvsRightControl', class: 'draggableAsset', cathegory:'control', imgPath: '/images/builder-assets/controls/right-01.png', width: '100px', height: 'auto'},
+  {ref: 'regularButton', id:'cvsRegularButton', class: 'draggableAsset', cathegory: 'button', html: `<button id="cvsRegularButton" class= "draggableAsset" type="button" name="button">Botão de Teste</button>`},
+  {ref: 'colorRoundButton', id:'cvsRegularButton', class: 'draggableAsset', cathegory: 'button', html: `<button class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--colored draggableAsset" id="cvsColorRoundButton"><i class="material-icons">add</i></button>`},
+  {ref: 'whiteCard', id: 'cvsWhiteCard', class: 'draggableAsset', cathegory: 'card', html: '<div class="demo-card-wide mdl-card mdl-shadow--2dp draggableAsset" id="cvsWhiteCard"></div>'}
 ]
 
 const appendedAssets = [];
@@ -458,7 +417,7 @@ const appendedAssets = [];
         }else{
           var foundAsset = assetsArray[i];
           // var newHtml = `${foundAssetHtml}style="position:absolute; top:${posX}px; right:${posY}px">`
-          var newHtml = `<img id="${foundAsset.id}" class="${foundAsset.class}" src="${foundAsset.imgPath}" alt="game-asset" style="position:absolute; bottom:${posY}px; left:${posX}px; width:${foundAsset.width}; height:${foundAsset.height}">`
+          var newHtml = foundAsset.html
         }
       }
     }

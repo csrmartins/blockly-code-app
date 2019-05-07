@@ -352,3 +352,27 @@ Blockly.JavaScript['detect_colision'] = function(block) {
   var code = `if (collisionDetection("${dropdown_name1}", "${dropdown_name2}")) {\n${statements_obj1}};\n`;
   return code;
 };
+
+
+//TEST MOBILE APP
+//---------Bloco Ao Clicar no Botão
+
+//Bloco AO CLICAR PARA CIMA
+Blockly.Blocks['on_button_click'] = {
+  init: function() {
+    this.appendDummyInput()
+        .appendField(`Ao clicar no "Botão de Teste"`);
+    this.appendStatementInput("KEY")
+        .setCheck(null);
+    this.setColour(65);
+ this.setTooltip("");
+ this.setHelpUrl("");
+  }
+};
+
+Blockly.JavaScript['on_button_click'] = function(block) {
+  var statements_key = Blockly.JavaScript.statementToCode(block, 'KEY');
+  // TODO: Assemble JavaScript into code variable.
+  var code = `document.getElementById('cvsRegularButton').addEventListener("click", function(){${statements_key}});\n`;
+  return code;
+};

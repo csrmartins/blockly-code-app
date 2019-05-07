@@ -27,6 +27,8 @@ router.get('/:id', async (req, res) => {
 
   try{
     fetch(`https://ancient-woodland-36793.herokuapp.com/api/v1/projects`)
+    // fetch(`http://localhost:9000/api/v1/projects`)
+
       .then(res => res.json())
       .then(json => {(
         allProjects = json.data,

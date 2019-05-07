@@ -9,6 +9,8 @@ router.get('/', async (req, res) => {
   console.log('/builderController GET');
   try {
     fetch(`https://ancient-woodland-36793.herokuapp.com/api/v1/projects/${req.params.id}`)
+    // fetch(`http://localhost:9000/api/v1/projects/${req.params.id}`)
+
       .then(res => res.json())
       .then(json => {(
         foundProject = json.data,
@@ -21,13 +23,35 @@ router.get('/', async (req, res) => {
   }catch(err){
     res.send(err)
   }
-
 });
+
+router.get('/mobile-builder/:id', (req, res) => {
+  console.log('GET - Mobile Builder Route');
+  try{
+    fetch(`https://ancient-woodland-36793.herokuapp.com/api/v1/users/${req.params.id}`)
+    // fetch(`http://localhost:9000/api/v1/users/${req.params.id}`)
+
+    .then(res => res.json())
+    .then(json => {(
+      foundUser = json.data,
+      console.log(foundUser, 'this is found User'),
+      res.render('mobile-builder/mobile-builder.ejs', {
+        user: foundUser
+      })
+    )})
+
+  }catch(err){
+    res.send(err)
+  }
+
+})
 
 router.get('/:id', (req, res) => {
   console.log(`/builderController/${req.params.id} GET`);
   try{
     fetch(`https://ancient-woodland-36793.herokuapp.com/api/v1/users/${req.params.id}`)
+    // fetch(`http://localhost:9000/api/v1/users/${req.params.id}`)
+
     .then(res => res.json())
     .then(json => {(
       foundUser = json.data,
@@ -47,6 +71,8 @@ router.get('/project/:id', (req, res) => {
 
   try{
     fetch(`https://ancient-woodland-36793.herokuapp.com/api/v1/users/${author}`)
+    // fetch(`http://localhost:9000/api/v1/users/${author}`)
+
       .then(res => res.json())
       .then(json => {(
         userId = json.data._id,
@@ -61,6 +87,8 @@ router.get('/project/:id', (req, res) => {
 
   try{
     fetch(`https://ancient-woodland-36793.herokuapp.com/api/v1/projects/${req.params.id}`)
+    // fetch(`http://localhost:9000/api/v1/projects/${req.params.id}`)
+
       .then(res => res.json())
       .then(json => {(
         projectId = json.data._id,
@@ -90,6 +118,8 @@ router.get('/edit/:id', async (req, res) => {
 
   try {
     fetch(`https://ancient-woodland-36793.herokuapp.com/api/v1/projects/${req.params.id}`)
+    // fetch(`http://localhost:9000/api/v1/projects/${req.params.id}`)
+
       .then(res => res.json())
       .then(json => {(
         foundProject = json.data,
@@ -104,8 +134,26 @@ router.get('/edit/:id', async (req, res) => {
   }
 })
 
+router.get('/play/:id', async (req, res) => {
+  console.log('edit route', req.params.id);
 
+  try {
+    fetch(`https://ancient-woodland-36793.herokuapp.com/api/v1/projects/${req.params.id}`)
+    // fetch(`http://localhost:9000/api/v1/projects/${req.params.id}`)
 
+      .then(res => res.json())
+      .then(json => {(
+        foundProject = json.data,
+        console.log(foundProject, 'this is foundProject'),
+        res.render('builder/player.ejs', {
+              project: foundProject
+        })
+      )})
+
+  }catch(err){
+    res.send(err)
+  }
+})
 
 
 module.exports = router

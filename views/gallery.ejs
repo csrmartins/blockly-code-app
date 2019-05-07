@@ -192,13 +192,13 @@ var sendEmail = function(name, email, id) {
   Email.send({
     Host : "smtp.office365.com",
     Username : "cesar.martins@happycodeschool.com",
-    Password : "Help789&*(",
+    Password : "Panda641Green",
     To : email,
     From : "cesar.martins@happycodeschool.com",
     Subject : "App Code | E-mail teste",
-    Body : `Olá, ${name}! Olhe o projeto que o que alguém especial compartilhou com você! Acesso o link: https://limitless-thicket-77273.herokuapp.com/builder/edit/${id} `
+    Body : `Olá, ${name}! Olhe o projeto que o que alguém especial compartilhou com você! Acesso o link: http://localhost:3000/builder/play/${id} `
   }).then(
-  setTimeout(location.reload(), 3000),
+  alert(message),
   );
 }
 

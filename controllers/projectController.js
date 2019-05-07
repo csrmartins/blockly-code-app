@@ -21,6 +21,8 @@ router.post('/new', async (req, res) => {
   console.log(req.body, 'This is REQ.BODY of PROJECTS/NEW');
   try{
     fetch('https://ancient-woodland-36793.herokuapp.com/api/v1/projects/new', {
+    // fetch('http://localhost:9000/api/v1/projects/new', {
+
           method: 'POST',
           body:    JSON.stringify(req.body),
           headers: { 'Content-Type': 'application/json' },
@@ -49,6 +51,8 @@ router.get('/all', async (req, res) => {
 
   try{
     fetch(`https://ancient-woodland-36793.herokuapp.com/api/v1/projects`)
+    // fetch(`http://localhost:9000/api/v1/projects`)
+
       .then(res => res.json())
       .then(json => {(
         allProjects = json.data,
@@ -68,6 +72,8 @@ router.get('/:id', async (req, res) => {
 
   try{
     fetch(`https://ancient-woodland-36793.herokuapp.com/api/v1/users/${req.params.id}`)
+    // fetch(`http://localhost:9000/api/v1/users/${req.params.id}`)
+
     .then(res => res.json())
     .then(json => {(
       foundUser = json.data,
@@ -79,6 +85,8 @@ router.get('/:id', async (req, res) => {
 
   try{
     fetch(`https://ancient-woodland-36793.herokuapp.com/api/v1/projects`)
+    // fetch(`https://localhost:9000/api/v1/projects`)
+
       .then(res => res.json())
       .then(json => {(
         allProjects = json.data,
@@ -98,6 +106,8 @@ router.delete('/:id', (req, res) =>{
   console.log('im in PROJECT DELETE ROUTE');
   try{
     fetch(`https://ancient-woodland-36793.herokuapp.com/api/v1/projects/${req.params.id}`, {
+    // fetch(`http://localhost:9000/api/v1/projects/${req.params.id}`, {
+
       method: 'DELETE',
       body:    JSON.stringify(req.body),
       headers: { 'Content-Type': 'application/json' },
@@ -120,6 +130,8 @@ router.put('/new/:id', async (req, res) => {
   console.log(req.body, 'This is projects PUT route');
   try {
     fetch(`https://ancient-woodland-36793.herokuapp.com/api/v1/projects/${req.params.id}`, {
+    // fetch(`http://localhost:9000/api/v1/projects/${req.params.id}`, {
+
       method: 'PUT',
       body:    JSON.stringify(req.body),
       headers: { 'Content-Type': 'application/json' },
