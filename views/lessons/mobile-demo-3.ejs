@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
     <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
 
-    <link rel="stylesheet" href="/style/lessons/mobile-demo-1.css">
+    <link rel="stylesheet" href="/style/lessons/mobile-demo-3.css">
     <title></title>
   </head>
   <body>
@@ -45,28 +45,30 @@
 <div class="row">
   <div class="leftContainer">
     <div class="textContainer">
-      <h1>Fase 1</h1>
-      <p>Nesta fase vamos começar a criar nosso App de astronimia!<br>
-        A primeira coisa que vamos fazer é adicionar o Card do primeiro planeta.<br>
-        Econtre o elemento <b>"Card"</b> na aba Design e arraste-o até a tela do celular.<br>
+      <h1>Fase 3</h1>
+      <p>Você já deve ter descoberto que Mercúrio é o primeiro planeta do sistema Solar!<br>
+        Agora adicione o Nome do Planeta ao primeiro Card do seu aplicativo.<br>
+        <b>Você sabe qual é?</b><br>
+        Arraste o <b>"Título"</b> e posicione ele sobre a imagem que foi adicionada no Card.<br>
+        O Melhor alinhamento é na parte de baixo da imagem, no canto esquerdo.
       </p>
     </div>
     <div id="designArea">
       <div class="sessionTitle">
-        <h3>Cards</h3>
+        <h3>Título</h3>
         <div class="sessionTitleSubline"></div>
       </div>
       <div class="designCathegory">
-        <div class="demo-card-wide mdl-card mdl-shadow--2dp" id="whiteCard" draggable="True" ondragstart="drag(event)"></div>
+        <h5 id="materialTitle" draggable="True" ondragstart="drag(event)">Título</h5>
       </div>
     </div>
   </div>
   <div class="rightContainerMainDiv">
     <div class="pagination">
       <a href="/lessons/<%= foundUser._id%>">0</a>
-      <a class="active" href="/lessons/demo/mobile/1">1</a>
+      <a href="/lessons/demo/mobile/1">1</a>
       <a href="/lessons/demo/mobile/2">2</a>
-      <a href="/lessons/demo/3">3</a>
+      <a class="active" href="/lessons/demo/mobile/3">3</a>
       <a href="/lessons/demo/4">4</a>
       <a href="/lessons/demo/5">5</a>
       <a href="/lessons/demo/6">6</a>
@@ -88,7 +90,14 @@
     </div>
     <div class="phoneContainer">
       <img src="/images/celular_mockup.png" alt="phone image">
-      <div class="rightContainer" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+      <div class="rightContainer" ondrop="drop(event)" ondragover="allowDrop(event)">
+        <div class="demo-card-wide mdl-card mdl-shadow--2dp draggableAsset" id="cvsWhiteCard" data-x="10.65234375" data-y="60.0390625" style="transform: translate(10.6523px, 60.0391px);">
+          <div id="cvsMaterialImageContainer"><img class="draggableAsset" id="cvsMaterialImage" src="/images/lesson-assets/planetas/mercury.png" alt="placeholder.png" data-x="32.00006103515625" data-y="-70" style="transform: translate(32.0001px, -70px);"></div>
+          <!-- <h5 class="draggableAsset" id="cvsMaterialTitle" onclick="showEditWindow()">Título</h5> -->
+
+        </div>
+      </div>
+      </div>
     </div>
     <div class="bottomButtons">
       <div class="rightBtnContainer">
@@ -155,6 +164,31 @@
           <button type="submit" class="btn btn-primary">Ok</button>
         </div>
       </form>
+    </div>
+  </div>
+</div>
+
+
+<div class="modal" id="editTitleModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h2 class="modal-title">Editar Título</h2>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+
+
+        <!-- Modal body -->
+        <div class="modal-body">
+          <p>Novo Título</p><br>
+          <input id="newTitleInput" type="text" name="title" value="">
+        </div>
+
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button type="button" data-dismiss="modal" onclick="changeTitle()" class="btn btn-primary">OK</button>
+        </div>
     </div>
   </div>
 </div>
@@ -251,6 +285,17 @@ interact('.draggableAsset')
 
   }
 
+//Double Tap / Long Tap
+
+interact('.tap-target')
+  .on('doubletap', function (event) {
+    event.preventDefault();
+    showEditWindow();
+  })
+  .on('hold', function (event) {
+    console.log("hold event Called!");
+  });
+
 
 //CHECKING ANSWER====================================================================
 // function checkCode(){
@@ -337,7 +382,7 @@ function checkUi () {
 
 
     const assetsArray = [
-      {ref: 'whiteCard', id: 'cvsWhiteCard', class: 'draggableAsset', cathegory: 'card', html: '<div class="demo-card-wide mdl-card mdl-shadow--2dp draggableAsset" id="cvsWhiteCard"></div>'}
+      {ref: 'materialTitle', id: 'cvsMaterialTitle', class: 'draggableAsset', cathegory: 'card', html:'<h5 class="draggableAsset tap-target" id="cvsMaterialTitle">Título</h5>'}
     ]
     const appendedAssets = [];
 
@@ -364,7 +409,7 @@ function checkUi () {
 
     var addItems = function(html) {
       var $html = $(html);
-      $('.rightContainer').append($html)
+      $('#cvsWhiteCard').append($html)
     }
 
     function getHtml(data, posX, posY){
@@ -389,6 +434,28 @@ function allowDrop(e) {
   console.log('allow drop called!');
   e.preventDefault();
 }
+
+//Text Container Edition
+function showEditWindow() {
+  console.log('show Edit Window clicked!');
+  $('#editTitleModal').modal('show');
+}
+
+function changeTitle() {
+  console.log('chageTitle called!');
+  var newTitleText = document.getElementById('newTitleInput').value;
+
+
+  document.getElementById('cvsMaterialTitle').outerHTML = `<h5 class="draggableAsset tap-target" id="cvsMaterialTitle">${newTitleText}</h5>`;
+
+
+  console.log(TitleElement, 'title element');
+}
+
+
+
+
+
 </script>
 
 <script>
@@ -410,7 +477,7 @@ const astronaut = {
 
       document.getElementById('astronaut').setAttribute('data-x', x)
       document.getElementById('astronaut').setAttribute('data-y', y)
-  },
+  }
 
 </script>
 

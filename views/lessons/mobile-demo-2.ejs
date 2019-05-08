@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
     <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
 
-    <link rel="stylesheet" href="/style/lessons/mobile-demo-1.css">
+    <link rel="stylesheet" href="/style/lessons/mobile-demo-2.css">
     <title></title>
   </head>
   <body>
@@ -45,28 +45,29 @@
 <div class="row">
   <div class="leftContainer">
     <div class="textContainer">
-      <h1>Fase 1</h1>
-      <p>Nesta fase vamos começar a criar nosso App de astronimia!<br>
-        A primeira coisa que vamos fazer é adicionar o Card do primeiro planeta.<br>
-        Econtre o elemento <b>"Card"</b> na aba Design e arraste-o até a tela do celular.<br>
+      <h1>Fase 2</h1>
+      <p>Agora que já temos um Card, vamos adicionar uma imagem nele!<br>
+        A imagem que vamos inserir é a do primeiro planeta do sistema solar!<br>
+        <b>Você sabe qual é?</b><br>
+        Arraste primeiro o elemento <b>"Imagem"</b> até a tela do celular, dentro do Card que você adicionou na última fase.<br>
       </p>
     </div>
     <div id="designArea">
       <div class="sessionTitle">
-        <h3>Cards</h3>
+        <h3>Imagens</h3>
         <div class="sessionTitleSubline"></div>
       </div>
       <div class="designCathegory">
-        <div class="demo-card-wide mdl-card mdl-shadow--2dp" id="whiteCard" draggable="True" ondragstart="drag(event)"></div>
+        <div id="materialImageContainer"><img id="materialImage" draggable="True" ondragstart="drag(event)" src="/images/lesson-assets/planetas/mercury.png" alt="placeholder.png"></div>
       </div>
     </div>
   </div>
   <div class="rightContainerMainDiv">
     <div class="pagination">
       <a href="/lessons/<%= foundUser._id%>">0</a>
-      <a class="active" href="/lessons/demo/mobile/1">1</a>
-      <a href="/lessons/demo/mobile/2">2</a>
-      <a href="/lessons/demo/3">3</a>
+      <a href="/lessons/demo/mobile/1">1</a>
+      <a class="active" href="/lessons/demo/mobile/2">2</a>
+      <a href="/lessons/demo/mobile/3">3</a>
       <a href="/lessons/demo/4">4</a>
       <a href="/lessons/demo/5">5</a>
       <a href="/lessons/demo/6">6</a>
@@ -88,7 +89,9 @@
     </div>
     <div class="phoneContainer">
       <img src="/images/celular_mockup.png" alt="phone image">
-      <div class="rightContainer" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+      <div class="rightContainer" ondrop="drop(event)" ondragover="allowDrop(event)">
+        <div class="demo-card-wide mdl-card mdl-shadow--2dp draggableAsset" id="cvsWhiteCard" data-x="10.65234375" data-y="60.0390625" style="transform: translate(10.6523px, 60.0391px);"></div>
+      </div>
     </div>
     <div class="bottomButtons">
       <div class="rightBtnContainer">
@@ -337,7 +340,7 @@ function checkUi () {
 
 
     const assetsArray = [
-      {ref: 'whiteCard', id: 'cvsWhiteCard', class: 'draggableAsset', cathegory: 'card', html: '<div class="demo-card-wide mdl-card mdl-shadow--2dp draggableAsset" id="cvsWhiteCard"></div>'}
+      {ref: 'materialImage', id: 'cvsMaterialImage', class: 'draggableAsset', cathegory: 'card', html:'<div id="cvsMaterialImageContainer"><img class="draggableAsset" id="cvsMaterialImage" src="/images/lesson-assets/planetas/mercury.png" alt="placeholder.png"></div>'}
     ]
     const appendedAssets = [];
 
@@ -364,7 +367,7 @@ function checkUi () {
 
     var addItems = function(html) {
       var $html = $(html);
-      $('.rightContainer').append($html)
+      $('#cvsWhiteCard').append($html)
     }
 
     function getHtml(data, posX, posY){
