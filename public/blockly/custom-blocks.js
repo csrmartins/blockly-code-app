@@ -376,3 +376,47 @@ Blockly.JavaScript['on_button_click'] = function(block) {
   var code = `document.getElementById('cvsRegularButton').addEventListener("click", function(){${statements_key}});\n`;
   return code;
 };
+
+
+//Bloco ao Clicar no Botão de Like!
+//Bloco AO CLICAR PARA CIMA
+Blockly.Blocks['on_like_click'] = {
+  init: function() {
+    this.appendDummyInput()
+        .appendField(`Ao clicar no "Botão Like"`);
+    this.appendStatementInput("KEY")
+        .setCheck(null);
+    this.setColour(65);
+ this.setTooltip("");
+ this.setHelpUrl("");
+  }
+};
+
+Blockly.JavaScript['on_like_click'] = function(block) {
+  var statements_key = Blockly.JavaScript.statementToCode(block, 'KEY');
+  // TODO: Assemble JavaScript into code variable.
+  var code = `document.getElementById('likeButton').addEventListener("click", function(){${statements_key}});\n`;
+  return code;
+};
+
+
+
+//Alterar status para ativo
+
+Blockly.Blocks['change_status'] = {
+  init: function() {
+    this.appendDummyInput()
+        .appendField("Alterar status para Ativo");
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour(230);
+ this.setTooltip("");
+ this.setHelpUrl("");
+  }
+};
+
+Blockly.JavaScript['change_status'] = function(block) {
+  // TODO: Assemble JavaScript into code variable.
+  var code = `document.getElementById('likeButton').addEventListener("click", function(){document.getElementById('likeButton').classList.add('mdl-button--colored')});\n`;
+  return code;
+};

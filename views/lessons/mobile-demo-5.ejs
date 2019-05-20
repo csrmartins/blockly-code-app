@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
     <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
 
-    <link rel="stylesheet" href="/style/lessons/mobile-demo-2.css">
+    <link rel="stylesheet" href="/style/lessons/mobile-demo-5.css">
     <title></title>
   </head>
   <body>
@@ -45,20 +45,21 @@
 <div class="row">
   <div class="leftContainer">
     <div class="textContainer">
-      <h1>Fase 2</h1>
-      <p>Agora que já temos um Card, vamos adicionar uma imagem nele!<br>
-        A imagem que vamos inserir é a do primeiro planeta do sistema solar!<br>
-        <b>Você sabe qual é?</b><br>
-        Arraste primeiro o elemento <b>"Imagem"</b> até a tela do celular, dentro do Card que você adicionou na última fase.<br>
+      <h1>Fase 5</h1>
+      <p>Arraste o Título para dentro do card e posicione-o logo a abaixo da foto.<br>
+        Para alterar este texto que não faz sentido nenhum, basta dar dois cliques depois que você posicioná-lo.<br>
+        <b>Escolha uma descrição para o planeta do primeiro card</b>
       </p>
     </div>
     <div id="designArea">
       <div class="sessionTitle">
-        <h3>Imagens</h3>
+        <h3>Ícones</h3>
         <div class="sessionTitleSubline"></div>
       </div>
       <div class="designCathegory">
-        <div id="materialImageContainer"><img id="materialImage" draggable="True" ondragstart="drag(event)" src="/images/lesson-assets/planetas/mercury.png" alt="placeholder.png"></div>
+        <button id="likeButton" class="mdl-button mdl-js-button mdl-button--icon" draggable="True" ondragstart="drag(event)">
+          <i class="material-icons">thumb_up</i>
+        </button>
       </div>
     </div>
   </div>
@@ -66,10 +67,10 @@
     <div class="pagination">
       <a href="/lessons/<%= foundUser._id%>">0</a>
       <a href="/lessons/demo/mobile/1">1</a>
-      <a class="active" href="/lessons/demo/mobile/2">2</a>
+      <a href="/lessons/demo/mobile/2">2</a>
       <a href="/lessons/demo/mobile/3">3</a>
       <a href="/lessons/demo/mobile/4">4</a>
-      <a href="/lessons/demo/mobile/5">5</a>
+      <a class="active" href="/lessons/demo/mobile/5">5</a>
       <a href="/lessons/demo/mobile/6">6</a>
       <a href="/lessons/demo/mobile/7">7</a>
       <a href="/lessons/demo/mobile/8">8</a>
@@ -90,7 +91,12 @@
     <div class="phoneContainer">
       <img src="/images/celular_mockup.png" alt="phone image">
       <div class="rightContainer" ondrop="drop(event)" ondragover="allowDrop(event)">
-        <div class="demo-card-wide mdl-card mdl-shadow--2dp draggableAsset" id="cvsWhiteCard" data-x="10.65234375" data-y="60.0390625" style="transform: translate(10.6523px, 60.0391px);"></div>
+        <div class="demo-card-wide mdl-card mdl-shadow--2dp draggableAsset" id="cvsWhiteCard" data-x="10.65234375" data-y="60.0390625" style="transform: translate(10.6523px, 60.0391px);">
+          <div id="cvsMaterialImageContainer"><img class="draggableAsset" id="cvsMaterialImage" src="/images/lesson-assets/planetas/mercury.png" alt="placeholder.png" data-x="32.00006103515625" data-y="-70" style="transform: translate(32.0001px, -70px);"></div>
+        <h5 class="draggableAsset" id="cvsMaterialTitle" data-x="10.12890625" data-y="41.2109375" style="transform: translate(10.1289px, 41.2109px);">Mercúrio</h5>
+        <p class="draggableAsset" id="cvsMaterialText" draggable="True" ondragstart="drag(event)" data-x="13.984375" data-y="12.91015625" style="transform: translate(13.9844px, 12.9102px);">O primeiro planeta do sistema solar</p>
+      </div>
+      </div>
       </div>
     </div>
     <div class="bottomButtons">
@@ -158,6 +164,31 @@
           <button type="submit" class="btn btn-primary">Ok</button>
         </div>
       </form>
+    </div>
+  </div>
+</div>
+
+
+<div class="modal" id="editTitleModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h2 class="modal-title">Editar Título</h2>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+
+
+        <!-- Modal body -->
+        <div class="modal-body">
+          <p>Novo Texto</p><br>
+          <input id="newTextInput" type="text" name="title" value="">
+        </div>
+
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button type="button" data-dismiss="modal" onclick="changeText()" class="btn btn-primary">OK</button>
+        </div>
     </div>
   </div>
 </div>
@@ -254,6 +285,17 @@ interact('.draggableAsset')
 
   }
 
+//Double Tap / Long Tap
+
+interact('.tap-target')
+  .on('doubletap', function (event) {
+    event.preventDefault();
+    showEditWindow();
+  })
+  .on('hold', function (event) {
+    console.log("hold event Called!");
+  });
+
 
 //CHECKING ANSWER====================================================================
 // function checkCode(){
@@ -340,9 +382,11 @@ function checkUi () {
 
 
     const assetsArray = [
-      {ref: 'materialImage', id: 'cvsMaterialImage', class: 'draggableAsset', cathegory: 'card', html:'<div id="cvsMaterialImageContainer"><img class="draggableAsset" id="cvsMaterialImage" src="/images/lesson-assets/planetas/mercury.png" alt="placeholder.png"></div>'}
+      {ref: 'likeButton', id: 'cvsLikeButton', class: 'draggableAsset', cathegory: 'text', html:'<button id="cvsLikeButton" class="mdl-button mdl-js-button mdl-button--icon draggableAsset"><i class="material-icons">thumb_up</i></button>'}
     ]
     const appendedAssets = [];
+
+
 
 
     function drag(e) {
@@ -392,6 +436,30 @@ function allowDrop(e) {
   console.log('allow drop called!');
   e.preventDefault();
 }
+
+//Text Container Edition
+function showEditWindow() {
+  console.log('show Edit Window clicked!');
+  $('#editTitleModal').modal('show');
+}
+
+function changeTitle() {
+  console.log('chageTitle called!');
+  var newTitleText = document.getElementById('newTitleInput').value;
+  document.getElementById('cvsMaterialTitle').outerHTML = `<h5 class="draggableAsset tap-target" id="cvsMaterialTitle">${newTitleText}</h5>`;
+  console.log(TitleElement, 'title element');
+}
+
+function changeText() {
+  console.log('changeText called!');
+  var newTextParagraph = document.getElementById('newTextInput').value;
+  document.getElementById('cvsMaterialText').outerHTML = `<p class="draggableAsset tap-target" id="cvsMaterialText" draggable="True" ondragstart="drag(event)">${newTextParagraph}</p>`
+}
+
+
+
+
+
 </script>
 
 <script>
@@ -413,7 +481,7 @@ const astronaut = {
 
       document.getElementById('astronaut').setAttribute('data-x', x)
       document.getElementById('astronaut').setAttribute('data-y', y)
-  },
+  }
 
 </script>
 

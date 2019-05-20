@@ -15,7 +15,7 @@ router.get('/', async (req, res) => {
       .then(json => {(
         foundProject = json.data,
         console.log(foundProject, 'this is foundProject'),
-        res.render('builder/builder.ejs', {
+        res.render('mobile-builder/mobile-builder.ejs', {
               project: foundProject
         })
       )})
@@ -56,7 +56,7 @@ router.get('/:id', (req, res) => {
     .then(json => {(
       foundUser = json.data,
       console.log(foundUser, 'this is found User'),
-      res.render('builder/builder.ejs', {
+      res.render('mobile-builder/mobile-builder.ejs', {
         user: foundUser
       })
     )})
